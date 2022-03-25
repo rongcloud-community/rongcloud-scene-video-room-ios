@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   s.dependency 'SVProgressHUD'
   s.dependency 'IQKeyboardManager'
   
-  s.dependency 'RCSceneRoom'
+  s.dependency 'RCSceneRoom', '>= 0.0.2'
   s.dependency 'RCSceneChat'
   s.dependency 'RCSceneGift'
   s.dependency 'RCSceneMusic'
