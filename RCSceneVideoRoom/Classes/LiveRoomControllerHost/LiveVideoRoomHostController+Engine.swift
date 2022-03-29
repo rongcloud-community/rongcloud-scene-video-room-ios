@@ -196,6 +196,10 @@ extension LiveVideoRoomHostController: RCLiveVideoMixDelegate {
         view.tag = tag
         debugPrint("frame: \(frame)")
     }
+    
+    func roomMixConfigWillUpdate(_ config: RCRTCMixConfig) {
+        
+    }
 }
 
 extension VideoPropertiesSetViewController {

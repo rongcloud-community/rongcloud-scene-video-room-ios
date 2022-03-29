@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		204A53792E20F27481E9B81B /* Pods_RCSceneExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7DCF12300E77E93E6BAE0A /* Pods_RCSceneExample.framework */; };
 		D735B24027E601F900EF74B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735B23F27E601F900EF74B3 /* AppDelegate.swift */; };
-		D735B24227E601F900EF74B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735B24127E601F900EF74B3 /* SceneDelegate.swift */; };
 		D735B24427E601F900EF74B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735B24327E601F900EF74B3 /* ViewController.swift */; };
 		D735B24727E601F900EF74B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D735B24527E601F900EF74B3 /* Main.storyboard */; };
 		D735B24927E601FE00EF74B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D735B24827E601FE00EF74B3 /* Assets.xcassets */; };
 		D735B24C27E601FE00EF74B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D735B24A27E601FE00EF74B3 /* LaunchScreen.storyboard */; };
+		D7B3A81D27F2FD80003D1BAD /* RCVideoRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3A81C27F2FD80003D1BAD /* RCVideoRoomService.swift */; };
+		D7B3A82027F3009F003D1BAD /* RCVideoRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3A81F27F3009F003D1BAD /* RCVideoRoomCell.swift */; };
+		D7B3A82227F3044D003D1BAD /* AppConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3A82127F3044D003D1BAD /* AppConfigs.swift */; };
+		D7B3A82427F304E8003D1BAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3A82327F304E8003D1BAD /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A54DD5B5F9047D944C9E039C /* Pods-RCSceneExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCSceneExample.release.xcconfig"; path = "Target Support Files/Pods-RCSceneExample/Pods-RCSceneExample.release.xcconfig"; sourceTree = "<group>"; };
 		D735B23C27E601F900EF74B3 /* RCSceneExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCSceneExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D735B23F27E601F900EF74B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D735B24127E601F900EF74B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D735B24327E601F900EF74B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D735B24627E601F900EF74B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D735B24827E601FE00EF74B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D735B24B27E601FE00EF74B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D735B24D27E601FE00EF74B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7B3A81C27F2FD80003D1BAD /* RCVideoRoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVideoRoomService.swift; sourceTree = "<group>"; };
+		D7B3A81F27F3009F003D1BAD /* RCVideoRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVideoRoomCell.swift; sourceTree = "<group>"; };
+		D7B3A82127F3044D003D1BAD /* AppConfigs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigs.swift; sourceTree = "<group>"; };
+		D7B3A82327F304E8003D1BAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D845C46C187A6927390C9749 /* Pods-RCSceneExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCSceneExample.debug.xcconfig"; path = "Target Support Files/Pods-RCSceneExample/Pods-RCSceneExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FF7DCF12300E77E93E6BAE0A /* Pods_RCSceneExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCSceneExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -81,14 +87,33 @@
 			isa = PBXGroup;
 			children = (
 				D735B23F27E601F900EF74B3 /* AppDelegate.swift */,
-				D735B24127E601F900EF74B3 /* SceneDelegate.swift */,
+				D7B3A82127F3044D003D1BAD /* AppConfigs.swift */,
 				D735B24327E601F900EF74B3 /* ViewController.swift */,
+				D7B3A82327F304E8003D1BAD /* LoginViewController.swift */,
+				D7B3A81E27F30084003D1BAD /* View */,
+				D7B3A81B27F2FD69003D1BAD /* Service */,
 				D735B24527E601F900EF74B3 /* Main.storyboard */,
 				D735B24827E601FE00EF74B3 /* Assets.xcassets */,
 				D735B24A27E601FE00EF74B3 /* LaunchScreen.storyboard */,
 				D735B24D27E601FE00EF74B3 /* Info.plist */,
 			);
 			path = RCSceneExample;
+			sourceTree = "<group>";
+		};
+		D7B3A81B27F2FD69003D1BAD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D7B3A81C27F2FD80003D1BAD /* RCVideoRoomService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D7B3A81E27F30084003D1BAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7B3A81F27F3009F003D1BAD /* RCVideoRoomCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,9 +249,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B3A82427F304E8003D1BAD /* LoginViewController.swift in Sources */,
+				D7B3A82027F3009F003D1BAD /* RCVideoRoomCell.swift in Sources */,
 				D735B24427E601F900EF74B3 /* ViewController.swift in Sources */,
+				D7B3A81D27F2FD80003D1BAD /* RCVideoRoomService.swift in Sources */,
+				D7B3A82227F3044D003D1BAD /* AppConfigs.swift in Sources */,
 				D735B24027E601F900EF74B3 /* AppDelegate.swift in Sources */,
-				D735B24227E601F900EF74B3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +405,9 @@
 				DEVELOPMENT_TEAM = 69G8BQ9KQW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RCSceneExample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "视频直播";
+				INFOPLIST_KEY_NSCameraUsageDescription = "RTC请求使用您的相机，用于视频通讯";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RTC请求使用您的麦克风以用来实时语音通讯，是否允许？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -392,7 +423,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -407,6 +438,9 @@
 				DEVELOPMENT_TEAM = 69G8BQ9KQW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RCSceneExample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "视频直播";
+				INFOPLIST_KEY_NSCameraUsageDescription = "RTC请求使用您的相机，用于视频通讯";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RTC请求使用您的麦克风以用来实时语音通讯，是否允许？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -422,7 +456,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

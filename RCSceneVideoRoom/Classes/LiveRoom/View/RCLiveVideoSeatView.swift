@@ -27,4 +27,8 @@ extension RCLiveVideoSeatView: RCLiveVideoMixDelegate {
     func liveVideoDidLayout(_ seat: RCLiveVideoSeat, withFrame frame: CGRect) {
         
     }
+    
+    func roomMixConfigWillUpdate(_ config: RCRTCMixConfig) {
+        
+    }
 }

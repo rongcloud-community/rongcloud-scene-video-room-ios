@@ -126,11 +126,9 @@ class LiveVideoCreationView: UIView {
         }
         
         /// 默认随机一直图标
-        let imageName = roomThumbNames.randomElement() ?? "room_background_image1"
-        if let image = UIImage(named: imageName) {
-            editThumbButton.setBackgroundImage(image, for: .normal)
-            delegate?.roomDidSelect(thumb: image)
-        }
+        let image = roomThumbImages.randomElement()!
+        editThumbButton.setBackgroundImage(image, for: .normal)
+        delegate?.roomDidSelect(thumb: image)
         
         /// 默认私密房间
         handlePrivateDidClick()

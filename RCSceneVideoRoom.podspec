@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   
   # 1 - Info
   s.name             = 'RCSceneVideoRoom'
-  s.version          = '0.0.2'
+  s.version          = '0.0.2.1'
   s.summary          = 'Scene Video Room'
   s.description      = "Scene Video Room module"
   s.homepage         = 'https://github.com/rongcloud'
@@ -28,20 +28,17 @@ Pod::Spec.new do |s|
   s.source_files = 'RCSceneVideoRoom/Classes/**/*'
   
   # 5 - dependency
-  s.dependency 'SnapKit'
-  s.dependency 'Reusable'
   s.dependency 'Pulsator'
   s.dependency 'MJRefresh'
   s.dependency 'SDWebImage'
-  s.dependency 'Kingfisher'
   s.dependency 'XCoordinator'
-  s.dependency 'SVProgressHUD'
   s.dependency 'IQKeyboardManager'
   
   s.dependency 'RCSceneRoom', '>= 0.0.2.3'
   s.dependency 'RCSceneGift'
   s.dependency 'RCSceneMusic'
   s.dependency 'RCSceneRoomSetting'
+  
   s.dependency 'RCLiveVideoLib'
   
 end

@@ -7,14 +7,15 @@
 
 import UIKit
 import RCSceneService
+import RCSceneRoom
 
-let roomThumbNames = [
-    "room_background_image1",
-    "room_background_image2",
-    "room_background_image3",
-    "room_background_image4",
-    "room_background_image5",
-    "room_background_image6"
+let roomThumbImages = [
+    RCSCAsset.Images.roomBackgroundImage1.image,
+    RCSCAsset.Images.roomBackgroundImage2.image,
+    RCSCAsset.Images.roomBackgroundImage3.image,
+    RCSCAsset.Images.roomBackgroundImage4.image,
+    RCSCAsset.Images.roomBackgroundImage5.image,
+    RCSCAsset.Images.roomBackgroundImage6.image
 ]
 
 struct CreateLiveVideoRoomState {
