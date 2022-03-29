@@ -6,7 +6,7 @@
 //
 
 class RCLVRSeatAlertUserViewController: RCLVRAlertViewController {
-    weak var userDelegate: UserOperationProtocol?
+    weak var userDelegate: RCSceneRoomUserOperationProtocol?
     
     private lazy var avatarImageView: UIImageView = {
         let instance = UIImageView(image: RCSCAsset.Images.defaultAvatar.image)
@@ -308,7 +308,7 @@ extension RCLVRSeatAlertUserViewController {
     }
     
     private func configUI() {
-        UserInfoDownloaded.shared.refreshUserInfo(userId: userId) { [weak self] user in
+        RCSceneUserManager.shared.refreshUserInfo(userId: userId) { [weak self] user in
             guard let self = self else { return }
             self.avatarImageView.kf.setImage(with: URL(string: user.portraitUrl),
                                              placeholder: RCSCAsset.Images.defaultAvatar.image)
@@ -349,7 +349,7 @@ extension RCLVRSeatAlertUserViewController {
         let follow = !isFollow
         let userId = userId
         videoRoomService.follow(userId: userId) { [weak self] result in
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(res):
                 if res.validate() {
                     self?.onFollow(userId, follow: follow)
@@ -420,7 +420,7 @@ extension RCLVRSeatAlertUserViewController {
         dismiss(animated: false)
         RCLiveVideoEngine.shared().kickOutRoom(userId) { code in
             debugPrint("kickOutRoom \(code.rawValue)")
-            self.userDelegate?.kickoutRoom(userId: self.userId)
+            self.userDelegate?.kickOutRoom(userId: self.userId)
         }
     }
     
@@ -430,7 +430,7 @@ extension RCLVRSeatAlertUserViewController {
         let setManager = !userId.isManager
         videoRoomService.setRoomManager(roomId: roomId, userId: userId, isManager: setManager) { [weak self] result in
             guard let self = self else { return }
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(response):
                 if response.validate() {
                     self.userDelegate?.didSetManager(userId: userId, isManager: setManager)

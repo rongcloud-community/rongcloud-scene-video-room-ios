@@ -41,7 +41,7 @@ class LiveVideoRoomUserView: UIView {
     
     private var isFollow: Bool = false
     
-    private var room: VoiceRoom? {
+    private var room: RCSceneRoom? {
         didSet {
             guard oldValue == nil else { return }
             fetchUserInfo()
@@ -69,14 +69,14 @@ class LiveVideoRoomUserView: UIView {
         avatarImageView.layer.masksToBounds = true
     }
     
-    func setRoom(_ room: VoiceRoom) {
+    func setRoom(_ room: RCSceneRoom) {
         self.room = room
     }
     
     @objc func handleViewClick() {
         guard let room = room else { return }
         let alertController = RCLVRSeatAlertUserViewController(room.userId)
-        alertController.userDelegate = controller as? UserOperationProtocol
+        alertController.userDelegate = controller as? RCSceneRoomUserOperationProtocol
         controller?.present(alertController, animated: false)
     }
     
@@ -157,7 +157,7 @@ extension LiveVideoRoomUserView {
 extension LiveVideoRoomUserView {
     @objc private func fetchUserInfo() {
         guard let room = room else { return }
-        UserInfoDownloaded.shared.refreshUserInfo(userId: room.userId) { [weak self] user in
+        RCSceneUserManager.shared.refreshUserInfo(userId: room.userId) { [weak self] user in
             guard let self = self else { return }
             self.nameLabel.text = user.userName
             self.avatarImageView.kf.setImage(with: URL(string: user.portraitUrl),
@@ -172,7 +172,7 @@ extension LiveVideoRoomUserView {
         guard let userId = room?.userId else { return }
         let follow = !isFollow
         videoRoomService.follow(userId: userId) { [weak self] result in
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(res):
                 if res.validate() {
                     self?.didFollow(follow)
@@ -186,7 +186,7 @@ extension LiveVideoRoomUserView {
     
     private func didFollow(_ isFollow: Bool) {
         guard let userId = room?.userId else { return }
-        guard let delegate = controller as? UserOperationProtocol else { return }
+        guard let delegate = controller as? RCSceneRoomUserOperationProtocol else { return }
         delegate.didFollow(userId: userId, isFollow: isFollow)
     }
     

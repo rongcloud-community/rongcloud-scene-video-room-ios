@@ -85,7 +85,7 @@ class OnlineCreatorTableViewCell: UITableViewCell, Reusable {
         }
     }
     
-    func updateCell(user: VoiceRoomUser?, selectingUserId: String?) {
+    func updateCell(user: RCSceneRoomUser?, selectingUserId: String?) {
         guard let user = user else {
             return
         }

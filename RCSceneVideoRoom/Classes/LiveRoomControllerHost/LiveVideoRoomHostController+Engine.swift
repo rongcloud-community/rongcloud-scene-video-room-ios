@@ -10,7 +10,7 @@ import CoreGraphics
 
 struct managersWrapper: Codable {
     let code: Int
-    let data: [VoiceRoomUser]?
+    let data: [RCSceneRoomUser]?
 }
 
 extension LiveVideoRoomHostController {
@@ -46,7 +46,7 @@ extension LiveVideoRoomHostController {
 }
 
 extension LiveVideoRoomHostController: LiveVideoRoomCreationDelegate {
-    func didCreate(_ room: VoiceRoom) {
+    func didCreate(_ room: RCSceneRoom) {
         self.room = room
         roomDidCreated()
         
@@ -113,7 +113,7 @@ extension LiveVideoRoomHostController: RCLiveVideoDelegate {
     }
     
     func liveVideoInvitationDidReject(_ userId: String) {
-        UserInfoDownloaded.shared.fetch([userId]) { users in
+        RCSceneUserManager.shared.fetch([userId]) { users in
             guard let user = users.first else { return }
             SVProgressHUD.showInfo(withStatus: "\(user.userName)拒绝上麦")
         }
@@ -141,7 +141,7 @@ extension LiveVideoRoomHostController: RCLiveVideoDelegate {
     func roomInfoDidUpdate(_ key: String, value: String) {
         switch key {
         case "shields":
-            SceneRoomManager.shared.forbiddenWordlist = value.decode([])
+            SceneRoomManager.shared.forbiddenWords = value.decode([])
         case "FreeEnterSeat":
             isSeatFreeEnter = value == "1"
         case "RCRTCVideoResolution":

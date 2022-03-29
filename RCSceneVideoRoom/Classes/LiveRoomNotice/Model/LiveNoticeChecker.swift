@@ -11,7 +11,7 @@ import RCSceneService
 class LiveNoticeChecker {
     static func check(_ text: String, _ completion:@escaping(Bool,String) -> Void) {
         videoRoomService.checkText(text: text) { result in
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(res):
                 if res.validate() {
                     completion(true,"")

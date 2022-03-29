@@ -37,7 +37,7 @@ extension LiveVideoRoomHostController {
 
 extension LiveVideoRoomHostController: RCChatroomSceneToolBarDelegate {
     func textInputViewSendText(_ text: String) {
-        UserInfoDownloaded.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
+        RCSceneUserManager.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
             let event = RCChatroomBarrage()
             event.userId = user.userId
             event.userName = user.userName
@@ -60,9 +60,13 @@ extension LiveVideoRoomHostController: RCChatroomSceneToolBarDelegate {
     func audioRecordDidEnd(_ data: Data?, time: TimeInterval) {
         guard let data = data, time > 1 else { return SVProgressHUD.showError(withStatus: "录音时间太短") }
         videoRoomService.uploadAudio(data: data, extensions: "wav") { [weak self] result in
-            switch result.map(UploadfileResponse.self) {
+            switch result.map(RCNetworkWrapper<String>.self) {
             case let .success(response):
-                let urlString = Environment.url.absoluteString + "/file/show?path=" + response.data
+                guard let path = response.data else {
+                    SVProgressHUD.showError(withStatus: "文件上传失败")
+                    return
+                }
+                let urlString = Environment.url.absoluteString + "/file/show?path=" + path
                 self?.sendMessage(urlString, time: Int(time) + 1)
             case let .failure(error):
                 print(error)
@@ -71,7 +75,7 @@ extension LiveVideoRoomHostController: RCChatroomSceneToolBarDelegate {
     }
     
     private func sendMessage(_ URLString: String, time: Int) {
-        UserInfoDownloaded.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
+        RCSceneUserManager.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
             let message = RCVRVoiceMessage()
             message.userId = user.userId
             message.userName = user.userName

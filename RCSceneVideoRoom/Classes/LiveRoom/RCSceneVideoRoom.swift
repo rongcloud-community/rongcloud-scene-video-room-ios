@@ -11,7 +11,7 @@ import RCSceneRoom
 
 public var kVideoRoomEnableCDN: Bool = true
 
-public func RCVideoRoomController(room: VoiceRoom? = nil,
+public func RCVideoRoomController(room: RCSceneRoom? = nil,
                                   beautyPlugin: RCBeautyPluginDelegate? = nil) -> RCRoomCycleProtocol {
     if let room = room, room.userId != Environment.currentUserId {
         let controller = LiveVideoRoomViewController(room)

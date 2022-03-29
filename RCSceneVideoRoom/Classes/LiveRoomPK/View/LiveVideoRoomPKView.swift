@@ -154,7 +154,7 @@ class LiveVideoRoomPKView: UIView {
     
     private func updateUserInfo() {
         guard let PK = RCLiveVideoEngine.shared().pkInfo else { return }
-        UserInfoDownloaded.shared.fetchUserInfo(userId: PK.otherRoomUserId()) { user in
+        RCSceneUserManager.shared.fetchUserInfo(userId: PK.otherRoomUserId()) { user in
             self.otherRoomButton.setTitle("\(user.userName)  ", for: .normal)
         }
     }
@@ -196,7 +196,7 @@ class LiveVideoRoomPKView: UIView {
         SVProgressHUD.show()
         videoRoomService.roomInfo(roomId: PK.otherRoomId()) { [weak self] result in
             SVProgressHUD.dismiss()
-            switch result.map(RCNetworkWapper<VoiceRoom>.self) {
+            switch result.map(RCNetworkWrapper<RCSceneRoom>.self) {
             case let .success(model):
                 guard
                     let room = model.data,

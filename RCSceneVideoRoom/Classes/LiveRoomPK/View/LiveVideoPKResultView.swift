@@ -75,7 +75,7 @@ class LiveVideoPKResultView: UIView {
     private func updateUserAvatar(_ userIds: [String]) {
         winnerView.updatePKResult(result: .win)
         loserView.updatePKResult(result: .lose)
-        UserInfoDownloaded.shared.fetch(userIds) { users in
+        RCSceneUserManager.shared.fetch(userIds) { users in
             guard
                 let winner = users.first,
                 let loser = users.last
@@ -147,7 +147,7 @@ class LiveVideoPKResultAvatarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateUser(_ user: VoiceRoomUser) {
+    func updateUser(_ user: RCSceneRoomUser) {
         avatarImageView.kf.setImage(with: URL(string: user.portraitUrl), placeholder: RCSCAsset.Images.defaultAvatar.image)
     }
     

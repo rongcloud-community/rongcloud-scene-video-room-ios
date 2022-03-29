@@ -24,7 +24,7 @@ extension LiveVideoRoomViewController {
             if RCLiveVideoEngine.shared().pkInfo != nil {
                 return [room.userId]
             }
-            var users: [String] = SceneRoomManager.shared.seatlist
+            var users: [String] = SceneRoomManager.shared.seats
                 .compactMap { $0 }
                 .filter { $0.count > 0 }
             users.removeAll(where: { $0 == room.userId })
@@ -32,8 +32,8 @@ extension LiveVideoRoomViewController {
             return users
         }()
         
-        let dependency = VoiceRoomGiftDependency(room: room,
-                                                 seats: SceneRoomManager.shared.seatlist,
+        let dependency = RCSceneGiftDependency(room: room,
+                                                 seats: SceneRoomManager.shared.seats,
                                                  userIds: users)
         videoRouter.trigger(.gift(dependency: dependency, delegate: self))
     }
@@ -50,7 +50,7 @@ extension LiveVideoRoomViewController {
     }
 }
 
-extension LiveVideoRoomViewController: VoiceRoomGiftViewControllerDelegate {
+extension LiveVideoRoomViewController: RCSceneGiftViewControllerDelegate {
     func didSendGift(message: RCMessageContent) {
         if let msg = message as? RCChatroomSceneMessageProtocol {
             messageView.addMessage(msg)

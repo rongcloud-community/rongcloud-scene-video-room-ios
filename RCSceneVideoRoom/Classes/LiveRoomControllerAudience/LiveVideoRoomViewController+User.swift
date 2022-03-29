@@ -45,7 +45,7 @@ extension LiveVideoRoomViewController {
 }
 
 // MARK: - Owner Click User Seat Pop view Deleagte
-extension LiveVideoRoomViewController: UserOperationProtocol {
+extension LiveVideoRoomViewController: RCSceneRoomUserOperationProtocol {
     /// 踢出房间
     func kickoutRoom(userId: String) {
         RCLiveVideoEngine.shared().kickOutRoom(userId) { [weak self] _ in
@@ -56,7 +56,7 @@ extension LiveVideoRoomViewController: UserOperationProtocol {
     
     /// 抱下麦
     func kickUserOffSeat(seatIndex: UInt) {
-        let userId = SceneRoomManager.shared.seatlist[Int(seatIndex)]
+        let userId = SceneRoomManager.shared.seats[Int(seatIndex)]
         RCLiveVideoEngine.shared().kickUser(fromSeat:userId) { code in
             if code == .success {
                 SVProgressHUD.showSuccess(withStatus: "抱下麦成功")
@@ -86,16 +86,16 @@ extension LiveVideoRoomViewController: UserOperationProtocol {
             return
         }
         SceneRoomManager.updateLiveSeatList()
-        let dependency = VoiceRoomGiftDependency(room: room,
-                                                 seats: SceneRoomManager.shared.seatlist,
+        let dependency = RCSceneGiftDependency(room: room,
+                                                 seats: SceneRoomManager.shared.seats,
                                                  userIds: [userId])
         videoRouter.trigger(.gift(dependency: dependency, delegate: self))
     }
     
     func didFollow(userId: String, isFollow: Bool) {
-        UserInfoDownloaded.shared.refreshUserInfo(userId: userId) { followUser in
+        RCSceneUserManager.shared.refreshUserInfo(userId: userId) { followUser in
             guard isFollow else { return }
-            UserInfoDownloaded.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
+            RCSceneUserManager.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
                 let message = RCChatroomFollow()
                 message.userInfo = user.rcUser
                 message.targetUserInfo = followUser.rcUser

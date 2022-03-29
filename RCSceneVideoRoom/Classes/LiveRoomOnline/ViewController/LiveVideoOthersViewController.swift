@@ -24,7 +24,7 @@ class LiveVideoOthersViewController: UIViewController {
         instance.clipsToBounds = true
         return instance
     }()
-    private var others = [VoiceRoomUser]()
+    private var others = [RCSceneRoomUser]()
     private lazy var blurView: UIVisualEffectView = {
         let effect = UIBlurEffect(style: .regular)
         let instance = UIVisualEffectView(effect: effect)
@@ -39,7 +39,7 @@ class LiveVideoOthersViewController: UIViewController {
         instance.delegate = self
         return instance
     }()
-    private lazy var emptyView = VoiceRoomUserListEmptyView()
+    private lazy var emptyView = RCSceneRoomUsersEmptyView()
     private lazy var nameLabel: UILabel = {
         let instance = UILabel()
         instance.font = .systemFont(ofSize: 17)
@@ -47,7 +47,7 @@ class LiveVideoOthersViewController: UIViewController {
         instance.text = "在线房主"
         return instance
     }()
-    private var rooms = [VoiceRoom]() {
+    private var rooms = [RCSceneRoom]() {
         didSet {
             emptyView.isHidden = rooms.count > 0
         }
@@ -146,11 +146,11 @@ extension LiveVideoOthersViewController: UITableViewDelegate {
         }
     }
     
-    private func sendPKInvitation(_ room: VoiceRoom) {
+    private func sendPKInvitation(_ room: RCSceneRoom) {
         videoRoomService.isPK(roomId: room.roomId) { result in
             switch result {
             case .success(let response):
-                guard let status = try? JSONDecoder().decode(RoomPKStatus.self, from: response.data), !status.data else {
+                guard let status = try? JSONDecoder().decode(RCNetworkWrapper<Bool>.self, from: response.data), status.data == true else {
                     SVProgressHUD.showError(withStatus: "对方正在忙碌")
                     return
                 }
@@ -168,7 +168,7 @@ extension LiveVideoOthersViewController: UITableViewDelegate {
         }
     }
     
-    private func didSendPKInvitation(_ room: VoiceRoom) {
+    private func didSendPKInvitation(_ room: RCSceneRoom) {
         dismiss(animated: true)
         delegate?.pkInvitationDidSend(userId: room.userId, from: room.roomId)
     }
@@ -180,7 +180,7 @@ extension LiveVideoOthersViewController {
             guard let self = self else { return }
             switch result {
             case let .success(response):
-                if let model = try? JSONDecoder().decode(RCNetworkWapper<[VoiceRoom]>.self, from: response.data) {
+                if let model = try? JSONDecoder().decode(RCNetworkWrapper<[RCSceneRoom]>.self, from: response.data) {
                     self.rooms = model.data ?? []
                     self.tableView.reloadData()
                 }

@@ -11,8 +11,8 @@ import RCSceneFoundation
 import RCSceneRoomSetting
 
 class VoiceRoomPasswordViewController: UIViewController {
-    weak var delegate: InputPasswordProtocol?
-    fileprivate let type: PasswordViewType
+    weak var delegate: RCSceneRoomPasswordProtocol?
+    fileprivate let type: RCSceneRoomPasswordType
     private lazy var container: UIView = {
         let instance = UIView()
         instance.backgroundColor = UIColor.white
@@ -83,7 +83,7 @@ class VoiceRoomPasswordViewController: UIViewController {
         return instance
     }()
     
-    init(type: PasswordViewType, delegate: InputPasswordProtocol?) {
+    init(type: RCSceneRoomPasswordType, delegate: RCSceneRoomPasswordProtocol?) {
         self.delegate = delegate
         self.type = type
         super.init(nibName: nil, bundle: nil)

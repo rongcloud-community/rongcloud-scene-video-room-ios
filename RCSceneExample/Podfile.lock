@@ -22,48 +22,48 @@ PODS:
     - RCCoreKit
     - SDWebImage
     - YYModel
-  - RCSceneChat (0.0.1):
-    - RCSceneFoundation
-    - RCSceneService
-    - RongCloudIM/IMKit
-    - SVProgressHUD
   - RCSceneChatroomKit (0.0.3.1):
     - Masonry
     - RCCoreKit
     - YYModel
-  - RCSceneFoundation (0.0.1):
+  - RCSceneFoundation (0.0.2):
     - SwiftyBeaver
-  - RCSceneGift (0.0.1):
+  - RCSceneGift (0.0.2):
     - Kingfisher
     - Moya
     - RCSceneFoundation
     - RCSceneMessage
-    - RCSceneService
+    - RCSceneService (>= 0.0.2)
     - Reusable
     - RongCloudIM/IMLib
     - SnapKit
     - SVProgressHUD
   - RCSceneMessage (0.0.1):
     - RongCloudIM/IMLib
-  - RCSceneMusic (0.0.2):
+  - RCSceneMusic (0.0.2.1):
     - Moya
     - RCMusicControlKit
     - RCSceneMessage
-    - RCSceneService
+    - RCSceneService (>= 0.0.2)
     - RongCloudRTC/RongRTCLib
     - SVProgressHUD
-  - RCSceneRoom (0.0.1):
+  - RCSceneRoom (0.0.2.3):
+    - Kingfisher
     - RCSceneChatroomKit
     - RCSceneMessage
-    - RCSceneService
+    - RCSceneService (>= 0.0.2)
+    - Reusable
+    - RongCloudIM/IMKit
+    - SnapKit
+    - SVProgressHUD
   - RCSceneRoomSetting (0.0.1):
     - RCSceneFoundation
     - RCSceneService
     - Reusable
     - SnapKit
-  - RCSceneService (0.0.1):
+  - RCSceneService (0.0.2):
     - Moya
-    - RCSceneFoundation
+    - RCSceneFoundation (>= 0.0.2)
     - ReachabilitySwift
   - RCSceneVideoRoom (0.0.1):
     - IQKeyboardManager
@@ -71,10 +71,9 @@ PODS:
     - MJRefresh
     - Pulsator
     - RCLiveVideoLib
-    - RCSceneChat
     - RCSceneGift
     - RCSceneMusic
-    - RCSceneRoom
+    - RCSceneRoom (>= 0.0.2)
     - RCSceneRoomSetting
     - Reusable
     - SDWebImage
@@ -137,7 +136,6 @@ SPEC REPOS:
     - RCCoreKit
     - RCLiveVideoLib
     - RCMusicControlKit
-    - RCSceneChat
     - RCSceneChatroomKit
     - RCSceneFoundation
     - RCSceneGift
@@ -174,16 +172,15 @@ SPEC CHECKSUMS:
   RCCoreKit: 3f143441ac62880b454cca9066f526a27c45d4ce
   RCLiveVideoLib: 213be37483ca6bbe3792674ca94a7406bafd254d
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
-  RCSceneChat: fcb21a62dffece8d439c71e23bdf95ceda07cae2
   RCSceneChatroomKit: 5fa306001c88bc075365a3ed8a76776e151670f2
-  RCSceneFoundation: 202f1441659e5ac01953ef6256cd8c87bcb1a0cd
-  RCSceneGift: db56da61b6882dd2b84e0a6d8b8bde45401ad333
+  RCSceneFoundation: 6d91dda21fe9cc4aab6718dd6940a7e29e028955
+  RCSceneGift: 9f20fa9c53ba987e0463fdc16b5b2dc166babe73
   RCSceneMessage: 926880788dcb19bf49c9631e82e1e8abc2957397
-  RCSceneMusic: 964f37d0fb47503010255999e51a0e8981e53372
-  RCSceneRoom: 86d8d2e94ad347efc3fcae2d74bdde878a5375ff
+  RCSceneMusic: 78f5ad0c0425839ece1b73d65a781e3c6bdc3219
+  RCSceneRoom: 8357c40968eb7a1bd3409c2a507e1896a721521e
   RCSceneRoomSetting: 11a8e424f770e752205a3dfd5497aa0b0e1ee46e
-  RCSceneService: 35b74247b37f15d6ee345e1f05a1a956cfe5f3f2
-  RCSceneVideoRoom: 5ac7d61a52acd6fd00bad287c87ab1a3a3ee4fe0
+  RCSceneService: 8810bb3c043162e0eca81a13bddb95e0fb01ca03
+  RCSceneVideoRoom: 645c28d122472ac054be2753682a85a9261fe81e
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RongCloudIM: c871de12fdc601a4335e17d8df17232f56b8d089

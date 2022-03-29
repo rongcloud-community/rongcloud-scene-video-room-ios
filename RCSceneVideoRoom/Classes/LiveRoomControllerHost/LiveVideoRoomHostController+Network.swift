@@ -32,7 +32,7 @@ extension LiveVideoRoomHostController {
     
     private func fetchRoomInfo() {
         videoRoomService.roomInfo(roomId: room.roomId) { [weak self] result in
-            switch result.map(RCNetworkWapper<VoiceRoom>.self) {
+            switch result.map(RCNetworkWrapper<RCSceneRoom>.self) {
             case let .success(model):
                 if model.code == 30001 {
                     self?.closeRoom()

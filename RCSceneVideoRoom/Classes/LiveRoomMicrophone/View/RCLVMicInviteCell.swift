@@ -10,7 +10,7 @@ import Reusable
 import RCSceneService
 
 protocol RCLVMicInviteDelegate {
-    func micInvite(_ user: VoiceRoomUser)
+    func micInvite(_ user: RCSceneRoomUser)
 }
 
 class RCLVMicInviteCell: UITableViewCell, Reusable {
@@ -45,7 +45,7 @@ class RCLVMicInviteCell: UITableViewCell, Reusable {
         instance.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         return instance
     }()
-    private var user: VoiceRoomUser?
+    private var user: RCSceneRoomUser?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -90,7 +90,7 @@ class RCLVMicInviteCell: UITableViewCell, Reusable {
         }
     }
     
-    func updateCell(_ user: VoiceRoomUser) -> RCLVMicInviteCell {
+    func updateCell(_ user: RCSceneRoomUser) -> RCLVMicInviteCell {
         self.user = user
         nameLabel.text = user.userName
         let avatarURL = URL(string: user.portraitUrl)

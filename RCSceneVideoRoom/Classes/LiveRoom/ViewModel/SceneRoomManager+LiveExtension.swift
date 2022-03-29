@@ -9,7 +9,7 @@ import RCSceneRoom
 
 extension SceneRoomManager {
     static func updateLiveSeatList() {
-        shared.seatlist = RCLiveVideoEngine
+        shared.seats = RCLiveVideoEngine
             .shared()
             .currentSeats
             .map { $0.userId }

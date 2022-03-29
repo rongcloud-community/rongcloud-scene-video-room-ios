@@ -18,9 +18,9 @@ class RCLVRMicRequestViewController: UIViewController {
         return instance
     }()
     
-    private lazy var emptyView = VoiceRoomUserListEmptyView()
+    private lazy var emptyView = RCSceneRoomUsersEmptyView()
     
-    private var userlist = [VoiceRoomUser]() {
+    private var userlist = [RCSceneRoomUser]() {
         didSet {
             emptyView.isHidden = userlist.count > 0
         }
@@ -58,7 +58,7 @@ class RCLVRMicRequestViewController: UIViewController {
     
     private func fetchAllUserInfo(_ userIds: [String]) {
         videoRoomService.usersInfo(id: userIds) { [weak self] result in
-            switch result.map(RCNetworkWapper<[VoiceRoomUser]>.self) {
+            switch result.map(RCNetworkWrapper<[RCSceneRoomUser]>.self) {
             case let .success(wrapper):
                 if let users = wrapper.data {
                     self?.userlist = users
@@ -86,7 +86,7 @@ extension RCLVRMicRequestViewController: UITableViewDataSource {
 }
 
 extension RCLVRMicRequestViewController: RCLVMicRequestDelegate {
-    func acceptMicRequest(_ user: VoiceRoomUser) {
+    func acceptMicRequest(_ user: RCSceneRoomUser) {
         RCLiveVideoEngine.shared()
             .acceptRequest(user.userId) { [weak self] code in
                 switch code {
@@ -104,7 +104,7 @@ extension RCLVRMicRequestViewController: RCLVMicRequestDelegate {
             }
     }
     
-    func rejectMicRequest(_ user: VoiceRoomUser) {
+    func rejectMicRequest(_ user: RCSceneRoomUser) {
         RCLiveVideoEngine.shared()
             .rejectRequest(user.userId) { [weak self] code in
                 if code == .success {
@@ -116,14 +116,14 @@ extension RCLVRMicRequestViewController: RCLVMicRequestDelegate {
             }
     }
     
-    private func didAcceptMicRequest(_ user: VoiceRoomUser) {
+    private func didAcceptMicRequest(_ user: RCSceneRoomUser) {
         dismiss(animated: true) { [weak self] in
             guard let controller = self?.parent as? RCLVMicViewController else { return }
             controller.delegate?.didAcceptSeatRequest(user)
         }
     }
     
-    private func didRejectMicRequest(_ user: VoiceRoomUser) {
+    private func didRejectMicRequest(_ user: RCSceneRoomUser) {
         guard let index = userlist.firstIndex(where: { $0.userId == user.userId }) else { return }
         
         userlist.remove(at: index)

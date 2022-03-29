@@ -10,9 +10,9 @@ import Foundation
 import RCSceneService
 
 protocol RCLVMicViewControllerDelegate: AnyObject {
-    func didAcceptSeatRequest(_ user: VoiceRoomUser)
-    func didRejectRequest(_ user: VoiceRoomUser)
-    func didSendInvitation(_ user: VoiceRoomUser)
+    func didAcceptSeatRequest(_ user: RCSceneRoomUser)
+    func didRejectRequest(_ user: RCSceneRoomUser)
+    func didSendInvitation(_ user: RCSceneRoomUser)
     func didSwitchMixType(_ type: RCLiveVideoMixType)
 }
 

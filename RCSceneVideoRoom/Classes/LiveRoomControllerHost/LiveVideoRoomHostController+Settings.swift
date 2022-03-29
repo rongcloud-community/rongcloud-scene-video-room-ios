@@ -24,7 +24,7 @@ extension LiveVideoRoomHostController {
     
     @objc func handleSettingClick() {
         let notice = room.notice ?? "欢迎来到\(room.roomName)"
-        let words = SceneRoomManager.shared.forbiddenWordlist
+        let words = SceneRoomManager.shared.forbiddenWords
         let items: [Item] = {
             return [
                 .roomLock(room.isPrivate == 0),
@@ -57,7 +57,7 @@ extension LiveVideoRoomHostController {
             SVProgressHUD.showError(withStatus: title + "失败")
         }
         videoRoomService.setRoomType(roomId: room.roomId, isPrivate: isPrivate, password: password) { result in
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(response):
                 if response.validate() {
                     onSuccess()
@@ -171,7 +171,7 @@ extension LiveVideoRoomHostController: VideoPropertiesDelegate {
 extension LiveVideoRoomHostController {
     func roomUpdate(name: String) {
         videoRoomService.setRoomName(roomId: room.roomId, name: name) { [weak self] result in
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(response):
                 if response.validate() {
                     self?.didUpdateRoomName(name)
@@ -217,8 +217,8 @@ extension LiveVideoRoomHostController {
 
 extension LiveVideoRoomHostController {
     func forbiddenWordsDidChange(_ words: [String]) {
-        if SceneRoomManager.shared.forbiddenWordlist == words { return }
-        SceneRoomManager.shared.forbiddenWordlist = words
+        if SceneRoomManager.shared.forbiddenWords == words { return }
+        SceneRoomManager.shared.forbiddenWords = words
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: words, options: .fragmentsAllowed)
             if let json = String(data: jsonData, encoding: .utf8) {

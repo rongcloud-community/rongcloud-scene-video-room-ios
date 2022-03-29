@@ -89,7 +89,7 @@ extension LiveVideoRoomViewController: RCLiveVideoDelegate {
     }
     
     func liveVideoInvitationDidReject(_ invitee: String) {
-        UserInfoDownloaded.shared.fetchUserInfo(userId: invitee) { user in
+        RCSceneUserManager.shared.fetchUserInfo(userId: invitee) { user in
             SVProgressHUD.showInfo(withStatus: "\(user.userName)拒绝上麦")
         }
     }
@@ -139,7 +139,7 @@ extension LiveVideoRoomViewController: RCLiveVideoDelegate {
         handleKickOutRoom(userId, by: operatorId)
         guard userId == Environment.currentUserId else { return }
         if managers.contains(where: { operatorId == $0.userId }) {
-            UserInfoDownloaded.shared.fetchUserInfo(userId: userId) { user in
+            RCSceneUserManager.shared.fetchUserInfo(userId: userId) { user in
                 SVProgressHUD.showInfo(withStatus: "您被管理员\(user.userName)踢出房间")
             }
         } else {
@@ -156,7 +156,7 @@ extension LiveVideoRoomViewController: RCLiveVideoDelegate {
         case "notice":
             room.notice = value
         case "shields":
-            SceneRoomManager.shared.forbiddenWordlist = value.decode([])
+            SceneRoomManager.shared.forbiddenWords = value.decode([])
         case "FreeEnterSeat":
             isSeatFreeEnter = value == "1"
         default: ()

@@ -17,9 +17,9 @@ class RCLVRMicInviteViewController: UIViewController {
         instance.dataSource = self
         return instance
     }()
-    private lazy var emptyView = VoiceRoomUserListEmptyView()
+    private lazy var emptyView = RCSceneRoomUsersEmptyView()
 
-    private var userlist = [VoiceRoomUser](){
+    private var userlist = [RCSceneRoomUser](){
         didSet {
             emptyView.isHidden = userlist.count > 0
         }
@@ -56,7 +56,7 @@ class RCLVRMicInviteViewController: UIViewController {
     private func fetchRoomUserlist() {
         let micUserIds = RCLiveVideoEngine.shared().currentSeats.map { $0.userId }
         videoRoomService.roomUsers(roomId: RCLiveVideoEngine.shared().roomId) { [weak self] result in
-            switch result.map(RCNetworkWapper<[VoiceRoomUser]>.self) {
+            switch result.map(RCNetworkWrapper<[RCSceneRoomUser]>.self) {
             case let .success(wrapper):
                 if let users = wrapper.data {
                     self?.userlist = users.filter { !micUserIds.contains($0.userId) }
@@ -85,7 +85,7 @@ extension RCLVRMicInviteViewController: UITableViewDataSource {
 }
 
 extension RCLVRMicInviteViewController: RCLVMicInviteDelegate {
-    func micInvite(_ user: VoiceRoomUser) {
+    func micInvite(_ user: RCSceneRoomUser) {
         RCLiveVideoEngine.shared()
             .inviteLiveVideo(user.userId, at: seatIndex) { [weak self] code in
                 switch code {
@@ -98,7 +98,7 @@ extension RCLVRMicInviteViewController: RCLVMicInviteDelegate {
             }
     }
     
-    private func didMicInvite(_ user: VoiceRoomUser) {
+    private func didMicInvite(_ user: RCSceneRoomUser) {
         dismiss(animated: true) { [weak self] in
             guard let controller = self?.parent as? RCLVMicViewController else { return }
             controller.delegate?.didSendInvitation(user)

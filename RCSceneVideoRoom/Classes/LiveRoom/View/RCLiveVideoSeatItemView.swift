@@ -55,10 +55,10 @@ class RCLiveVideoSeatItemView: UIView {
         return instance
     }()
     
-    private let room: VoiceRoom
+    private let room: RCSceneRoom
     private let seatInfo: RCLiveVideoSeat
     
-    init(_ room: VoiceRoom, seatInfo: RCLiveVideoSeat) {
+    init(_ room: RCSceneRoom, seatInfo: RCLiveVideoSeat) {
         self.room = room
         self.seatInfo = seatInfo
         super.init(frame: .zero)
@@ -193,7 +193,7 @@ class RCLiveVideoSeatItemView: UIView {
     }
     
     private func updateUserInfo() {
-        UserInfoDownloaded.shared.fetchUserInfo(userId: seatInfo.userId) { [weak self] user in
+        RCSceneUserManager.shared.fetchUserInfo(userId: seatInfo.userId) { [weak self] user in
             self?.nameLabel.text = user.userName
             self?.avatarImageView.kf.setImage(with: URL(string: user.portraitUrl),
                                               placeholder: RCSCAsset.Images.defaultAvatar.image)

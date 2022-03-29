@@ -9,7 +9,6 @@ import UIKit
 import XCoordinator
 
 import RCSceneGift
-import RCSceneChat
 import RCSceneService
 import RCSceneRoom
 import RCSceneFoundation
@@ -20,9 +19,9 @@ public var videoRouter: StrongRouter<VideoRoomRouter>!
 public enum VideoRoomRouter: Route {
     case inputPassword(delegate: RCSceneRoomSettingProtocol?)
     case notice(modify: Bool = false, notice: String, delegate: RCSceneRoomSettingProtocol)
-    case userList(room: VoiceRoom, delegate: UserOperationProtocol)
-    case manageUser(dependency: Any?, delegate: UserOperationProtocol?)
-    case gift(dependency: VoiceRoomGiftDependency, delegate: VoiceRoomGiftViewControllerDelegate)
+    case userList(room: RCSceneRoom, delegate: RCSceneRoomUserOperationProtocol)
+    case manageUser(dependency: RCSceneRoomUserOperationDependency, delegate: RCSceneRoomUserOperationProtocol?)
+    case gift(dependency: RCSceneGiftDependency, delegate: RCSceneGiftViewControllerDelegate)
     case chatList
     case chat(userId: String)
 }
@@ -42,19 +41,19 @@ public class VideoRoomCoordinator: NavigationCoordinator<VideoRoomRouter> {
             vc.modalPresentationStyle = .overFullScreen
             return .present(vc)
         case let .userList(room, delegate):
-            let vc = SceneRoomUserListViewController(room: room, delegate: delegate)
+            let vc = RCSceneRoomUsersViewController(room: room, delegate: delegate)
             let nav = UINavigationController(rootViewController: vc)
             nav.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
             nav.modalTransitionStyle = .coverVertical
             nav.modalPresentationStyle = .overFullScreen
             return .present(nav)
         case let .manageUser(dependency, delegate):
-            let vc = UserOperationViewController(dependency: dependency as! UserOperationDependency, delegate: delegate)
+            let vc = RCSceneRoomUserOperationViewController(dependency: dependency, delegate: delegate)
             vc.modalTransitionStyle = .coverVertical
             vc.modalPresentationStyle = .popover
             return .present(vc)
         case let .gift(dependency, delegate):
-            let vc = VoiceRoomGiftViewController(dependency: dependency, delegate: delegate)
+            let vc = RCSceneGiftViewController(dependency: dependency, delegate: delegate)
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overFullScreen
             return .present(vc)

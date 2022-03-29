@@ -132,7 +132,7 @@ extension LiveVideoRoomHostController {
     }
     
     private func sendAttendPKMessage(userId: String) {
-        UserInfoDownloaded.shared.fetch([userId]) { list in
+        RCSceneUserManager.shared.fetch([userId]) { list in
             guard let user = list.first else { return }
             self.sendTextMessage(text: "与 \(user.userName) 的 PK 即将开始")
         }

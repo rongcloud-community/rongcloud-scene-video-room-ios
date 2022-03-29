@@ -55,7 +55,7 @@ extension LiveVideoRoomHostController: RCLiveVideoCancelDelegate {
 }
 
 extension LiveVideoRoomHostController: RCLVMicViewControllerDelegate {
-    func didAcceptSeatRequest(_ user: VoiceRoomUser) {
+    func didAcceptSeatRequest(_ user: RCSceneRoomUser) {
         switch RCLiveVideoEngine.shared().currentMixType {
         case .oneToOne:
             micButton.micState = .connecting
@@ -67,13 +67,13 @@ extension LiveVideoRoomHostController: RCLVMicViewControllerDelegate {
         }
     }
     
-    func didRejectRequest(_ user: VoiceRoomUser) {
+    func didRejectRequest(_ user: RCSceneRoomUser) {
         RCLiveVideoEngine.shared().getRequests { [weak self] code, userIds in
             self?.micButton.setBadgeCount(userIds.count)
         }
     }
     
-    func didSendInvitation(_ user: VoiceRoomUser) {
+    func didSendInvitation(_ user: RCSceneRoomUser) {
         switch RCLiveVideoEngine.shared().currentMixType {
         case .oneToOne:
             micButton.micState = .waiting
@@ -103,7 +103,7 @@ extension LiveVideoRoomHostController: RCLVMicViewControllerDelegate {
 }
 
 // MARK: - Owner Click User Seat Pop view Deleagte
-extension LiveVideoRoomHostController: UserOperationProtocol {
+extension LiveVideoRoomHostController: RCSceneRoomUserOperationProtocol {
     /// 踢出房间
     func kickoutRoom(userId: String) {
         presentedViewController?.dismiss(animated: true)
@@ -115,7 +115,7 @@ extension LiveVideoRoomHostController: UserOperationProtocol {
     /// 抱下麦
     func kickUserOffSeat(seatIndex: UInt) {
         presentedViewController?.dismiss(animated: true)
-        let userId = SceneRoomManager.shared.seatlist[Int(seatIndex)]
+        let userId = SceneRoomManager.shared.seats[Int(seatIndex)]
         RCLiveVideoEngine.shared().kickUser(fromSeat:userId) { code in
             if code == .success {
                 SVProgressHUD.showSuccess(withStatus: "抱下麦成功")
@@ -126,7 +126,7 @@ extension LiveVideoRoomHostController: UserOperationProtocol {
     }
     
     func didSetManager(userId: String, isManager: Bool) {
-        UserInfoDownloaded.shared.fetchUserInfo(userId: userId) { user in
+        RCSceneUserManager.shared.fetchUserInfo(userId: userId) { user in
             let event = RCChatroomAdmin()
             event.userId = user.userId
             event.userName = user.userName
@@ -174,16 +174,16 @@ extension LiveVideoRoomHostController: UserOperationProtocol {
         
         SceneRoomManager.updateLiveSeatList()
         
-        let dependency = VoiceRoomGiftDependency(room: room,
-                                                 seats: SceneRoomManager.shared.seatlist,
+        let dependency = RCSceneGiftDependency(room: room,
+                                                 seats: SceneRoomManager.shared.seats,
                                                  userIds: [userId])
         videoRouter.trigger(.gift(dependency: dependency, delegate: self))
     }
     
     func didFollow(userId: String, isFollow: Bool) {
-        UserInfoDownloaded.shared.refreshUserInfo(userId: userId) { followUser in
+        RCSceneUserManager.shared.refreshUserInfo(userId: userId) { followUser in
             guard isFollow else { return }
-            UserInfoDownloaded.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
+            RCSceneUserManager.shared.fetchUserInfo(userId: Environment.currentUserId) { [weak self] user in
                 let message = RCChatroomFollow()
                 message.userInfo = user.rcUser
                 message.targetUserInfo = followUser.rcUser

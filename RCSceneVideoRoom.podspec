@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   
   # 1 - Info
   s.name             = 'RCSceneVideoRoom'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Scene Video Room'
   s.description      = "Scene Video Room module"
   s.homepage         = 'https://github.com/rongcloud'
@@ -38,8 +38,7 @@ Pod::Spec.new do |s|
   s.dependency 'SVProgressHUD'
   s.dependency 'IQKeyboardManager'
   
-  s.dependency 'RCSceneRoom', '>= 0.0.2'
-  s.dependency 'RCSceneChat'
+  s.dependency 'RCSceneRoom', '>= 0.0.2.3'
   s.dependency 'RCSceneGift'
   s.dependency 'RCSceneMusic'
   s.dependency 'RCSceneRoomSetting'

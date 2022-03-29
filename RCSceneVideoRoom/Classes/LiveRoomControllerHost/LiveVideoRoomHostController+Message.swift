@@ -62,7 +62,7 @@ extension LiveVideoRoomHostController: RCChatroomSceneEventProtocol {
 
 extension LiveVideoRoomHostController {
     func handleUserEnter(_ userId: String) {
-        UserInfoDownloaded.shared.fetchUserInfo(userId: userId) { [weak self] user in
+        RCSceneUserManager.shared.fetchUserInfo(userId: userId) { [weak self] user in
             let event = RCChatroomEnter()
             event.userId = user.userId
             event.userName = user.userName
@@ -74,7 +74,7 @@ extension LiveVideoRoomHostController {
     }
     
     func handleKickOutRoom(_ userId: String, by operatorId: String) {
-        UserInfoDownloaded.shared.fetch([operatorId, userId]) { [weak self] users in
+        RCSceneUserManager.shared.fetch([operatorId, userId]) { [weak self] users in
             let event = RCChatroomKickOut()
             event.userId = users[0].userId
             event.userName = users[0].userName

@@ -28,7 +28,7 @@ extension LiveVideoRoomHostController {
         clearMusicData()
         SVProgressHUD.show()
         videoRoomService.closeRoom(roomId: room.roomId) { result in
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(response):
                 if response.validate() {
                     SVProgressHUD.showSuccess(withStatus: "直播结束，房间已关闭")

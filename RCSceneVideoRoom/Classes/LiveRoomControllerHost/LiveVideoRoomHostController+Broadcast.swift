@@ -36,11 +36,11 @@ extension LiveVideoRoomHostController: RCRTCBroadcastDelegate {
         }
     }
     
-    func broadcastViewAccessible(_ room: VoiceRoom) -> Bool {
+    func broadcastViewAccessible(_ room: RCSceneRoom) -> Bool {
         return false
     }
     
-    func broadcastViewDidClick(_ room: VoiceRoom) {
+    func broadcastViewDidClick(_ room: RCSceneRoom) {
     }
 }
 

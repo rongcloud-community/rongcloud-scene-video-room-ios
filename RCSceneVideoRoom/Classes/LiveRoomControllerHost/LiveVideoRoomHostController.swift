@@ -14,7 +14,7 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
     
     var beautyPlugin: RCBeautyPluginDelegate?
     
-    var room: VoiceRoom! {
+    var room: RCSceneRoom! {
         didSet {
             SceneRoomManager.shared.currentRoom = room
             if (room != nil) {
@@ -24,7 +24,7 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
         }
     }
     
-    var managers = [VoiceRoomUser]() {
+    var managers = [RCSceneRoomUser]() {
         didSet {
             SceneRoomManager.shared.managers = managers.map { $0.userId }
             messageView.tableView.reloadData()
@@ -70,10 +70,10 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
     
     lazy var pkView = LiveVideoRoomPKView()
     
-    init(_ room: VoiceRoom? = nil) {
+    init(_ room: RCSceneRoom? = nil) {
         self.room = room
         super.init(nibName: nil, bundle: nil)
-        SceneRoomManager.shared.forbiddenWordlist = []
+        SceneRoomManager.shared.forbiddenWords = []
     }
     
     required init?(coder: NSCoder) {
@@ -86,7 +86,6 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
         if let room = room { didCreate(room) }
         UIApplication.shared.isIdleTimerDisabled = true
         videoPropsSetVc.delegate = self
-        PlayerImpl.instance.type = .live
         PlayerImpl.instance.initializedEarMonitoring()
         bubbleViewAddGesture()
     }
@@ -233,7 +232,5 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
 
 extension LiveVideoRoomHostController {
     dynamic func roomDidCreated() {}
-    dynamic func handleReceivedMessage(_ message: RCMessage) {
-        RoomMessageHandlerManager.handleMessage(message, musicInfoBubbleView)
-    }
+    dynamic func handleReceivedMessage(_ message: RCMessage) {}
 }

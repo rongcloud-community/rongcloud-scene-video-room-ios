@@ -109,7 +109,7 @@ class RCLVRSeatAlertHostViewController: RCLVRAlertViewController {
     private func configUI() {
         seatLabel.text = "\(seat.index)号麦位"
         
-        UserInfoDownloaded.shared.refreshUserInfo(userId: seat.userId) { [weak self] user in
+        RCSceneUserManager.shared.refreshUserInfo(userId: seat.userId) { [weak self] user in
             guard let self = self else { return }
             self.avatarImageView.kf.setImage(with: URL(string: user.portraitUrl),
                                              placeholder: RCSCAsset.Images.defaultAvatar.image)

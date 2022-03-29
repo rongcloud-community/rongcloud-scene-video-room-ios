@@ -47,7 +47,7 @@ extension LiveVideoRoomViewController {
     func closeRoom() {
         SVProgressHUD.show()
         videoRoomService.closeRoom(roomId: room.roomId) { [weak self] result in
-            switch result.map(AppResponse.self) {
+            switch result.map(RCSceneResponse.self) {
             case let .success(response):
                 if response.validate() {
                     SVProgressHUD.showSuccess(withStatus: "直播结束，房间已关闭")

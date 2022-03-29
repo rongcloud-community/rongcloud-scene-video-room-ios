@@ -12,7 +12,7 @@ import RCSceneRoom
 class LiveVideoRoomViewController: RCLiveModuleViewController {
     
     /// 管理员
-    dynamic var managers = [VoiceRoomUser]()
+    dynamic var managers = [RCSceneRoomUser]()
     
     /// 主播美颜
     var beautyPlugin: RCBeautyPluginDelegate?
@@ -56,13 +56,13 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     
     var needHandleFloatingBack = false
     
-    var room: VoiceRoom
+    var room: RCSceneRoom
     
-    init(_ room: VoiceRoom) {
+    init(_ room: RCSceneRoom) {
         self.room = room
         self.role = room.isOwner ? .broadcaster : .audience
         super.init(nibName: nil, bundle: nil)
-        SceneRoomManager.shared.forbiddenWordlist = []
+        SceneRoomManager.shared.forbiddenWords = []
     }
     
     required init?(coder: NSCoder) {
@@ -79,7 +79,6 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
         
         DataSourceImpl.instance.roomId = self.room.roomId
         DelegateImpl.instance.roomId = self.room.roomId
-        PlayerImpl.instance.type = .live
         
         RCIM.shared().addReceiveMessageDelegate(self)
         DataSourceImpl.instance.fetchRoomPlayingMusicInfo { info in
@@ -166,18 +165,12 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
         }
     }
     
-    dynamic func handleReceivedMessage(_ message: RCMessage) {
-        handleCommandMessage(message)
-    }
-    
-    func handleCommandMessage(_ message: RCMessage) {
-        RoomMessageHandlerManager.handleMessage(message, musicInfoBubbleView)
-    }
+    dynamic func handleReceivedMessage(_ message: RCMessage) {}
     
     func videoJoinRoom(_ completion: @escaping (Result<Void, ReactorError>) -> Void) {
         let roomId = room.roomId
         videoRoomService.roomInfo(roomId: roomId) { [weak self] result in
-            switch result.map(RCNetworkWapper<VoiceRoom>.self) {
+            switch result.map(RCNetworkWrapper<RCSceneRoom>.self) {
             case let .success(wrapper):
                 switch wrapper.code {
                 case 10000:

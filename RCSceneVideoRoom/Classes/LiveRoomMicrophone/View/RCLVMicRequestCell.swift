@@ -11,8 +11,8 @@ import RCSceneService
 import Kingfisher
 
 protocol RCLVMicRequestDelegate {
-    func acceptMicRequest(_ user: VoiceRoomUser)
-    func rejectMicRequest(_ user: VoiceRoomUser)
+    func acceptMicRequest(_ user: RCSceneRoomUser)
+    func rejectMicRequest(_ user: RCSceneRoomUser)
 }
 
 class RCLVMicRequestCell: UITableViewCell, Reusable {
@@ -54,7 +54,7 @@ class RCLVMicRequestCell: UITableViewCell, Reusable {
         instance.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         return instance
     }()
-    private var user: VoiceRoomUser?
+    private var user: RCSceneRoomUser?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -106,7 +106,7 @@ class RCLVMicRequestCell: UITableViewCell, Reusable {
         }
     }
     
-    func updateCell(_ user: VoiceRoomUser) -> RCLVMicRequestCell {
+    func updateCell(_ user: RCSceneRoomUser) -> RCLVMicRequestCell {
         self.user = user
         nameLabel.text = user.userName
         let avatarURL = URL(string: user.portraitUrl)

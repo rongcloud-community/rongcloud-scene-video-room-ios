@@ -31,7 +31,7 @@ struct CreateLiveVideoRoomState {
 final class LiveVideoViewModel {
     var createState = CreateLiveVideoRoomState()
     
-    func create(_ completion: @escaping (Result<RCNetworkWapper<VoiceRoom>, NetError>) -> Void) {
+    func create(_ completion: @escaping (Result<RCNetworkWrapper<RCSceneRoom>, NetError>) -> Void) {
         guard createState.roomName.count > 0 else {
             return completion(.failure(NetError("请输入房间名称")))
         }
@@ -61,9 +61,13 @@ final class LiveVideoViewModel {
     
     private func upload(_ image: UIImage, completion: @escaping (Result<String, NetError>) -> Void) {
         videoRoomService.upload(data: image.jpegData(compressionQuality: 0.5)!) { result in
-            switch result.map(UploadfileResponse.self) {
+            switch result.map(RCNetworkWrapper<String>.self) {
             case let .success(response):
-                completion(.success(response.imageURL()))
+                guard let path = response.data else {
+                    return completion(.failure(NetError("上传文件失败")))
+                }
+                let urlString = Environment.url.absoluteString + "/file/show?path=" + path
+                completion(.success(urlString))
             case let .failure(error):
                 completion(.failure(error))
             }
@@ -74,9 +78,9 @@ final class LiveVideoViewModel {
                         isPrivate: Int,
                         password: String,
                         path: String,
-                        completion: @escaping (Result<RCNetworkWapper<VoiceRoom>, NetError>) -> Void) {
+                        completion: @escaping (Result<RCNetworkWrapper<RCSceneRoom>, NetError>) -> Void) {
         videoRoomService.createRoom(name: name, themePictureUrl: path, backgroundUrl: "", kv: [], isPrivate: isPrivate, password: password, roomType: 3) { result in
-            switch result.map(RCNetworkWapper<VoiceRoom>.self) {
+            switch result.map(RCNetworkWrapper<RCSceneRoom>.self) {
             case let .success(wrapper):
                 completion(.success(wrapper))
             case let .failure(error):
