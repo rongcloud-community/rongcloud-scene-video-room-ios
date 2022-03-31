@@ -13,6 +13,8 @@
 		D735B24727E601F900EF74B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D735B24527E601F900EF74B3 /* Main.storyboard */; };
 		D735B24927E601FE00EF74B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D735B24827E601FE00EF74B3 /* Assets.xcassets */; };
 		D735B24C27E601FE00EF74B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D735B24A27E601FE00EF74B3 /* LaunchScreen.storyboard */; };
+		D7539DAE27F53D620043FE65 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7539DAD27F53D620043FE65 /* CreateViewController.swift */; };
+		D7539DB027F53D6C0043FE65 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7539DAF27F53D6C0043FE65 /* JoinViewController.swift */; };
 		D7B3A81D27F2FD80003D1BAD /* RCVideoRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3A81C27F2FD80003D1BAD /* RCVideoRoomService.swift */; };
 		D7B3A82027F3009F003D1BAD /* RCVideoRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3A81F27F3009F003D1BAD /* RCVideoRoomCell.swift */; };
 		D7B3A82227F3044D003D1BAD /* AppConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3A82127F3044D003D1BAD /* AppConfigs.swift */; };
@@ -28,6 +30,8 @@
 		D735B24827E601FE00EF74B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D735B24B27E601FE00EF74B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D735B24D27E601FE00EF74B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7539DAD27F53D620043FE65 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		D7539DAF27F53D6C0043FE65 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		D7B3A81C27F2FD80003D1BAD /* RCVideoRoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVideoRoomService.swift; sourceTree = "<group>"; };
 		D7B3A81F27F3009F003D1BAD /* RCVideoRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVideoRoomCell.swift; sourceTree = "<group>"; };
 		D7B3A82127F3044D003D1BAD /* AppConfigs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigs.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 				D735B23F27E601F900EF74B3 /* AppDelegate.swift */,
 				D7B3A82127F3044D003D1BAD /* AppConfigs.swift */,
 				D735B24327E601F900EF74B3 /* ViewController.swift */,
+				D7539DAD27F53D620043FE65 /* CreateViewController.swift */,
+				D7539DAF27F53D6C0043FE65 /* JoinViewController.swift */,
 				D7B3A82327F304E8003D1BAD /* LoginViewController.swift */,
 				D7B3A81E27F30084003D1BAD /* View */,
 				D7B3A81B27F2FD69003D1BAD /* Service */,
@@ -251,6 +257,8 @@
 			files = (
 				D7B3A82427F304E8003D1BAD /* LoginViewController.swift in Sources */,
 				D7B3A82027F3009F003D1BAD /* RCVideoRoomCell.swift in Sources */,
+				D7539DB027F53D6C0043FE65 /* JoinViewController.swift in Sources */,
+				D7539DAE27F53D620043FE65 /* CreateViewController.swift in Sources */,
 				D735B24427E601F900EF74B3 /* ViewController.swift in Sources */,
 				D7B3A81D27F2FD80003D1BAD /* RCVideoRoomService.swift in Sources */,
 				D7B3A82227F3044D003D1BAD /* AppConfigs.swift in Sources */,

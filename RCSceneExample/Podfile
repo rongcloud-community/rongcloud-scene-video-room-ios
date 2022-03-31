@@ -8,12 +8,12 @@ target 'RCSceneExample' do
   # Pods for RCSceneExample
   
   # IM
-  pod 'RongCloudIM/IMLib', '5.1.8'
-  pod 'RongCloudIM/IMKit', '5.1.8'
+  pod 'RongCloudIM/IMLib', '5.2.0'
+  pod 'RongCloudIM/IMKit', '5.2.0'
   
   # RTC
-  pod 'RongCloudRTC/RongRTCLib', '5.1.16.1'
-  pod 'RongCloudRTC/RongRTCPlayer', '5.1.16.1'
+  pod 'RongCloudRTC/RongRTCLib', '5.2.0'
+  pod 'RongCloudRTC/RongRTCPlayer', '5.2.0'
   
   # Lib
   pod 'RCSceneVideoRoom', :path => '../'

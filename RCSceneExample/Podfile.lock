@@ -14,7 +14,7 @@ PODS:
     - FCFileManager
     - SSZipArchive
     - YYModel
-  - RCLiveVideoLib (2.1.0.3):
+  - RCLiveVideoLib (2.1.0.4):
     - RongCloudIM/IMLib
     - RongCloudRTC/RongRTCLib
   - RCMusicControlKit (0.0.2.2):
@@ -65,7 +65,7 @@ PODS:
     - Moya
     - RCSceneFoundation (>= 0.0.2)
     - ReachabilitySwift
-  - RCSceneVideoRoom (0.0.2):
+  - RCSceneVideoRoom (0.0.2.1):
     - IQKeyboardManager
     - MJRefresh
     - Pulsator
@@ -82,29 +82,29 @@ PODS:
     - Reusable/View (= 4.1.2)
   - Reusable/Storyboard (4.1.2)
   - Reusable/View (4.1.2)
-  - RongCloudIM/ChatRoom (5.1.8):
+  - RongCloudIM/ChatRoom (5.2.0):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/CustomerService (5.1.8):
+  - RongCloudIM/CustomerService (5.2.0):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/Discussion (5.1.8):
+  - RongCloudIM/Discussion (5.2.0):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/IMKit (5.1.8):
+  - RongCloudIM/IMKit (5.2.0):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (5.1.8):
+  - RongCloudIM/IMLib (5.2.0):
     - RongCloudIM/ChatRoom
     - RongCloudIM/CustomerService
     - RongCloudIM/Discussion
     - RongCloudIM/IMLibCore
     - RongCloudIM/Location
     - RongCloudIM/PublicService
-  - RongCloudIM/IMLibCore (5.1.8)
-  - RongCloudIM/Location (5.1.8):
+  - RongCloudIM/IMLibCore (5.2.0)
+  - RongCloudIM/Location (5.2.0):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/PublicService (5.1.8):
+  - RongCloudIM/PublicService (5.2.0):
     - RongCloudIM/IMLibCore
-  - RongCloudRTC/RongRTCLib (5.1.16.1):
+  - RongCloudRTC/RongRTCLib (5.2.0):
     - RongCloudIM/IMLibCore (>= 5.1.3)
-  - RongCloudRTC/RongRTCPlayer (5.1.16.1):
+  - RongCloudRTC/RongRTCPlayer (5.2.0):
     - RongCloudRTC/RongRTCLib
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
@@ -113,18 +113,18 @@ PODS:
   - SSZipArchive (2.4.3)
   - SVProgressHUD (2.2.5)
   - SwiftyBeaver (1.9.5)
-  - XCoordinator (2.0.7):
-    - XCoordinator/Core (= 2.0.7)
-  - XCoordinator/Core (2.0.7)
+  - XCoordinator (2.2.0):
+    - XCoordinator/Core (= 2.2.0)
+  - XCoordinator/Core (2.2.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
   - RCLiveVideoLib (from `../../rclivevideolib-ios`)
   - RCSceneVideoRoom (from `../`)
-  - RongCloudIM/IMKit (= 5.1.8)
-  - RongCloudIM/IMLib (= 5.1.8)
-  - RongCloudRTC/RongRTCLib (= 5.1.16.1)
-  - RongCloudRTC/RongRTCPlayer (= 5.1.16.1)
+  - RongCloudIM/IMKit (= 5.2.0)
+  - RongCloudIM/IMLib (= 5.2.0)
+  - RongCloudRTC/RongRTCLib (= 5.2.0)
+  - RongCloudRTC/RongRTCPlayer (= 5.2.0)
 
 SPEC REPOS:
   trunk:
@@ -174,7 +174,7 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Pulsator: eb5a9f9be4bdcbd19903984c65deca6aabe50a17
   RCCoreKit: 3f143441ac62880b454cca9066f526a27c45d4ce
-  RCLiveVideoLib: 97f051662c57ce0885f8d4f5a22a9b8ce3e22e80
+  RCLiveVideoLib: 7a950e7a622dc70aba1d6d10e357a56f8ed7b8d5
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
   RCSceneChatroomKit: 5fa306001c88bc075365a3ed8a76776e151670f2
   RCSceneFoundation: 6d91dda21fe9cc4aab6718dd6940a7e29e028955
@@ -184,19 +184,19 @@ SPEC CHECKSUMS:
   RCSceneRoom: 8357c40968eb7a1bd3409c2a507e1896a721521e
   RCSceneRoomSetting: 11a8e424f770e752205a3dfd5497aa0b0e1ee46e
   RCSceneService: 8810bb3c043162e0eca81a13bddb95e0fb01ca03
-  RCSceneVideoRoom: cb5c458b83c8d9473e3226019593e7b01134b771
+  RCSceneVideoRoom: 5649dfa5b87a6890856f8b4513f959f46887e547
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
-  RongCloudIM: c871de12fdc601a4335e17d8df17232f56b8d089
-  RongCloudRTC: 39fe65cc3099103d33989b531c9f45a587060316
+  RongCloudIM: 4af5e8508994f3e2e050288dfdb5bd253dfc5a8e
+  RongCloudRTC: d68b5b91a51d378036d7de0b5fe836e1a93ede9f
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
-  XCoordinator: 9ee654fedef1ffede33d5c11677708a555c00542
+  XCoordinator: a5f91e43ee944f508529763921165697d3211629
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 74be595bf70804723bdf970fea3c1cef16d8755d
+PODFILE CHECKSUM: 91dc236b0a4755c7eb4b54b8be442054893e12eb
 
 COCOAPODS: 1.11.3
