@@ -17,10 +17,5 @@ target 'RCSceneExample' do
   
   # Lib
   pod 'RCSceneVideoRoom', :path => '../'
-  pod 'RCLiveVideoLib', :path => '../../rclivevideolib-ios'
-  pod 'RCSceneRoom/RCSceneRoom'#, :path => '../../rongcloud-scene-room-ios'
-  pod 'RCSceneRoom/RCSceneMusic'#, :path => '../../rongcloud-scene-room-ios'
-  pod 'RCSceneRoom/RCSceneGift'#, :path => '../../rongcloud-scene-room-ios'
-  pod 'RCSceneRoom/RCSceneRoomSetting'#, :path => '../../rongcloud-scene-room-ios'
   
 end
