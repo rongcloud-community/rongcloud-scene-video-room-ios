@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RCSceneMusic
 import RCSceneRoom
 
 class LiveVideoRoomViewController: RCLiveModuleViewController {

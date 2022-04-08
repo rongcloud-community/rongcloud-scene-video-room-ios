@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RCSceneService
+
 import RCSceneRoom
 
 let roomThumbImages = [

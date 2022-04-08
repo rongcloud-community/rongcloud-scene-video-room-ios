@@ -6,8 +6,6 @@
 //
 
 import SVProgressHUD
-import RCSceneService
-import RCSceneMusic
 
 extension LiveVideoRoomViewController {
     @_dynamicReplacement(for: m_viewDidLoad)

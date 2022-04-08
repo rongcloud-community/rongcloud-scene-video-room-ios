@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RCSceneService
 
 class LiveNoticeChecker {
     static func check(_ text: String, _ completion:@escaping(Bool,String) -> Void) {

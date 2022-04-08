@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RCSceneRoomSetting
 
 extension LiveVideoRoomViewController {
     @_dynamicReplacement(for: m_viewDidLoad)

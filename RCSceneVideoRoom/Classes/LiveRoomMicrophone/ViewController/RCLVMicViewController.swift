@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RCSceneService
+
 
 protocol RCLVMicViewControllerDelegate: AnyObject {
     func didAcceptSeatRequest(_ user: RCSceneRoomUser)

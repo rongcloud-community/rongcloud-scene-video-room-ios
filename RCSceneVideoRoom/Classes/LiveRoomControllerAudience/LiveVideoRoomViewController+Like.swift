@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RCSceneMessage
 
 fileprivate final class RCLikeTapGesture: UITapGestureRecognizer, UIGestureRecognizerDelegate {
     private let descendantViews: [UIView]

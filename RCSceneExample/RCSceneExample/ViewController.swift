@@ -8,9 +8,7 @@
 import UIKit
 import RongIMKit
 import SVProgressHUD
-
-import RCSceneService
-import RCSceneFoundation
+import RCSceneRoom
 import RCSceneVideoRoom
 
 class ViewController: UIViewController {

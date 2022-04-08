@@ -26,54 +26,49 @@ PODS:
     - Masonry
     - RCCoreKit
     - YYModel
-  - RCSceneFoundation (0.0.2):
+  - RCSceneRoom (0.0.2.4):
+    - RCSceneRoom/RCSceneRoom (= 0.0.2.4)
+  - RCSceneRoom/RCSceneFoundation (0.0.2.4):
     - SwiftyBeaver
-  - RCSceneGift (0.0.2):
+  - RCSceneRoom/RCSceneGift (0.0.2.4):
     - Kingfisher
-    - Moya
-    - RCSceneFoundation
-    - RCSceneMessage
-    - RCSceneService (>= 0.0.2)
+    - RCSceneRoom/RCSceneMessage
+    - RCSceneRoom/RCSceneService
     - Reusable
-    - RongCloudIM/IMLib
     - SnapKit
     - SVProgressHUD
-  - RCSceneMessage (0.0.1):
+  - RCSceneRoom/RCSceneMessage (0.0.2.4):
     - RongCloudIM/IMLib
-  - RCSceneMusic (0.0.2.1):
-    - Moya
+  - RCSceneRoom/RCSceneMusic (0.0.2.4):
     - RCMusicControlKit
-    - RCSceneMessage
-    - RCSceneService (>= 0.0.2)
+    - RCSceneRoom/RCSceneMessage
+    - RCSceneRoom/RCSceneService
     - RongCloudRTC/RongRTCLib
     - SVProgressHUD
-  - RCSceneRoom (0.0.2.3):
+  - RCSceneRoom/RCSceneRoom (0.0.2.4):
     - Kingfisher
     - RCSceneChatroomKit
-    - RCSceneMessage
-    - RCSceneService (>= 0.0.2)
+    - RCSceneRoom/RCSceneFoundation
+    - RCSceneRoom/RCSceneMessage
+    - RCSceneRoom/RCSceneService
     - Reusable
     - RongCloudIM/IMKit
     - SnapKit
     - SVProgressHUD
-  - RCSceneRoomSetting (0.0.1):
-    - RCSceneFoundation
-    - RCSceneService
+  - RCSceneRoom/RCSceneRoomSetting (0.0.2.4):
+    - RCSceneRoom/RCSceneService
     - Reusable
     - SnapKit
-  - RCSceneService (0.0.2):
+  - RCSceneRoom/RCSceneService (0.0.2.4):
     - Moya
-    - RCSceneFoundation (>= 0.0.2)
+    - RCSceneRoom/RCSceneFoundation
     - ReachabilitySwift
   - RCSceneVideoRoom (0.0.2.1):
     - IQKeyboardManager
     - MJRefresh
     - Pulsator
     - RCLiveVideoLib
-    - RCSceneGift
-    - RCSceneMusic
     - RCSceneRoom (>= 0.0.2.3)
-    - RCSceneRoomSetting
     - SDWebImage
     - XCoordinator
   - ReachabilitySwift (5.0.0)
@@ -82,29 +77,29 @@ PODS:
     - Reusable/View (= 4.1.2)
   - Reusable/Storyboard (4.1.2)
   - Reusable/View (4.1.2)
-  - RongCloudIM/ChatRoom (5.2.0):
+  - RongCloudIM/ChatRoom (5.2.1):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/CustomerService (5.2.0):
+  - RongCloudIM/CustomerService (5.2.1):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/Discussion (5.2.0):
+  - RongCloudIM/Discussion (5.2.1):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/IMKit (5.2.0):
+  - RongCloudIM/IMKit (5.2.1):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (5.2.0):
+  - RongCloudIM/IMLib (5.2.1):
     - RongCloudIM/ChatRoom
     - RongCloudIM/CustomerService
     - RongCloudIM/Discussion
     - RongCloudIM/IMLibCore
     - RongCloudIM/Location
     - RongCloudIM/PublicService
-  - RongCloudIM/IMLibCore (5.2.0)
-  - RongCloudIM/Location (5.2.0):
+  - RongCloudIM/IMLibCore (5.2.1)
+  - RongCloudIM/Location (5.2.1):
     - RongCloudIM/IMLibCore
-  - RongCloudIM/PublicService (5.2.0):
+  - RongCloudIM/PublicService (5.2.1):
     - RongCloudIM/IMLibCore
-  - RongCloudRTC/RongRTCLib (5.2.0):
+  - RongCloudRTC/RongRTCLib (5.2.1):
     - RongCloudIM/IMLibCore (>= 5.1.3)
-  - RongCloudRTC/RongRTCPlayer (5.2.0):
+  - RongCloudRTC/RongRTCPlayer (5.2.1):
     - RongCloudRTC/RongRTCLib
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
@@ -120,11 +115,15 @@ PODS:
 
 DEPENDENCIES:
   - RCLiveVideoLib (from `../../rclivevideolib-ios`)
+  - RCSceneRoom/RCSceneGift
+  - RCSceneRoom/RCSceneMusic
+  - RCSceneRoom/RCSceneRoom
+  - RCSceneRoom/RCSceneRoomSetting
   - RCSceneVideoRoom (from `../`)
-  - RongCloudIM/IMKit (= 5.2.0)
-  - RongCloudIM/IMLib (= 5.2.0)
-  - RongCloudRTC/RongRTCLib (= 5.2.0)
-  - RongCloudRTC/RongRTCPlayer (= 5.2.0)
+  - RongCloudIM/IMKit (~> 5.2.0)
+  - RongCloudIM/IMLib (~> 5.2.0)
+  - RongCloudRTC/RongRTCLib (~> 5.2.0)
+  - RongCloudRTC/RongRTCPlayer (~> 5.2.0)
 
 SPEC REPOS:
   trunk:
@@ -139,13 +138,7 @@ SPEC REPOS:
     - RCCoreKit
     - RCMusicControlKit
     - RCSceneChatroomKit
-    - RCSceneFoundation
-    - RCSceneGift
-    - RCSceneMessage
-    - RCSceneMusic
     - RCSceneRoom
-    - RCSceneRoomSetting
-    - RCSceneService
     - ReachabilitySwift
     - Reusable
     - RongCloudIM
@@ -177,18 +170,12 @@ SPEC CHECKSUMS:
   RCLiveVideoLib: 7a950e7a622dc70aba1d6d10e357a56f8ed7b8d5
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
   RCSceneChatroomKit: 5fa306001c88bc075365a3ed8a76776e151670f2
-  RCSceneFoundation: 6d91dda21fe9cc4aab6718dd6940a7e29e028955
-  RCSceneGift: 9f20fa9c53ba987e0463fdc16b5b2dc166babe73
-  RCSceneMessage: 926880788dcb19bf49c9631e82e1e8abc2957397
-  RCSceneMusic: 78f5ad0c0425839ece1b73d65a781e3c6bdc3219
-  RCSceneRoom: 8357c40968eb7a1bd3409c2a507e1896a721521e
-  RCSceneRoomSetting: 11a8e424f770e752205a3dfd5497aa0b0e1ee46e
-  RCSceneService: 8810bb3c043162e0eca81a13bddb95e0fb01ca03
-  RCSceneVideoRoom: 5649dfa5b87a6890856f8b4513f959f46887e547
+  RCSceneRoom: d68dda0901d5436aceb21258b42b549e0ac28db3
+  RCSceneVideoRoom: b1a25f893dfb1b86fa94e59f996aafeba865fc9c
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
-  RongCloudIM: 4af5e8508994f3e2e050288dfdb5bd253dfc5a8e
-  RongCloudRTC: d68b5b91a51d378036d7de0b5fe836e1a93ede9f
+  RongCloudIM: 1ebe6a394cf5289825c2ee62a63068bdc34856f4
+  RongCloudRTC: 0bda17440186a6174fe5871ba30030466cc19c3a
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
@@ -197,6 +184,6 @@ SPEC CHECKSUMS:
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 91dc236b0a4755c7eb4b54b8be442054893e12eb
+PODFILE CHECKSUM: dafbdd0e888603b20fc9d0af68a78b9e3f0da5c7
 
 COCOAPODS: 1.11.3

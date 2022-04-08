@@ -6,7 +6,7 @@
 //
 
 import SVProgressHUD
-import RCSceneService
+
 
 protocol LiveVideoOthersDelegate: AnyObject {
     func pkInvitationDidSend(userId: String, from roomId: String)

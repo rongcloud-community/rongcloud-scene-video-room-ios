@@ -35,9 +35,9 @@ Pod::Spec.new do |s|
   s.dependency 'IQKeyboardManager'
   
   s.dependency 'RCSceneRoom', '>= 0.0.2.3'
-  s.dependency 'RCSceneGift'
-  s.dependency 'RCSceneMusic'
-  s.dependency 'RCSceneRoomSetting'
+#  s.dependency 'RCSceneGift'
+#  s.dependency 'RCSceneMusic'
+#  s.dependency 'RCSceneRoomSetting'
   
   s.dependency 'RCLiveVideoLib'
   

@@ -5,8 +5,6 @@
 //  Created by shaoshuai on 2021/9/13.
 //
 
-import RCSceneGift
-import RCSceneMessage
 import RCSceneRoom
 
 extension LiveVideoRoomViewController {

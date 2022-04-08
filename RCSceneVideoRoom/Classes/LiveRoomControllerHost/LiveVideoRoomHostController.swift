@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import RCSceneMusic
-import RCSceneService
+
 import RCSceneRoom
 
 final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {

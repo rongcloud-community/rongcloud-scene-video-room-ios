@@ -7,7 +7,7 @@
 
 import UIKit
 import Reusable
-import RCSceneService
+
 
 class OnlineCreatorTableViewCell: UITableViewCell, Reusable {
     private lazy var avatarImageView: UIImageView = {

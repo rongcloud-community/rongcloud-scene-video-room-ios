@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RCSceneMessage
 
 extension LiveVideoRoomHostController {
     @_dynamicReplacement(for: m_viewDidLoad)

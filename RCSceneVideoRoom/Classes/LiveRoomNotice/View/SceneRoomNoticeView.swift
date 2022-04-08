@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RCSceneRoomSetting
 
 class SceneRoomMarkView: UIView {
     private(set) lazy var iconImageView: UIImageView = {

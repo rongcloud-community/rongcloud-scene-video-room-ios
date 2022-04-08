@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RCSceneGift
-import RCSceneMessage
 
 extension LiveVideoRoomHostController {
     

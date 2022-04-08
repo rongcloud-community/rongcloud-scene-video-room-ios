@@ -5,7 +5,7 @@
 //  Created by shaoshuai on 2022/3/24.
 //
 
-import RCSceneFoundation
+import RCSceneRoom
 
 class AppConfigs {
     static func config() {

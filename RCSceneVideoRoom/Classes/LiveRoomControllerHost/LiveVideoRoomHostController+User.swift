@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RCSceneGift
-import RCSceneFoundation
 
 extension LiveVideoRoomHostController {
     @objc func liveVideoRequestDidClick() {

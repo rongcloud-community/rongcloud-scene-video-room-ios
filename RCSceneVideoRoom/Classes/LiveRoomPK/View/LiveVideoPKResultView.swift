@@ -7,7 +7,7 @@
 
 import UIKit
 import SVProgressHUD
-import RCSceneService
+
 
 class LiveVideoPKResultView: UIView {
     

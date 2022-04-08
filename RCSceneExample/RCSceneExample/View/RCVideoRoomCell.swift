@@ -7,8 +7,7 @@
 
 import UIKit
 import Kingfisher
-import RCSceneService
-import SwiftUI
+import RCSceneRoom
 
 class RCVideoRoomCell: UITableViewCell {
     

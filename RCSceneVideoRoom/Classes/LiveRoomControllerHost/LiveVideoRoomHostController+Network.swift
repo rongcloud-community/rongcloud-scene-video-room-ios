@@ -8,7 +8,7 @@
 import SVProgressHUD
 import Reachability
 import RCLiveVideoLib
-import RCSceneService
+
 import RCSceneRoom
 
 extension LiveVideoRoomHostController {

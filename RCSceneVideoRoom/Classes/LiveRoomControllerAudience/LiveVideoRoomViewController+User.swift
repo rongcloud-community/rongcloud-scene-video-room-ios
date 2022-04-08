@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RCSceneGift
 
 let NotificationNameDidFollowUser = Notification.Name("NotificationNameDidFollowUser")
 

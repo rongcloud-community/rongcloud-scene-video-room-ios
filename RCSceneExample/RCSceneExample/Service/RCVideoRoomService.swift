@@ -7,7 +7,6 @@
 
 import Foundation
 import RCSceneRoom
-import RCSceneService
 
 let service = RCVideoRoomService()
 

@@ -21,6 +21,3 @@ FOUNDATION_EXPORT const unsigned char RCSceneVideoRoomVersionString[];
 #import <RCSceneChatroomKit/RCSceneChatroomKit.h>
 
 @import RCSceneRoom;
-@import RCSceneService;
-@import RCSceneMessage;
-@import RCSceneFoundation;

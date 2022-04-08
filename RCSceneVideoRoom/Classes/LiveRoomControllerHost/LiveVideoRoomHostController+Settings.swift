@@ -5,7 +5,6 @@
 //  Created by shaoshuai on 2021/9/27.
 //
 
-import RCSceneRoomSetting
 import RCSceneRoom
 
 extension LiveVideoRoomHostController {

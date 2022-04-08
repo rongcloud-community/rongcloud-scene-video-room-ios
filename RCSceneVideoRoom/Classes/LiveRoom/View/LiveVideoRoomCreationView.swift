@@ -7,7 +7,6 @@
 
 import UIKit
 import SVProgressHUD
-import RCSceneRoomSetting
 
 protocol LiveVideoRoomCreationDelegate {
     func didCreate(_ room: RCSceneRoom)
