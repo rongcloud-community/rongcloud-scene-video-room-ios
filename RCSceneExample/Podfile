@@ -9,7 +9,6 @@ target 'RCSceneExample' do
   
   # IM
   pod 'RongCloudIM/IMLib', '~> 5.2.0'
-  pod 'RongCloudIM/IMKit', '~> 5.2.0'
   
   # RTC
   pod 'RongCloudRTC/RongRTCLib', '~> 5.2.0'

@@ -15,9 +15,7 @@ FOUNDATION_EXPORT const unsigned char RCSceneVideoRoomVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <RCSceneVideoRoom/PublicHeader.h>
 
-#import <RongIMKit/RongIMKit.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <RCLiveVideoLib/RCLiveVideoLib.h>
-#import <RCSceneChatroomKit/RCSceneChatroomKit.h>
 
 @import RCSceneRoom;
