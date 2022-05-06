@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (5.6.1)
   - FCFileManager (1.0.20)
-  - IQKeyboardManager (6.5.9)
   - Kingfisher (7.2.1)
   - Masonry (1.1.0)
   - MJRefresh (3.7.5)
@@ -14,7 +13,7 @@ PODS:
     - FCFileManager
     - SSZipArchive
     - YYModel
-  - RCLiveVideoLib (2.1.0.3):
+  - RCLiveVideoLib (2.1.0.5):
     - RongCloudIM/IMLib
     - RongCloudRTC/RongRTCLib
   - RCMusicControlKit (0.0.2.2):
@@ -61,8 +60,7 @@ PODS:
     - Moya
     - RCSceneRoom/RCSceneFoundation
     - ReachabilitySwift
-  - RCSceneVideoRoom (0.0.2.2):
-    - IQKeyboardManager
+  - RCSceneVideoRoom (0.0.2.3):
     - MJRefresh
     - Pulsator
     - RCLiveVideoLib
@@ -124,7 +122,6 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - FCFileManager
-    - IQKeyboardManager
     - Kingfisher
     - Masonry
     - MJRefresh
@@ -155,18 +152,17 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
-  IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
   Kingfisher: 7c084bebf7d548c623ad41bcf765fb200efed369
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Pulsator: eb5a9f9be4bdcbd19903984c65deca6aabe50a17
   RCCoreKit: 3f143441ac62880b454cca9066f526a27c45d4ce
-  RCLiveVideoLib: 31e487be9fce2132fd06d62285be7481d6bc222c
+  RCLiveVideoLib: a320695b4a5ce881e9d0d04093aca999ab5e9adf
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
   RCSceneChatroomKit: 5fa306001c88bc075365a3ed8a76776e151670f2
   RCSceneRoom: 6ce83e519386ed91eb66924dba3d4263b78aab17
-  RCSceneVideoRoom: 47c18c27a68cd86149c9d3492035d139fdd7aaba
+  RCSceneVideoRoom: 5fba55ffd80718583ddc13980ec30e58736f4d5d
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RongCloudIM: 1ebe6a394cf5289825c2ee62a63068bdc34856f4

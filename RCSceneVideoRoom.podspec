@@ -12,11 +12,11 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/rongcloud-community/rongcloud-scene-video-room-ios.git', :tag => s.version.to_s }
   
   # 2 - Version
-  s.ios.deployment_target = '13.0'
   s.swift_version = '5.0'
-  s.static_framework = true
+  s.ios.deployment_target = '13.0'
   
   # 3 - config
+  s.static_framework = true
   s.pod_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
     'VALID_ARCHS' => 'arm64 x86_64',
@@ -32,12 +32,11 @@ Pod::Spec.new do |s|
   s.dependency 'MJRefresh'
   s.dependency 'SDWebImage'
   s.dependency 'XCoordinator'
-  s.dependency 'IQKeyboardManager'
   
   # >= 0.0.2.3
   s.dependency 'RCSceneRoom/RCSceneRoom'
-  s.dependency 'RCSceneRoom/RCSceneMusic'
   s.dependency 'RCSceneRoom/RCSceneGift'
+  s.dependency 'RCSceneRoom/RCSceneMusic'
   s.dependency 'RCSceneRoom/RCSceneRoomSetting'
   
   s.dependency 'RCLiveVideoLib'

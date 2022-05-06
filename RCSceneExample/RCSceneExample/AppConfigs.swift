@@ -35,6 +35,6 @@ class AppConfigs {
     }
     
     static func configBusinessToken() {
-        Environment.businessToken = ""
+        Environment.businessToken = "vStHYPdrQoImm-7Ur0ks1g"
     }
 }
