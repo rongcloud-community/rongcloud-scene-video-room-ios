@@ -133,7 +133,6 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - RCSceneRoom/RCSceneAnalytics (from `../../../rongcloud-scene-room-ios`)
   - RCSceneVideoRoom (from `../`)
   - RongCloudIM/IMLib (~> 5.2.0)
   - RongCloudRTC/RongRTCLib (~> 5.2.0)
@@ -152,6 +151,7 @@ SPEC REPOS:
     - RCLiveVideoLib
     - RCMusicControlKit
     - RCSceneChatroomKit
+    - RCSceneRoom
     - ReachabilitySwift
     - Reusable
     - RongCloudIM
@@ -167,8 +167,6 @@ SPEC REPOS:
     - YYModel
 
 EXTERNAL SOURCES:
-  RCSceneRoom:
-    :path: "../../../rongcloud-scene-room-ios"
   RCSceneVideoRoom:
     :path: "../"
 
@@ -200,6 +198,6 @@ SPEC CHECKSUMS:
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3f377cba58e2a9d3c3d4d92c61eb4b1b0e51dd35
+PODFILE CHECKSUM: fae146fac6563d94571e0923431230882472f9f4
 
 COCOAPODS: 1.11.3
