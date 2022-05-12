@@ -164,7 +164,7 @@ extension LiveVideoRoomHostController: RCLiveVideoDelegate {
     }
     
     func roomDidClosed() {
-        navigationController?.popViewController(animated: true)
+        backTrigger()
     }
 }
 

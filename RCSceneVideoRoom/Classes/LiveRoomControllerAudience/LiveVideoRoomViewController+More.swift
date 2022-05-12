@@ -66,12 +66,12 @@ extension LiveVideoRoomViewController: LiveVideoRoomMoreDelegate {
     
     func scaleRoomDidClick() {
         guard let fm = self.floatingManager, let parent = parent else {
-            navigationController?.popViewController(animated: false)
+            backTrigger(false)
             return
         }
         fm.show(parent, superView: self.previewView, animated: true)
         needHandleFloatingBack = true
-        navigationController?.popViewController(animated: false)
+        backTrigger(false)
     }
 }
 

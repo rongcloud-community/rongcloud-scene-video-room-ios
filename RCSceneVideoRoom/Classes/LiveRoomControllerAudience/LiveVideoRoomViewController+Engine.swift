@@ -29,9 +29,9 @@ extension LiveVideoRoomViewController: RCLiveVideoDelegate {
         let controller = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
         let sureAction = UIAlertAction(title: "确定", style: .default) { [unowned self] _ in
             guard let fm = self.floatingManager, fm.showing else {
-                navigationController?.popViewController(animated: true)
                 DataSourceImpl.instance.clear()
                 PlayerImpl.instance.clear()
+                backTrigger()
                 return
             }
             fm.hide()

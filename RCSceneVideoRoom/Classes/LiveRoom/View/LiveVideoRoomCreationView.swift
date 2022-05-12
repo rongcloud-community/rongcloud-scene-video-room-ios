@@ -84,7 +84,7 @@ class LiveVideoRoomCreationView: UIView {
     }
     
     @objc private func back() {
-        controller?.navigationController?.popViewController(animated: true)
+        controller?.backTrigger()
     }
 }
 

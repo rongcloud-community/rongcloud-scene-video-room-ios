@@ -32,9 +32,9 @@ extension LiveVideoRoomHostController {
                 if response.validate() {
                     SVProgressHUD.showSuccess(withStatus: "直播结束，房间已关闭")
                     RCLiveVideoEngine.shared().leaveRoom { [weak self] _ in
-                        self?.navigationController?.popViewController(animated: true)
                         DataSourceImpl.instance.clear()
                         PlayerImpl.instance.clear()
+                        self?.backTrigger()
                     }
                 } else {
                     SVProgressHUD.showSuccess(withStatus: "关闭房间失败")
