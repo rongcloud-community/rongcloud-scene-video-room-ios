@@ -46,7 +46,10 @@ class LiveVideoRoomCreationView: UIView {
     
     @objc private func start() {
         if viewModel.createState.needInputPassword {
-            videoRouter.trigger(.inputPassword(delegate: self))
+            let vc = PasswordViewController(self)
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overFullScreen
+            controller?.present(vc, animated: true)
             return
         }
         

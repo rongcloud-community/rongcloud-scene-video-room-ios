@@ -293,7 +293,7 @@ extension RCLiveVideoSeatItemView {
 extension RCLiveVideoSeatItemView {
     private func setupGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandler))
-        view.addGestureRecognizer(tap)
+        addGestureRecognizer(tap)
     }
     
     @objc private func tapHandler() {

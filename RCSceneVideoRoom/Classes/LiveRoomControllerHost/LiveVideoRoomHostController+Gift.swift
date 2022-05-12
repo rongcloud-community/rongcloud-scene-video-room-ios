@@ -38,7 +38,10 @@ extension LiveVideoRoomHostController {
         let dependency = RCSceneGiftDependency(room: room,
                                                  seats: SceneRoomManager.shared.seats,
                                                  userIds: users)
-        videoRouter.trigger(.gift(dependency: dependency, delegate: self))
+        let vc = RCSceneGiftViewController(dependency: dependency, delegate: self)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
     }
     
 }

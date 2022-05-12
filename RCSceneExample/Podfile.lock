@@ -73,7 +73,6 @@ PODS:
     - RCSceneRoom/RCSceneRoom
     - RCSceneRoom/RCSceneRoomSetting
     - SDWebImage
-    - XCoordinator
   - ReachabilitySwift (5.0.0)
   - Reusable (4.1.2):
     - Reusable/Storyboard (= 4.1.2)
@@ -127,9 +126,6 @@ PODS:
   - SSZipArchive (2.4.3)
   - SVProgressHUD (2.2.5)
   - SwiftyBeaver (1.9.5)
-  - XCoordinator (2.2.0):
-    - XCoordinator/Core (= 2.2.0)
-  - XCoordinator/Core (2.2.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -163,7 +159,6 @@ SPEC REPOS:
     - SSZipArchive
     - SVProgressHUD
     - SwiftyBeaver
-    - XCoordinator
     - YYModel
 
 EXTERNAL SOURCES:
@@ -183,7 +178,7 @@ SPEC CHECKSUMS:
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
   RCSceneChatroomKit: 95ae23f682d932281090b272ef7752241480224d
   RCSceneRoom: b769917b50b7e1d9e9009f808deb8be203394809
-  RCSceneVideoRoom: 41e4835c9c216dd0b7dc2df52bb3799a2f123596
+  RCSceneVideoRoom: e1ab06565c3c4384999d0b9d0a054e064aa6beb4
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RongCloudIM: 6ff6bb7e5d652303f4d5d0488b3bafe741c59f55
@@ -195,7 +190,6 @@ SPEC CHECKSUMS:
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
-  XCoordinator: a5f91e43ee944f508529763921165697d3211629
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 PODFILE CHECKSUM: fae146fac6563d94571e0923431230882472f9f4

@@ -78,7 +78,11 @@ class SceneRoomNoticeView: SceneRoomMarkView {
     }
     
     @objc private func onTap() {
-        videoRouter.trigger(.notice(modify: false, notice: "", delegate: self))
+        let vc = NoticeViewController(false, notice: "", delegate: self)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        vc.hidesBottomBarWhenPushed = true
+        controller?.present(vc, animated: true)
     }
 }
 

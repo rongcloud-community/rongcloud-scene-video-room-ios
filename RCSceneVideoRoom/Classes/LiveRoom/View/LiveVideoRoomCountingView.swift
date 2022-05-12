@@ -80,6 +80,11 @@ class LiveVideoRoomCountingView: UIView {
     @objc func handleViewClick() {
         guard let room = SceneRoomManager.shared.currentRoom else { return }
         guard let delegate = controller as? RCSceneRoomUserOperationProtocol else { return }
-        videoRouter.trigger(.userList(room: room, delegate: delegate))
+        let vc = RCSceneRoomUsersViewController(room: room, delegate: delegate)
+        let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+        nav.modalTransitionStyle = .coverVertical
+        nav.modalPresentationStyle = .overFullScreen
+        controller?.present(nav, animated: true)
     }
 }

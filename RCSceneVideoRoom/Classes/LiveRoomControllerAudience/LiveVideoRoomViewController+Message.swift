@@ -64,7 +64,9 @@ extension LiveVideoRoomViewController {
     
     @objc private func handleMessageButtonClick() {
         RCSensorAction.textClick(room).trigger()
-        videoRouter.trigger(.chatList)
+        let vc = ChatListViewController(.ConversationType_PRIVATE)
+        vc.canCallComing = false
+        present(vc, animated: true)
     }
     
     func refreshUnreadMessageCount() {

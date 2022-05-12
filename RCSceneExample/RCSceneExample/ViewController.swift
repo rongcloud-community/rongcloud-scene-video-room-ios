@@ -50,8 +50,9 @@ class ViewController: UIViewController {
     
     @IBAction func create() {
         let controller = RCVideoRoomController()
-        let _ = VideoRoomCoordinator(rootViewController: navigationController!)
-        navigationController?.pushViewController(controller, animated: true)
+        controller.modalTransitionStyle = .coverVertical
+        controller.modalPresentationStyle = .overFullScreen
+        present(controller, animated: true)
     }
 }
 
@@ -69,7 +70,9 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = RCVideoRoomController(room: rooms[indexPath.row])
-        navigationController?.pushViewController(controller, animated: true)
+        controller.modalTransitionStyle = .coverVertical
+        controller.modalPresentationStyle = .overFullScreen
+        present(controller, animated: true)
     }
 }
 

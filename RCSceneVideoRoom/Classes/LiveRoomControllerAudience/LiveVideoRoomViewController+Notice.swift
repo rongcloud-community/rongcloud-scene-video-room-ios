@@ -17,7 +17,11 @@ extension LiveVideoRoomViewController {
     
     @objc private func handleNoticeDidTap() {
         let notice = room.notice ?? "欢迎来到\(room.roomName)"
-        videoRouter.trigger(.notice(modify: false, notice: notice, delegate: self))
+        let vc = NoticeViewController(false, notice: notice, delegate: self)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        vc.hidesBottomBarWhenPushed = true
+        present(vc, animated: true)
     }
 }
 

@@ -33,13 +33,13 @@ class LiveVideoRoomPreviewView: UIView {
         case .oneToSix:
             preview.snp.remakeConstraints { make in
                 make.left.right.equalToSuperview()
-                make.top.equalTo(view.safeAreaLayoutGuide).offset(98)
-                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-60)
+                make.top.equalTo(safeAreaLayoutGuide).offset(98)
+                make.bottom.equalTo(safeAreaLayoutGuide).offset(-60)
             }
         default:
             preview.snp.remakeConstraints { make in
                 make.left.right.equalToSuperview()
-                make.top.equalTo(view.safeAreaLayoutGuide).offset(98)
+                make.top.equalTo(safeAreaLayoutGuide).offset(98)
                 make.height.equalTo(preview.snp.width)
             }
         }
@@ -48,13 +48,13 @@ class LiveVideoRoomPreviewView: UIView {
     func contentInsets() -> UIEdgeInsets {
         switch RCLiveVideoEngine.shared().currentMixType {
         case .oneToOne: return .zero
-        case .oneToSix: return UIEdgeInsets(top: view.safeAreaInsets.top + 98,
+        case .oneToSix: return UIEdgeInsets(top: safeAreaInsets.top + 98,
                                             left: 0,
-                                            bottom: view.safeAreaInsets.bottom + 60,
+                                            bottom: safeAreaInsets.bottom + 60,
                                             right: 0)
         default:
-            let bottom = UIScreen.main.bounds.height - view.safeAreaInsets.top - UIScreen.main.bounds.width
-            return UIEdgeInsets(top: view.safeAreaInsets.top + 98,
+            let bottom = UIScreen.main.bounds.height - safeAreaInsets.top - UIScreen.main.bounds.width
+            return UIEdgeInsets(top: safeAreaInsets.top + 98,
                                 left: 0,
                                 bottom: bottom,
                                 right: 0)

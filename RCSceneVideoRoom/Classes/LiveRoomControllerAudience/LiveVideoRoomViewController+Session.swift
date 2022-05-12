@@ -33,11 +33,13 @@ extension LiveVideoRoomViewController {
     func leaveRoom() {
         videoLeaveRoom { [weak self] _ in
             SceneRoomManager.shared.currentRoom = nil
-            self?.navigationController?.popViewController(animated: true)
             DataSourceImpl.instance.clear()
             PlayerImpl.instance.clear()
+            self?.backTrigger()
         }
-        RCSensorAction.quitRoom(room, enableMic: enableMic, enableCamera: enableCamera).trigger()
+        RCSensorAction.quitRoom(room,
+                                enableMic: enableMic,
+                                enableCamera: enableCamera).trigger()
     }
     
     var enableMic: Bool {

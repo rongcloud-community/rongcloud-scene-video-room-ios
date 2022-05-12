@@ -73,7 +73,9 @@ extension LiveVideoRoomViewController: RCSceneRoomUserOperationProtocol {
             }
             return
         }
-        videoRouter.trigger(.chat(userId: userId))
+        let vc = ChatViewController(.ConversationType_PRIVATE, userId: userId)
+        vc.canCallComing = false
+        present(vc, animated: true)
     }
     
     func didClickedSendGift(userId: String) {
@@ -88,7 +90,10 @@ extension LiveVideoRoomViewController: RCSceneRoomUserOperationProtocol {
         let dependency = RCSceneGiftDependency(room: room,
                                                  seats: SceneRoomManager.shared.seats,
                                                  userIds: [userId])
-        videoRouter.trigger(.gift(dependency: dependency, delegate: self))
+        let vc = RCSceneGiftViewController(dependency: dependency, delegate: self)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
     }
     
     func didFollow(userId: String, isFollow: Bool) {

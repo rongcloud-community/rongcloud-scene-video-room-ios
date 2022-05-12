@@ -30,8 +30,10 @@ extension LiveVideoRoomHostController {
     }
     
     @objc func handleMessageButtonClick() {
-        videoRouter.trigger(.chatList)
         RCSensorAction.textClick(room).trigger()
+        let vc = ChatListViewController(.ConversationType_PRIVATE)
+        vc.canCallComing = false
+        present(vc, animated: true)
     }
 }
 
@@ -44,7 +46,9 @@ extension LiveVideoRoomHostController: RCChatroomSceneToolBarDelegate {
             event.content = text
             self?.messageView.addMessage(event)
             if text.isCivilized {
-                RCLiveVideoEngine.shared().sendMessage(event) { _ in }
+                RCLiveVideoEngine.shared().sendMessage(event) { code in
+                    debugPrint(code)
+                }
             }
         }
     }
