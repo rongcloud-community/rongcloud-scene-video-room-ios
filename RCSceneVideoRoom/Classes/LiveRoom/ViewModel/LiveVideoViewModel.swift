@@ -32,7 +32,7 @@ struct CreateLiveVideoRoomState {
 final class LiveVideoViewModel {
     var createState = CreateLiveVideoRoomState()
     
-    func create(_ completion: @escaping (Result<RCNetworkWrapper<RCSceneRoom>, NetError>) -> Void) {
+    func create(_ completion: @escaping (Result<RCSceneWrapper<RCSceneRoom>, NetError>) -> Void) {
         guard createState.roomName.count > 0 else {
             return completion(.failure(NetError("请输入房间名称")))
         }
@@ -62,7 +62,7 @@ final class LiveVideoViewModel {
     
     private func upload(_ image: UIImage, completion: @escaping (Result<String, NetError>) -> Void) {
         videoRoomService.upload(data: image.jpegData(compressionQuality: 0.5)!) { result in
-            switch result.map(RCNetworkWrapper<String>.self) {
+            switch result.map(RCSceneWrapper<String>.self) {
             case let .success(response):
                 guard let path = response.data else {
                     return completion(.failure(NetError("上传文件失败")))
@@ -79,11 +79,14 @@ final class LiveVideoViewModel {
                         isPrivate: Int,
                         password: String,
                         path: String,
-                        completion: @escaping (Result<RCNetworkWrapper<RCSceneRoom>, NetError>) -> Void) {
+                        completion: @escaping (Result<RCSceneWrapper<RCSceneRoom>, NetError>) -> Void) {
         videoRoomService.createRoom(name: name, themePictureUrl: path, backgroundUrl: "", kv: [], isPrivate: isPrivate, password: password, roomType: 3) { result in
-            switch result.map(RCNetworkWrapper<RCSceneRoom>.self) {
+            switch result.map(RCSceneWrapper<RCSceneRoom>.self) {
             case let .success(wrapper):
                 completion(.success(wrapper))
+                if let room = wrapper.data {
+                    RCSensorAction.createRoom(room, enableMic: true, enableCamera: true).trigger()
+                }
             case let .failure(error):
                 completion(.failure(NetError(error.localizedDescription)))
             }

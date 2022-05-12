@@ -196,7 +196,7 @@ class LiveVideoRoomPKView: UIView {
         SVProgressHUD.show()
         videoRoomService.roomInfo(roomId: PK.otherRoomId()) { [weak self] result in
             SVProgressHUD.dismiss()
-            switch result.map(RCNetworkWrapper<RCSceneRoom>.self) {
+            switch result.map(RCSceneWrapper<RCSceneRoom>.self) {
             case let .success(model):
                 guard
                     let room = model.data,

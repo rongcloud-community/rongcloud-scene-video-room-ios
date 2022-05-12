@@ -71,6 +71,7 @@ extension LiveVideoRoomHostController {
 
 extension LiveVideoRoomHostController: RCSceneRoomSettingProtocol {
     func eventWillTrigger(_ item: Item) -> Bool {
+        RCSensorAction.settingClick(room, item: item).trigger()
         return false
     }
     

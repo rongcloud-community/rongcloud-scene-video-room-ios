@@ -28,7 +28,7 @@ class RCVideoRoomService {
                                        platform: "mobile")
         
         loginProvider.request(api) { result in
-            switch result.map(RCNetworkWrapper<User>.self) {
+            switch result.map(RCSceneWrapper<User>.self) {
             case let .success(wrapper):
                 let user = wrapper.data!
                 UserDefaults.standard.set(user: user)
@@ -46,7 +46,7 @@ class RCVideoRoomService {
                   size: Int = 20,
                   completion: @escaping (Result<[RCSceneRoom], NetError>) -> Void) {
         roomProvider.request(.roomList(type: type, page: page, size: size)) { result in
-            switch result.map(RCNetworkWrapper<VoiceRoomList>.self) {
+            switch result.map(RCSceneWrapper<VoiceRoomList>.self) {
             case let .success(wrapper):
                 if let list = wrapper.data {
                     SceneRoomManager.shared.backgrounds = list.images

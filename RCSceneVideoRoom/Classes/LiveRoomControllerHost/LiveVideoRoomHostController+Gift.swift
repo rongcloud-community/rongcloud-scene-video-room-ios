@@ -22,6 +22,7 @@ extension LiveVideoRoomHostController {
     }
     
     @objc func handleGiftButtonClick() {
+        RCSensorAction.giftClick(room).trigger()
         SceneRoomManager.updateLiveSeatList()
         let users: [String] = {
             if RCLiveVideoEngine.shared().pkInfo != nil {

@@ -126,6 +126,7 @@ extension LiveVideoRoomViewController: RCLiveVideoCancelDelegate {
     func didCancelLiveVideo(_ action: RCLVRCancelMicType) {
         switch action {
         case .request:
+            RCSensorAction.connectionWithDraw(room).trigger()
             RCLiveVideoEngine.shared().cancelRequest { _ in }
             micButton.micState = .request
         case .invite: ()

@@ -32,7 +32,7 @@ extension LiveVideoRoomHostController {
         RCLiveVideoEngine.shared().mixDataSource = self
     }
     
-    private func fetchmanagers() {
+    private func fetchManagers() {
         videoRoomService.roomManagers(roomId: room.roomId) { [weak self] result in
             switch result.map(managersWrapper.self) {
             case let .success(wrapper):
@@ -53,7 +53,7 @@ extension LiveVideoRoomHostController: LiveVideoRoomCreationDelegate {
         self.rebuildLayout()
         self.setupMessageView()
         self.setupToolBarView()
-        self.fetchmanagers()
+        self.fetchManagers()
         
         let roomId = room.roomId
         /// 开启直播
@@ -67,6 +67,7 @@ extension LiveVideoRoomHostController: LiveVideoRoomCreationDelegate {
                 SVProgressHUD.showError(withStatus: "开始直播失败：\(code.rawValue)")
             }
         }
+        RCSensorAction.joinRoom(room, enableMic: true, enableCamera: true).trigger()
     }
 }
 

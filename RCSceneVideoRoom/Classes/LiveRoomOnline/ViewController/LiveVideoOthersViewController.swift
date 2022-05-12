@@ -150,7 +150,7 @@ extension LiveVideoOthersViewController: UITableViewDelegate {
         videoRoomService.isPK(roomId: room.roomId) { result in
             switch result {
             case .success(let response):
-                guard let status = try? JSONDecoder().decode(RCNetworkWrapper<Bool>.self, from: response.data), status.data == true else {
+                guard let status = try? JSONDecoder().decode(RCSceneWrapper<Bool>.self, from: response.data), status.data == true else {
                     SVProgressHUD.showError(withStatus: "对方正在忙碌")
                     return
                 }
@@ -180,7 +180,7 @@ extension LiveVideoOthersViewController {
             guard let self = self else { return }
             switch result {
             case let .success(response):
-                if let model = try? JSONDecoder().decode(RCNetworkWrapper<[RCSceneRoom]>.self, from: response.data) {
+                if let model = try? JSONDecoder().decode(RCSceneWrapper<[RCSceneRoom]>.self, from: response.data) {
                     self.rooms = model.data ?? []
                     self.tableView.reloadData()
                 }

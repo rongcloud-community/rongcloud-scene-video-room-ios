@@ -5,7 +5,6 @@
 //  Created by shaoshuai on 2022/2/27.
 //
 
-import UIKit
 import XCoordinator
 import RCSceneRoom
 
@@ -32,7 +31,7 @@ extension LiveVideoRoomViewController: RCRoomCycleProtocol {
         self.roomContainerAction = action
     }
     
-    func joinRoom(_ completion: @escaping (Result<Void, ReactorError>) -> Void) {
+    func joinRoom(_ completion: @escaping (Result<Void, RCSceneError>) -> Void) {
         self.videoJoinRoom(completion)
     }
     
@@ -40,7 +39,7 @@ extension LiveVideoRoomViewController: RCRoomCycleProtocol {
         self.floatingManager = action
     }
     
-    func leaveRoom(_ completion: @escaping (Result<Void, ReactorError>) -> Void) {
+    func leaveRoom(_ completion: @escaping (Result<Void, RCSceneError>) -> Void) {
         self.videoLeaveRoom(completion)
     }
     

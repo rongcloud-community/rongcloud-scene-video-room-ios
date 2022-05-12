@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		204A53792E20F27481E9B81B /* Pods_RCSceneExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7DCF12300E77E93E6BAE0A /* Pods_RCSceneExample.framework */; };
+		D72616CD282CBA5800E6DA71 /* RCLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72616CC282CBA5800E6DA71 /* RCLoginService.swift */; };
 		D735B24027E601F900EF74B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735B23F27E601F900EF74B3 /* AppDelegate.swift */; };
 		D735B24427E601F900EF74B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735B24327E601F900EF74B3 /* ViewController.swift */; };
 		D735B24727E601F900EF74B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D735B24527E601F900EF74B3 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		A54DD5B5F9047D944C9E039C /* Pods-RCSceneExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCSceneExample.release.xcconfig"; path = "Target Support Files/Pods-RCSceneExample/Pods-RCSceneExample.release.xcconfig"; sourceTree = "<group>"; };
+		D72616CC282CBA5800E6DA71 /* RCLoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLoginService.swift; sourceTree = "<group>"; };
 		D735B23C27E601F900EF74B3 /* RCSceneExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCSceneExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D735B23F27E601F900EF74B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D735B24327E601F900EF74B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		D7B3A81B27F2FD69003D1BAD /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D72616CC282CBA5800E6DA71 /* RCLoginService.swift */,
 				D7B3A81C27F2FD80003D1BAD /* RCVideoRoomService.swift */,
 			);
 			path = Service;
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72616CD282CBA5800E6DA71 /* RCLoginService.swift in Sources */,
 				D7B3A82427F304E8003D1BAD /* LoginViewController.swift in Sources */,
 				D7B3A82027F3009F003D1BAD /* RCVideoRoomCell.swift in Sources */,
 				D7539DB027F53D6C0043FE65 /* JoinViewController.swift in Sources */,

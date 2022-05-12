@@ -81,6 +81,9 @@ class RCLVRAlertWaitingViewController: RCLVRAlertViewController {
 extension RCLVRAlertWaitingViewController {
     @objc private func cancelRequest() {
         dismiss(animated: true)
+        if let room = SceneRoomManager.shared.currentRoom {
+            RCSensorAction.connectionWithDraw(room).trigger()
+        }
         RCLiveVideoEngine.shared().cancelRequest { code in
             if code == .success {
                 self.delegate?.didClickAction(.cancelRequest)

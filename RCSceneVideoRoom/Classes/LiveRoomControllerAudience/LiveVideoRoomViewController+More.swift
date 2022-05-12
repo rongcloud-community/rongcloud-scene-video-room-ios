@@ -54,6 +54,7 @@ extension LiveVideoRoomViewController: LiveVideoRoomMoreDelegate {
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         controller.addAction(cancelAction)
         let sureAction = UIAlertAction(title: "确认", style: .default) { _ in
+            RCSensorAction.connectionWithDraw(self.room).trigger()
             RCLiveVideoEngine.shared()
                 .leaveLiveVideo({ [weak self] _ in
                     self?.liveVideoDidFinish(.leave)

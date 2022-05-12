@@ -56,7 +56,7 @@ class RCLVRMicInviteViewController: UIViewController {
     private func fetchRoomUserlist() {
         let micUserIds = RCLiveVideoEngine.shared().currentSeats.map { $0.userId }
         videoRoomService.roomUsers(roomId: RCLiveVideoEngine.shared().roomId) { [weak self] result in
-            switch result.map(RCNetworkWrapper<[RCSceneRoomUser]>.self) {
+            switch result.map(RCSceneWrapper<[RCSceneRoomUser]>.self) {
             case let .success(wrapper):
                 if let users = wrapper.data {
                     self?.userlist = users.filter { !micUserIds.contains($0.userId) }

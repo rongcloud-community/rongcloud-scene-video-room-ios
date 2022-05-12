@@ -67,7 +67,7 @@ extension LiveVideoRoomViewController: RCChatroomSceneToolBarDelegate {
     func audioRecordDidEnd(_ data: Data?, time: TimeInterval) {
         guard let data = data, time > 1 else { return SVProgressHUD.showError(withStatus: "录音时间太短") }
         videoRoomService.upload(data: data) { [weak self] result in
-            switch result.map(RCNetworkWrapper<String>.self) {
+            switch result.map(RCSceneWrapper<String>.self) {
             case let .success(response):
                 guard let path = response.data else {
                     return SVProgressHUD.showError(withStatus: "文件上传失败")

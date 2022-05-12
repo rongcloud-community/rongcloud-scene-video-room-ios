@@ -47,17 +47,17 @@ extension LiveVideoRoomViewController {
         }
         guard micButton.micState == .request else { return }
         if isSeatFreeEnter {
-            enterSeat(index)
-        } else {
-            RCLiveVideoEngine.shared().requestLiveVideo(index, completion: { code in
-                if code == .success {
-                    SVProgressHUD.showSuccess(withStatus: "已申请连线，等待房主接受")
-                    self.micButton.micState = .waiting
-                } else {
-                    SVProgressHUD.showError(withStatus: "请求连麦失败\(code.rawValue)")
-                }
-            })
+            return enterSeat(index)
         }
+        RCSensorAction.connectRequest(room).trigger()
+        RCLiveVideoEngine.shared().requestLiveVideo(index, completion: { code in
+            if code == .success {
+                SVProgressHUD.showSuccess(withStatus: "已申请连线，等待房主接受")
+                self.micButton.micState = .waiting
+            } else {
+                SVProgressHUD.showError(withStatus: "请求连麦失败\(code.rawValue)")
+            }
+        })
     }
     
     func enterSeat(_ index: Int) {

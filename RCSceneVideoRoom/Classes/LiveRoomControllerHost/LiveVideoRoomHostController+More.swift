@@ -44,12 +44,29 @@ extension LiveVideoRoomHostController {
             }
         }
         videoRoomService.userUpdateCurrentRoom(roomId: "") { _ in }
+        RCSensorAction.closeRoom(room, enableMic: enableMic, enableCamera: enableCamera).trigger()
     }
     
     func clearMusicData() {
         DataSourceImpl.instance.clear()
         PlayerImpl.instance.clear()
         DelegateImpl.instance.clear()
+    }
+    
+    var enableMic: Bool {
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+            seat.userId == Environment.currentUserId
+        })
+        guard let seat = tmpSeat else { return false }
+        return seat.userEnableAudio && !seat.mute
+    }
+    
+    var enableCamera: Bool {
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+            seat.userId == Environment.currentUserId
+        })
+        guard let seat = tmpSeat else { return false }
+        return seat.userEnableVideo
     }
 }
 

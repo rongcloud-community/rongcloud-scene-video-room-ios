@@ -38,6 +38,7 @@ extension LiveVideoRoomHostController {
     }
     
     @objc func handlePKButtonDidClick() {
+        RCSensorAction.PKClick(room).trigger()
         switch pkButton.pkState {
         case .request:
             guard RCLiveVideoEngine.shared().canPK else {

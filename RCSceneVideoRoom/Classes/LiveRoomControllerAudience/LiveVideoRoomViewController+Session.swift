@@ -27,6 +27,7 @@ extension LiveVideoRoomViewController {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
         }
+        RCSensorAction.joinRoom(room, enableMic: false, enableCamera: false).trigger()
     }
     
     func leaveRoom() {
@@ -36,28 +37,27 @@ extension LiveVideoRoomViewController {
             DataSourceImpl.instance.clear()
             PlayerImpl.instance.clear()
         }
+        RCSensorAction.quitRoom(room, enableMic: enableMic, enableCamera: enableCamera).trigger()
+    }
+    
+    var enableMic: Bool {
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+            seat.userId == Environment.currentUserId
+        })
+        guard let seat = tmpSeat else { return false }
+        return seat.userEnableAudio && !seat.mute
+    }
+    
+    var enableCamera: Bool {
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+            seat.userId == Environment.currentUserId
+        })
+        guard let seat = tmpSeat else { return false }
+        return seat.userEnableVideo
     }
 }
 
 extension LiveVideoRoomViewController {
-    
-    /// 关闭房间
-    func closeRoom() {
-        SVProgressHUD.show()
-        videoRoomService.closeRoom(roomId: room.roomId) { [weak self] result in
-            switch result.map(RCSceneResponse.self) {
-            case let .success(response):
-                if response.validate() {
-                    SVProgressHUD.showSuccess(withStatus: "直播结束，房间已关闭")
-                    self?.leaveRoom()
-                } else {
-                    SVProgressHUD.showSuccess(withStatus: "关闭房间失败")
-                }
-            case .failure:
-                SVProgressHUD.showSuccess(withStatus: "关闭房间失败")
-            }
-        }
-    }
     
     func didCloseRoom() {
         view.subviews.forEach {

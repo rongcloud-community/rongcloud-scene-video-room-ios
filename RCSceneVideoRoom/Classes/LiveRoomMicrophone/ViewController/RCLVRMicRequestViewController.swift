@@ -58,7 +58,7 @@ class RCLVRMicRequestViewController: UIViewController {
     
     private func fetchAllUserInfo(_ userIds: [String]) {
         videoRoomService.usersInfo(id: userIds) { [weak self] result in
-            switch result.map(RCNetworkWrapper<[RCSceneRoomUser]>.self) {
+            switch result.map(RCSceneWrapper<[RCSceneRoomUser]>.self) {
             case let .success(wrapper):
                 if let users = wrapper.data {
                     self?.userlist = users

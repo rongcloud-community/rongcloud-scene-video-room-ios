@@ -166,10 +166,10 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     
     dynamic func handleReceivedMessage(_ message: RCMessage) {}
     
-    func videoJoinRoom(_ completion: @escaping (Result<Void, ReactorError>) -> Void) {
+    func videoJoinRoom(_ completion: @escaping (Result<Void, RCSceneError>) -> Void) {
         let roomId = room.roomId
         videoRoomService.roomInfo(roomId: roomId) { [weak self] result in
-            switch result.map(RCNetworkWrapper<RCSceneRoom>.self) {
+            switch result.map(RCSceneWrapper<RCSceneRoom>.self) {
             case let .success(wrapper):
                 switch wrapper.code {
                 case 10000:
@@ -179,7 +179,7 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
                                 videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
                                 completion(.success(()))
                             } else {
-                                completion(.failure(ReactorError("加入房间失败:\(code.rawValue)")))
+                                completion(.failure(RCSceneError("加入房间失败:\(code.rawValue)")))
                             }
                         }
                     } else {
@@ -188,29 +188,29 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
                                 videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
                                 completion(.success(()))
                             } else {
-                                completion(.failure(ReactorError("加入房间失败:\(code.rawValue)")))
+                                completion(.failure(RCSceneError("加入房间失败:\(code.rawValue)")))
                             }
                         }
                     }
                 case 30001:
                     completion(.success(()))
                     self?.didCloseRoom() /// 房间已关闭
-                default: completion(.failure(ReactorError("加入房间失败")))
+                default: completion(.failure(RCSceneError("加入房间失败")))
                 }
             case let .failure(error):
-                completion(.failure(ReactorError("加入房间失败:\(error.localizedDescription)")))
+                completion(.failure(RCSceneError("加入房间失败:\(error.localizedDescription)")))
             }
         }
     }
     
-    func videoLeaveRoom(_ completion: @escaping (Result<Void, ReactorError>) -> Void) {
+    func videoLeaveRoom(_ completion: @escaping (Result<Void, RCSceneError>) -> Void) {
         RCLiveVideoEngine.shared().leaveRoom { code in
             switch code {
             case .success, .roomStateError:
                 videoRoomService.userUpdateCurrentRoom(roomId: "") { _ in }
                 completion(.success(()))
             default:
-                completion(.failure(ReactorError("离开房间失败:\(code.rawValue)")))
+                completion(.failure(RCSceneError("离开房间失败:\(code.rawValue)")))
             }
         }
     }
