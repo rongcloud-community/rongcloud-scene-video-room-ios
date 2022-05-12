@@ -31,11 +31,8 @@ extension LiveVideoRoomHostController {
             case let .success(response):
                 if response.validate() {
                     SVProgressHUD.showSuccess(withStatus: "直播结束，房间已关闭")
-                    RCLiveVideoEngine.shared().leaveRoom { [weak self] _ in
-                        DataSourceImpl.instance.clear()
-                        PlayerImpl.instance.clear()
-                        self?.backTrigger()
-                    }
+                    DataSourceImpl.instance.clear()
+                    PlayerImpl.instance.clear()
                 } else {
                     SVProgressHUD.showSuccess(withStatus: "关闭房间失败")
                 }

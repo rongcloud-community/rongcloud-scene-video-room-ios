@@ -81,7 +81,7 @@ extension UIViewController {
             return dismiss(animated: animated)
         }
         guard let controller = navigationController else {
-            fatalError("navi stack error")
+            return
         }
         controller.popViewController(animated: animated)
     }
