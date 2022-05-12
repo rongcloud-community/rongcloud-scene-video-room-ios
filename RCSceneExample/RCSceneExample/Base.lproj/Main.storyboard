@@ -75,11 +75,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="融云-场景化-视频直播" id="4ul-vS-bcI">
-                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="ztI-Wg-YhR">
-                            <connections>
-                                <action selector="test" destination="BYZ-38-t0r" id="nuV-co-ef3"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cjT-2z-S4Y">
                             <connections>
                                 <action selector="create" destination="BYZ-38-t0r" id="q9y-pi-JJx"/>

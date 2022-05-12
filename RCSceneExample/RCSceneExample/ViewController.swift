@@ -48,34 +48,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func test() {
-        let controller = UIAlertController(title: "测试", message: "用于测试 RTC 视频合流", preferredStyle: .alert)
-        controller.addTextField { textField in
-            textField.placeholder = "房间 ID"
-        }
-        let createAction = UIAlertAction(title: "创建", style: .default) { action in
-            guard let roomId = controller.textFields?.first?.text else {
-                return debugPrint("room ID nil")
-            }
-            let create = CreateViewController()
-            create.roomID = roomId
-            self.navigationController?.pushViewController(create, animated: true)
-        }
-        let joinAction = UIAlertAction(title: "加入", style: .default) { action in
-            guard let roomId = controller.textFields?.first?.text else {
-                return debugPrint("room ID nil")
-            }
-            let join = JoinViewController()
-            join.roomID = roomId
-            self.navigationController?.pushViewController(join, animated: true)
-        }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-        controller.addAction(createAction)
-        controller.addAction(joinAction)
-        controller.addAction(cancelAction)
-        present(controller, animated: true)
-    }
-    
     @IBAction func create() {
         let controller = RCVideoRoomController()
         let _ = VideoRoomCoordinator(rootViewController: navigationController!)

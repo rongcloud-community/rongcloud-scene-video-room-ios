@@ -63,7 +63,7 @@ PODS:
     - Moya
     - RCSceneRoom/RCSceneFoundation
     - ReachabilitySwift
-  - RCSceneVideoRoom (0.0.2.3):
+  - RCSceneVideoRoom (0.0.3):
     - MJRefresh
     - Pulsator
     - RCLiveVideoLib
@@ -133,6 +133,7 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
+  - RCSceneRoom/RCSceneAnalytics (from `../../../rongcloud-scene-room-ios`)
   - RCSceneVideoRoom (from `../`)
   - RongCloudIM/IMLib (~> 5.2.0)
   - RongCloudRTC/RongRTCLib (~> 5.2.0)
@@ -151,7 +152,6 @@ SPEC REPOS:
     - RCLiveVideoLib
     - RCMusicControlKit
     - RCSceneChatroomKit
-    - RCSceneRoom
     - ReachabilitySwift
     - Reusable
     - RongCloudIM
@@ -167,6 +167,8 @@ SPEC REPOS:
     - YYModel
 
 EXTERNAL SOURCES:
+  RCSceneRoom:
+    :path: "../../../rongcloud-scene-room-ios"
   RCSceneVideoRoom:
     :path: "../"
 
@@ -183,7 +185,7 @@ SPEC CHECKSUMS:
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
   RCSceneChatroomKit: 95ae23f682d932281090b272ef7752241480224d
   RCSceneRoom: b769917b50b7e1d9e9009f808deb8be203394809
-  RCSceneVideoRoom: 7da569cd06f8d8f594e2169ce96f4097fd5c43dd
+  RCSceneVideoRoom: 41e4835c9c216dd0b7dc2df52bb3799a2f123596
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RongCloudIM: 6ff6bb7e5d652303f4d5d0488b3bafe741c59f55
@@ -198,6 +200,6 @@ SPEC CHECKSUMS:
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: fae146fac6563d94571e0923431230882472f9f4
+PODFILE CHECKSUM: 3f377cba58e2a9d3c3d4d92c61eb4b1b0e51dd35
 
 COCOAPODS: 1.11.3
