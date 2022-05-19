@@ -6,32 +6,19 @@
 //
 
 #import "HomeViewModel.h"
-
-#import "RCSceneExample_OC-Swift.h"
-
-@interface HomeViewModel ()
-
-@property (nonatomic, strong) RCVideoRoomService *service;
-
-@end
+#import "RCSceneBridge.h"
 
 @implementation HomeViewModel
-
-- (RCVideoRoomService *)service {
-    if (_service) return _service;
-    _service = [[RCVideoRoomService alloc] init];
-    return _service;
-}
 
 - (void)login:(NSString *)phone
       success:(void(^)(UserModel *))success
       failure:(void(^)(NSString *))failure {
-    [self.service loginWithPhone:phone success:success failure:failure];
+    [RCSceneBridge login:phone success:success failure:failure];
 }
 
 - (void)fetchData:(void(^)(NSArray<RoomModel *> *))success
           failure:(void(^)(NSString *))failure {
-    [self.service roomsWithSuccess:success failure:failure];
+    [RCSceneBridge fetchData:success failure:failure];
 }
 
 @end

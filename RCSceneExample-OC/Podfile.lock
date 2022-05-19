@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (5.6.1)
   - FCFileManager (1.0.20)
-  - Kingfisher (7.2.1)
+  - Kingfisher (7.2.2)
   - Masonry (1.1.0)
   - MJRefresh (3.7.5)
   - Moya (15.0.0):
@@ -21,28 +21,31 @@ PODS:
     - RCCoreKit
     - SDWebImage
     - YYModel
-  - RCSceneChatroomKit (0.0.3.1):
+  - RCSceneChatroomKit (0.0.3.2):
     - Masonry
     - RCCoreKit
     - YYModel
-  - RCSceneRoom/RCSceneFoundation (0.0.2.7):
+  - RCSceneRoom/RCSceneAnalytics (0.0.3.3):
+    - RCSceneRoom/RCSceneRoomSetting
+    - SensorsAnalyticsSDK
+  - RCSceneRoom/RCSceneFoundation (0.0.3.3):
     - SwiftyBeaver
-  - RCSceneRoom/RCSceneGift (0.0.2.7):
+  - RCSceneRoom/RCSceneGift (0.0.3.3):
     - Kingfisher
     - RCSceneRoom/RCSceneMessage
     - RCSceneRoom/RCSceneService
     - Reusable
     - SnapKit
     - SVProgressHUD
-  - RCSceneRoom/RCSceneMessage (0.0.2.7):
+  - RCSceneRoom/RCSceneMessage (0.0.3.3):
     - RongCloudIM/IMLib
-  - RCSceneRoom/RCSceneMusic (0.0.2.7):
+  - RCSceneRoom/RCSceneMusic (0.0.3.3):
     - RCMusicControlKit
     - RCSceneRoom/RCSceneMessage
     - RCSceneRoom/RCSceneService
     - RongCloudRTC/RongRTCLib
     - SVProgressHUD
-  - RCSceneRoom/RCSceneRoom (0.0.2.7):
+  - RCSceneRoom/RCSceneRoom (0.0.3.3):
     - Kingfisher
     - RCSceneChatroomKit
     - RCSceneRoom/RCSceneFoundation
@@ -52,24 +55,24 @@ PODS:
     - RongCloudOpenSource/IMKit
     - SnapKit
     - SVProgressHUD
-  - RCSceneRoom/RCSceneRoomSetting (0.0.2.7):
+  - RCSceneRoom/RCSceneRoomSetting (0.0.3.3):
     - RCSceneRoom/RCSceneService
     - Reusable
     - SnapKit
-  - RCSceneRoom/RCSceneService (0.0.2.7):
+  - RCSceneRoom/RCSceneService (0.0.3.3):
     - Moya
     - RCSceneRoom/RCSceneFoundation
     - ReachabilitySwift
-  - RCSceneVideoRoom (0.0.2.3):
+  - RCSceneVideoRoom (0.0.3.1):
     - MJRefresh
     - Pulsator
     - RCLiveVideoLib
+    - RCSceneRoom/RCSceneAnalytics
     - RCSceneRoom/RCSceneGift
     - RCSceneRoom/RCSceneMusic
     - RCSceneRoom/RCSceneRoom
     - RCSceneRoom/RCSceneRoomSetting
     - SDWebImage
-    - XCoordinator
   - ReachabilitySwift (5.0.0)
   - Reusable (4.1.2):
     - Reusable/Storyboard (= 4.1.2)
@@ -103,13 +106,26 @@ PODS:
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
+  - SensorsAnalyticsSDK (4.3.0):
+    - SensorsAnalyticsSDK/Core (= 4.3.0)
+  - SensorsAnalyticsSDK/__Store (4.3.0)
+  - SensorsAnalyticsSDK/AutoTrack (4.3.0):
+    - SensorsAnalyticsSDK/Common
+  - SensorsAnalyticsSDK/Base (4.3.0):
+    - SensorsAnalyticsSDK/__Store
+  - SensorsAnalyticsSDK/Common (4.3.0):
+    - SensorsAnalyticsSDK/Extension
+  - SensorsAnalyticsSDK/Core (4.3.0):
+    - SensorsAnalyticsSDK/Common
+    - SensorsAnalyticsSDK/Visualized
+  - SensorsAnalyticsSDK/Extension (4.3.0):
+    - SensorsAnalyticsSDK/Base
+  - SensorsAnalyticsSDK/Visualized (4.3.0):
+    - SensorsAnalyticsSDK/AutoTrack
   - SnapKit (5.6.0)
   - SSZipArchive (2.4.3)
   - SVProgressHUD (2.2.5)
   - SwiftyBeaver (1.9.5)
-  - XCoordinator (2.2.0):
-    - XCoordinator/Core (= 2.2.0)
-  - XCoordinator/Core (2.2.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -139,11 +155,11 @@ SPEC REPOS:
     - RongCloudOpenSource
     - RongCloudRTC
     - SDWebImage
+    - SensorsAnalyticsSDK
     - SnapKit
     - SSZipArchive
     - SVProgressHUD
     - SwiftyBeaver
-    - XCoordinator
     - YYModel
 
 EXTERNAL SOURCES:
@@ -153,7 +169,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
-  Kingfisher: 7c084bebf7d548c623ad41bcf765fb200efed369
+  Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
@@ -161,20 +177,20 @@ SPEC CHECKSUMS:
   RCCoreKit: 3f143441ac62880b454cca9066f526a27c45d4ce
   RCLiveVideoLib: a320695b4a5ce881e9d0d04093aca999ab5e9adf
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
-  RCSceneChatroomKit: 5fa306001c88bc075365a3ed8a76776e151670f2
-  RCSceneRoom: 6ce83e519386ed91eb66924dba3d4263b78aab17
-  RCSceneVideoRoom: c81f0ee1190684e5ef41c92da9eb783062c2ad31
+  RCSceneChatroomKit: 95ae23f682d932281090b272ef7752241480224d
+  RCSceneRoom: 034ba882d7d964f0936c12891b9ca5b36baaf2ef
+  RCSceneVideoRoom: fc7036636152413671421c866065eac855d54d08
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RongCloudIM: 6ff6bb7e5d652303f4d5d0488b3bafe741c59f55
   RongCloudOpenSource: fe3f6bf22b3d112eaf2df1c193ea6d23fa78a97c
   RongCloudRTC: ed2ce209746c3f2e175a5fb7f1cd00ab0df53c0b
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SensorsAnalyticsSDK: a0b98db9b33904e7de1bbcb36a4ebd18d8621b0e
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
-  XCoordinator: a5f91e43ee944f508529763921165697d3211629
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 PODFILE CHECKSUM: ac890cf8c755e7f166c2b0088c8247f770cf7395

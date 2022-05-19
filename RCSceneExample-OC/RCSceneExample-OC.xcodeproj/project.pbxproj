@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6352AD0A06CAA3C7687F2215 /* Pods_RCSceneExample_OC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7D1F15CE3C481BE95E8008 /* Pods_RCSceneExample_OC.framework */; };
+		D70EE0B228361ECD009C30E5 /* RCLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EE0B128361ECC009C30E5 /* RCLoginService.swift */; };
+		D70EE0B428361F67009C30E5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EE0B328361F67009C30E5 /* AppModel.swift */; };
+		D70EE0B628361FAD009C30E5 /* UserDefault+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EE0B528361FAD009C30E5 /* UserDefault+Extension.swift */; };
+		D70EE0B828362DBA009C30E5 /* ENV.plist in Resources */ = {isa = PBXBuildFile; fileRef = D70EE0B728362DBA009C30E5 /* ENV.plist */; };
 		D71F71E22825226700202965 /* RCSVRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71F71E12825226700202965 /* RCSVRoom.swift */; };
 		D71F71E628252B6400202965 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F71E528252B6400202965 /* UserModel.m */; };
 		D7ACAA142824CB90002E1166 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ACAA132824CB90002E1166 /* AppDelegate.m */; };
-		D7ACAA172824CB90002E1166 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ACAA162824CB90002E1166 /* SceneDelegate.m */; };
 		D7ACAA1A2824CB90002E1166 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ACAA192824CB90002E1166 /* ViewController.m */; };
 		D7ACAA1D2824CB90002E1166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ACAA1B2824CB90002E1166 /* Main.storyboard */; };
 		D7ACAA1F2824CB92002E1166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ACAA1E2824CB91002E1166 /* Assets.xcassets */; };
@@ -30,14 +33,16 @@
 /* Begin PBXFileReference section */
 		303B18E106999DC4422FA845 /* Pods-RCSceneExample-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCSceneExample-OC.release.xcconfig"; path = "Target Support Files/Pods-RCSceneExample-OC/Pods-RCSceneExample-OC.release.xcconfig"; sourceTree = "<group>"; };
 		4A7D1F15CE3C481BE95E8008 /* Pods_RCSceneExample_OC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCSceneExample_OC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70EE0B128361ECC009C30E5 /* RCLoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLoginService.swift; sourceTree = "<group>"; };
+		D70EE0B328361F67009C30E5 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		D70EE0B528361FAD009C30E5 /* UserDefault+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extension.swift"; sourceTree = "<group>"; };
+		D70EE0B728362DBA009C30E5 /* ENV.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ENV.plist; sourceTree = "<group>"; };
 		D71F71E12825226700202965 /* RCSVRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCSVRoom.swift; sourceTree = "<group>"; };
 		D71F71E428252B6400202965 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		D71F71E528252B6400202965 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		D7ACAA0F2824CB90002E1166 /* RCSceneExample-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RCSceneExample-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ACAA122824CB90002E1166 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7ACAA132824CB90002E1166 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D7ACAA152824CB90002E1166 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		D7ACAA162824CB90002E1166 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		D7ACAA182824CB90002E1166 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D7ACAA192824CB90002E1166 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D7ACAA1C2824CB90002E1166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,10 +151,14 @@
 		D7ACAA452824F6D2002E1166 /* Bridging */ = {
 			isa = PBXGroup;
 			children = (
+				D7ACAA492824F7AC002E1166 /* Service */,
 				D7ACAA2D2824CF84002E1166 /* RCSceneExample-OC-Bridging-Header.h */,
 				D7ACAA422824F602002E1166 /* RCSceneBridge.h */,
 				D7ACAA432824F602002E1166 /* RCSceneBridge.m */,
 				D7ACAA392824D641002E1166 /* AppConfigs.swift */,
+				D70EE0B328361F67009C30E5 /* AppModel.swift */,
+				D71F71E12825226700202965 /* RCSVRoom.swift */,
+				D70EE0B528361FAD009C30E5 /* UserDefault+Extension.swift */,
 			);
 			path = Bridging;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				D7ACAA4A2824F7AC002E1166 /* RCVideoRoomService.swift */,
+				D70EE0B128361ECC009C30E5 /* RCLoginService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -176,7 +186,6 @@
 			children = (
 				D71F71E328252B5200202965 /* Model */,
 				D7ACAA6028251A6C002E1166 /* ViewController */,
-				D71F71E12825226700202965 /* RCSVRoom.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -185,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				D7ACAA522825162F002E1166 /* View */,
-				D7ACAA492824F7AC002E1166 /* Service */,
 				D7ACAA5F28251A4C002E1166 /* ViewController */,
 				D7ACAA5E28251A34002E1166 /* ViewModel */,
 				D7ACAA5D282519E8002E1166 /* Model */,
@@ -234,10 +242,9 @@
 		D7ACAA6128251A7A002E1166 /* Entry */ = {
 			isa = PBXGroup;
 			children = (
-				D7ACAA152824CB90002E1166 /* SceneDelegate.h */,
-				D7ACAA162824CB90002E1166 /* SceneDelegate.m */,
 				D7ACAA122824CB90002E1166 /* AppDelegate.h */,
 				D7ACAA132824CB90002E1166 /* AppDelegate.m */,
+				D70EE0B728362DBA009C30E5 /* ENV.plist */,
 			);
 			path = Entry;
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70EE0B828362DBA009C30E5 /* ENV.plist in Resources */,
 				D7ACAA222824CB92002E1166 /* LaunchScreen.storyboard in Resources */,
 				D7ACAA1F2824CB92002E1166 /* Assets.xcassets in Resources */,
 				D7ACAA1D2824CB90002E1166 /* Main.storyboard in Resources */,
@@ -378,17 +386,19 @@
 				D7ACAA442824F602002E1166 /* RCSceneBridge.m in Sources */,
 				D7ACAA6628251B24002E1166 /* LoginViewController.m in Sources */,
 				D71F71E628252B6400202965 /* UserModel.m in Sources */,
+				D70EE0B228361ECD009C30E5 /* RCLoginService.swift in Sources */,
 				D7ACAA5A2825165C002E1166 /* RCVideoRoomCell.m in Sources */,
 				D7ACAA1A2824CB90002E1166 /* ViewController.m in Sources */,
 				D71F71E22825226700202965 /* RCSVRoom.swift in Sources */,
 				D7ACAA482824F73B002E1166 /* HomeViewModel.m in Sources */,
+				D70EE0B628361FAD009C30E5 /* UserDefault+Extension.swift in Sources */,
 				D7ACAA512824FD53002E1166 /* RoomUserModel.m in Sources */,
 				D7ACAA4E2824FC91002E1166 /* RoomModel.m in Sources */,
 				D7ACAA402824D641002E1166 /* AppConfigs.swift in Sources */,
+				D70EE0B428361F67009C30E5 /* AppModel.swift in Sources */,
 				D7ACAA142824CB90002E1166 /* AppDelegate.m in Sources */,
 				D7ACAA4B2824F7AC002E1166 /* RCVideoRoomService.swift in Sources */,
 				D7ACAA252824CB92002E1166 /* main.m in Sources */,
-				D7ACAA172824CB90002E1166 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +546,8 @@
 				DEVELOPMENT_TEAM = 69G8BQ9KQW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RCSceneExample-OC/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "RTC请求使用您的相机，用于视频通讯";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RTC请求使用您的麦克风以用来实时语音通讯，是否允许？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -569,6 +581,8 @@
 				DEVELOPMENT_TEAM = 69G8BQ9KQW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RCSceneExample-OC/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "RTC请求使用您的相机，用于视频通讯";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RTC请求使用您的麦克风以用来实时语音通讯，是否允许？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

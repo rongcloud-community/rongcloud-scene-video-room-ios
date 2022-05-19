@@ -25,27 +25,27 @@ PODS:
     - Masonry
     - RCCoreKit
     - YYModel
-  - RCSceneRoom/RCSceneAnalytics (0.0.3):
+  - RCSceneRoom/RCSceneAnalytics (0.0.3.3):
     - RCSceneRoom/RCSceneRoomSetting
     - SensorsAnalyticsSDK
-  - RCSceneRoom/RCSceneFoundation (0.0.3):
+  - RCSceneRoom/RCSceneFoundation (0.0.3.3):
     - SwiftyBeaver
-  - RCSceneRoom/RCSceneGift (0.0.3):
+  - RCSceneRoom/RCSceneGift (0.0.3.3):
     - Kingfisher
     - RCSceneRoom/RCSceneMessage
     - RCSceneRoom/RCSceneService
     - Reusable
     - SnapKit
     - SVProgressHUD
-  - RCSceneRoom/RCSceneMessage (0.0.3):
+  - RCSceneRoom/RCSceneMessage (0.0.3.3):
     - RongCloudIM/IMLib
-  - RCSceneRoom/RCSceneMusic (0.0.3):
+  - RCSceneRoom/RCSceneMusic (0.0.3.3):
     - RCMusicControlKit
     - RCSceneRoom/RCSceneMessage
     - RCSceneRoom/RCSceneService
     - RongCloudRTC/RongRTCLib
     - SVProgressHUD
-  - RCSceneRoom/RCSceneRoom (0.0.3):
+  - RCSceneRoom/RCSceneRoom (0.0.3.3):
     - Kingfisher
     - RCSceneChatroomKit
     - RCSceneRoom/RCSceneFoundation
@@ -55,11 +55,11 @@ PODS:
     - RongCloudOpenSource/IMKit
     - SnapKit
     - SVProgressHUD
-  - RCSceneRoom/RCSceneRoomSetting (0.0.3):
+  - RCSceneRoom/RCSceneRoomSetting (0.0.3.3):
     - RCSceneRoom/RCSceneService
     - Reusable
     - SnapKit
-  - RCSceneRoom/RCSceneService (0.0.3):
+  - RCSceneRoom/RCSceneService (0.0.3.3):
     - Moya
     - RCSceneRoom/RCSceneFoundation
     - ReachabilitySwift
@@ -177,7 +177,7 @@ SPEC CHECKSUMS:
   RCLiveVideoLib: a320695b4a5ce881e9d0d04093aca999ab5e9adf
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
   RCSceneChatroomKit: 95ae23f682d932281090b272ef7752241480224d
-  RCSceneRoom: b769917b50b7e1d9e9009f808deb8be203394809
+  RCSceneRoom: 034ba882d7d964f0936c12891b9ca5b36baaf2ef
   RCSceneVideoRoom: fc7036636152413671421c866065eac855d54d08
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136

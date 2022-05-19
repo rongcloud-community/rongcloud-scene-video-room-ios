@@ -7,11 +7,9 @@
 
 #import "LoginViewController.h"
 
-#import "RCSceneExample_OC-Swift.h"
+#import "RCSceneBridge.h"
 
 @interface LoginViewController ()
-
-@property (nonatomic, strong) RCVideoRoomService *service;
 
 @end
 
@@ -20,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = UIColor.whiteColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,7 +37,7 @@
     }
     
     __weak typeof(self) weakSelf = self;
-    [self.service loginWithPhone:phone success:^(UserModel *userModel){
+    [RCSceneBridge login:phone success:^(UserModel * model) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString * error) {
         NSLog(@"login error %@", error);

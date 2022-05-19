@@ -9,9 +9,7 @@
 
 #import "HomeViewModel.h"
 #import "RCVideoRoomCell.h"
-#import "RCSceneExample_OC-Swift.h"
-
-#import <RongCloudOpenSource/RongIMKit.h>
+#import "RCSceneBridge.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -35,6 +33,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    UIRefreshControl *control = [[UIRefreshControl alloc] init];
+    self.tableView.refreshControl = control;
+    [control addTarget:self
+                action:@selector(reloadData)
+      forControlEvents: UIControlEventValueChanged];
+    
+    [self reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self connectIM];
+}
+
+- (void)reloadData {
     __weak typeof(self) weakSelf = self;
     [self.viewModel fetchData:^(NSArray<RoomModel *> * rooms) {
         weakSelf.rooms = rooms;
@@ -45,25 +59,7 @@
 }
 
 - (IBAction)create {
-    [RCSVRoom show:self.navigationController room:nil];
-}
-
-- (void)connectIM {
-    if ([[RCIM sharedRCIM] getConnectionStatus] == ConnectionStatus_Connected) {
-        return;
-    }
-    
-    NSString *token = [[NSUserDefaults standardUserDefaults] oc_rongToken];
-    if (token == nil) return [self performSegueWithIdentifier:@"Login" sender:nil];
-    
-    [[RCIM sharedRCIM] initWithAppKey:[AppConfigs appKey]];
-    [[RCIM sharedRCIM] connectWithToken:token dbOpened:^(RCDBErrorCode code) {
-        
-    } success:^(NSString *userId) {
-        
-    } error:^(RCConnectErrorCode errorCode) {
-        
-    }];
+    [self show:nil];
 }
 
 #pragma mark - UITableViewDataSource -
@@ -80,7 +76,7 @@
 #pragma mark - UITableViewDelegate -
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [RCSVRoom show:self.navigationController room:self.rooms[indexPath.row]];
+    [self show:self.rooms[indexPath.row]];
 }
 
 @end

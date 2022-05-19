@@ -36,8 +36,11 @@ public class AppConfigs: NSObject {
         Environment.hiFiveServerVersion = ""
     }
     
+    /// 请申请您的 BusinessToken：https://rcrtc-api.rongcloud.net/code
     static func configBusinessToken() {
-        Environment.businessToken = "vStHYPdrQoImm-7Ur0ks1g"
+        let path = Bundle.main.path(forResource: "ENV", ofType: "plist")!
+        let config = NSDictionary(contentsOfFile: path)
+        Environment.businessToken = config?["businessToken"] as? String ?? ""
     }
 }
 
