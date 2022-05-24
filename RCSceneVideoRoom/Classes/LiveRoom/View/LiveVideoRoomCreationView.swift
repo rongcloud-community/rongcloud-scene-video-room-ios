@@ -46,7 +46,11 @@ class LiveVideoRoomCreationView: UIView {
     
     @objc private func start() {
         if viewModel.createState.needInputPassword {
-            let vc = PasswordViewController(self)
+            let vc = RCSRPasswordViewController()
+            vc.completion = { [weak self] password in
+                self?.viewModel.createState.password = password
+                self?.start()
+            }
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overFullScreen
             controller?.present(vc, animated: true)
@@ -66,7 +70,7 @@ class LiveVideoRoomCreationView: UIView {
                             delegate.didCreate(room)
                         }
                         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in
-                            self?.controller?.pop()
+                            self?.controller?.backTrigger()
                         }
                         controller.addAction(cancelAction)
                         controller.addAction(sureAction)
@@ -150,17 +154,5 @@ extension LiveVideoRoomCreationView: RCMHBeautyViewDelegate {
         case .makeup: plugin?.didClick(.makeup)
         case .effect: plugin?.didClick(.effect)
         }
-    }
-}
-
-extension LiveVideoRoomCreationView: RCSceneRoomSettingProtocol {
-    func eventDidTrigger(_ item: Item, extra: String?) {
-        guard case let .roomLock(lock) = item else { return }
-        guard lock, let password = extra else { return }
-        guard password.count > 0 else {
-            return SVProgressHUD.showError(withStatus: "请输入密码")
-        }
-        viewModel.createState.password = password
-        start()
     }
 }

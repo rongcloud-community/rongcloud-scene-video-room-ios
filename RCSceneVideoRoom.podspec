@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   
   # 1 - Info
   s.name             = 'RCSceneVideoRoom'
-  s.version          = '0.0.3.1'
+  s.version          = '0.0.3.2'
   s.summary          = 'Scene Video Room'
   s.description      = "Scene Video Room module"
   s.homepage         = 'https://github.com/rongcloud'
@@ -31,14 +31,8 @@ Pod::Spec.new do |s|
   s.dependency 'Pulsator'
   s.dependency 'MJRefresh'
   s.dependency 'SDWebImage'
-  
-  # >= 0.0.2.3
-  s.dependency 'RCSceneRoom/RCSceneRoom'
-  s.dependency 'RCSceneRoom/RCSceneGift'
-  s.dependency 'RCSceneRoom/RCSceneMusic'
-  s.dependency 'RCSceneRoom/RCSceneAnalytics'
-  s.dependency 'RCSceneRoom/RCSceneRoomSetting'
-  
   s.dependency 'RCLiveVideoLib'
+  s.dependency 'RCSceneRoom/RCSceneRoom'
+  s.dependency 'RCSceneRoom/RCSceneAnalytics'
   
 end

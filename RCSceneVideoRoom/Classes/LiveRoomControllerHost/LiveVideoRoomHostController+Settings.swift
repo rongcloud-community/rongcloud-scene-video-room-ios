@@ -44,7 +44,7 @@ extension LiveVideoRoomHostController {
                 .cameraSetting
             ]
         }()
-        let controller = RCSceneRoomSettingViewController(items: items, delegate: self)
+        let controller = RCSRSettingViewController(items: items, delegate: self)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .overFullScreen
         present(controller, animated: true)

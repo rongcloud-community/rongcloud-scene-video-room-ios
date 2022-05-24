@@ -16,10 +16,7 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
     var room: RCSceneRoom! {
         didSet {
             SceneRoomManager.shared.currentRoom = room
-            if (room != nil) {
-                DataSourceImpl.instance.roomId = room.roomId
-                DelegateImpl.instance.roomId = room.roomId
-            }
+            RCSceneMusic.join(room)
         }
     }
     
@@ -85,7 +82,6 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
         if let room = room { didCreate(room) }
         UIApplication.shared.isIdleTimerDisabled = true
         videoPropsSetVc.delegate = self
-        PlayerImpl.instance.initializedEarMonitoring()
         bubbleViewAddGesture()
     }
     

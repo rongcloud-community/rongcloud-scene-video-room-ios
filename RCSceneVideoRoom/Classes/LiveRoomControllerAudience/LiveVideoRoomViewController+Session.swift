@@ -33,8 +33,7 @@ extension LiveVideoRoomViewController {
     func leaveRoom() {
         videoLeaveRoom { [weak self] _ in
             SceneRoomManager.shared.currentRoom = nil
-            DataSourceImpl.instance.clear()
-            PlayerImpl.instance.clear()
+            RCSceneMusic.clear()
             self?.backTrigger()
         }
         RCSensorAction.quitRoom(room,

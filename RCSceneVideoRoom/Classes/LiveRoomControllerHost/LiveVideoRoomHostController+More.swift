@@ -24,15 +24,14 @@ extension LiveVideoRoomHostController {
     }
     
     func closeRoom() {
-        clearMusicData()
+        RCSceneMusic.clear()
         SVProgressHUD.show()
         videoRoomService.closeRoom(roomId: room.roomId) { result in
             switch result.map(RCSceneResponse.self) {
             case let .success(response):
                 if response.validate() {
                     SVProgressHUD.showSuccess(withStatus: "直播结束，房间已关闭")
-                    DataSourceImpl.instance.clear()
-                    PlayerImpl.instance.clear()
+                    RCSceneMusic.clear()
                 } else {
                     SVProgressHUD.showSuccess(withStatus: "关闭房间失败")
                 }
@@ -42,12 +41,6 @@ extension LiveVideoRoomHostController {
         }
         videoRoomService.userUpdateCurrentRoom(roomId: "") { _ in }
         RCSensorAction.closeRoom(room, enableMic: enableMic, enableCamera: enableCamera).trigger()
-    }
-    
-    func clearMusicData() {
-        DataSourceImpl.instance.clear()
-        PlayerImpl.instance.clear()
-        DelegateImpl.instance.clear()
     }
     
     var enableMic: Bool {

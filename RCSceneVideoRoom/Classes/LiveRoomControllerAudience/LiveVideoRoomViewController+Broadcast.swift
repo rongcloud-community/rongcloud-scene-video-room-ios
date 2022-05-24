@@ -41,17 +41,16 @@ extension LiveVideoRoomViewController: RCRTCBroadcastDelegate {
     
     func broadcastViewDidClick(_ room: RCSceneRoom) {
         if room.isPrivate == 1 {
-            let controller = VoiceRoomPasswordViewController(type: .verify(room), delegate: self)
+            let controller = RCSRPasswordViewController()
+            controller.completion = { [weak self] password in
+                guard room.password == password else {
+                    return SVProgressHUD.showError(withStatus: "密码错误")
+                }
+                self?.roomContainerAction?.switchRoom(room)
+            }
             present(controller, animated: true)
         } else {
             roomContainerAction?.switchRoom(room)
         }
-    }
-}
-
-extension LiveVideoRoomViewController: RCSceneRoomPasswordProtocol {
-    func passwordDidVerify(_ room: RCSceneRoom) {
-        if room.roomId == self.room.roomId { return }
-        roomContainerAction?.switchRoom(room)
     }
 }

@@ -76,7 +76,7 @@ extension LiveVideoRoomHostController {
         })
         vc.addAction(sureAction)
         vc.addAction(rejectAction)
-        UIApplication.shared.topMostViewController()?.present(vc, animated: true)
+        UIApplication.shared.topmostController()?.present(vc, animated: true)
         
         weak var controller = vc
         func countdown(_ value: Int) {
@@ -102,7 +102,7 @@ extension LiveVideoRoomHostController {
                 self.presentedViewController?.dismiss(animated: true, completion: nil)
             }, name: "取消")]
         let vc = OptionsViewController(dependency: PresentOptionDependency(title: "已发起PK邀请", actions: actions))
-        safe_presentViewController(vc: vc, animated: true, completion: nil)
+        topmostController().present(vc, animated: true)
     }
     
     private func cancelPK(roomId: String, userId: String) {
@@ -301,7 +301,7 @@ extension LiveVideoRoomHostController: RCLiveVideoPKDelegate {
     }
     
     func didCancelPKInvitation(fromRoom inviterRoomId: String, byUser inviterUserId: String) {
-        if let controller = topMostViewController() as? UIAlertController {
+        if let controller = topmostController() as? UIAlertController {
             controller.dismiss(animated: true)
         }
         SVProgressHUD.showInfo(withStatus: "对方取消 PK 邀请")

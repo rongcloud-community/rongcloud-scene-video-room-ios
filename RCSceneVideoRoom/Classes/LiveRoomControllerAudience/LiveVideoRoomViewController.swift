@@ -75,14 +75,8 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        DataSourceImpl.instance.roomId = self.room.roomId
-        DelegateImpl.instance.roomId = self.room.roomId
-        
+        RCSceneMusic.join(room)
         RCIM.shared().addReceiveMessageDelegate(self)
-        DataSourceImpl.instance.fetchRoomPlayingMusicInfo { info in
-            self.musicInfoBubbleView?.info = info;
-        }
     }
     
     override func viewDidLayoutSubviews() {
