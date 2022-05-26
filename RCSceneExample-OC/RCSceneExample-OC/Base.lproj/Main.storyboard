@@ -9,46 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
-        <scene sceneID="Km4-om-Zh1">
-            <objects>
-                <viewController id="HrL-bh-81v" customClass="LoginViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DH8-Kv-M43">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ryr-Xk-hYI">
-                                <rect key="frame" x="20" y="123" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="done"/>
-                                <connections>
-                                    <action selector="login" destination="HrL-bh-81v" eventType="editingDidEndOnExit" id="BWF-pu-01M"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="yni-j3-XTs"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Ryr-Xk-hYI" firstAttribute="top" secondItem="yni-j3-XTs" secondAttribute="top" constant="35" id="1GT-el-hcP"/>
-                            <constraint firstItem="yni-j3-XTs" firstAttribute="trailing" secondItem="Ryr-Xk-hYI" secondAttribute="trailing" constant="20" id="EiN-b1-4eG"/>
-                            <constraint firstItem="Ryr-Xk-hYI" firstAttribute="leading" secondItem="yni-j3-XTs" secondAttribute="leading" constant="20" id="G9i-4A-9Cb"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="L3L-gf-mbF">
-                        <barButtonItem key="rightBarButtonItem" title="登录" id="Kt0-gK-VXY">
-                            <connections>
-                                <action selector="login" destination="HrL-bh-81v" id="Cfb-rV-85M"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="textField" destination="Ryr-Xk-hYI" id="u7E-n2-ARK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cPm-jF-I3x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2074" y="80"/>
-        </scene>
         <!--融云-场景化-视频直播-->
         <scene sceneID="BE6-fK-OV3">
             <objects>
@@ -123,7 +83,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="o0T-MU-Szz" id="Dty-Ha-dBv"/>
-                        <segue destination="HrL-bh-81v" kind="show" identifier="Login" id="xhS-0U-Q0e"/>
+                        <segue destination="67G-98-2So" kind="show" identifier="Login" id="W1c-qR-zHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRe-4L-igQ" sceneMemberID="firstResponder"/>
@@ -147,6 +107,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azY-nN-BlW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="79.6875"/>
+        </scene>
+        <!--融云 RTC 示例-->
+        <scene sceneID="fCm-Yk-H7h">
+            <objects>
+                <viewController title="融云 RTC 示例" id="67G-98-2So" customClass="LoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JeE-78-IYU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="视频直播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQN-Bd-xXY">
+                                <rect key="frame" x="158" y="128" width="98" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的手机号码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Lf-pZ-uvE">
+                                <rect key="frame" x="30" y="217" width="164" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1V-l8-ClW">
+                                <rect key="frame" x="30" y="310" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="EGD-bg-Nvk"/>
+                                    <constraint firstAttribute="height" constant="40" id="cHZ-Pb-aX1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSF-LJ-AMe">
+                                <rect key="frame" x="30" y="390" width="354" height="45"/>
+                                <color key="backgroundColor" red="0.11290193279999999" green="0.71933102159999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="f4x-hI-Hdg"/>
+                                </constraints>
+                                <state key="normal" title="登  录">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="login" destination="67G-98-2So" eventType="touchUpInside" id="ibt-HN-eZw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="应用内唯一标识，重复的用户 Id 将被当作为同一用户，支持大小写英文字母、数字、部分特殊符号 + = - _ 的组合方式，最大长度 64 字节。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4o-1d-063">
+                                <rect key="frame" x="30" y="247" width="354" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dJl-21-CdM"/>
+                        <color key="backgroundColor" red="0.95458504899999996" green="0.97441616620000004" blue="0.97617238760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dJl-21-CdM" firstAttribute="trailing" secondItem="dSF-LJ-AMe" secondAttribute="trailing" constant="30" id="04M-Sp-bD4"/>
+                            <constraint firstItem="HQN-Bd-xXY" firstAttribute="top" secondItem="dJl-21-CdM" secondAttribute="top" constant="40" id="0Ph-v9-AE3"/>
+                            <constraint firstItem="dJl-21-CdM" firstAttribute="trailing" secondItem="i1V-l8-ClW" secondAttribute="trailing" constant="30" id="2pg-eX-eyl"/>
+                            <constraint firstItem="7Lf-pZ-uvE" firstAttribute="top" secondItem="HQN-Bd-xXY" secondAttribute="bottom" constant="60" id="6j5-Yk-8Em"/>
+                            <constraint firstItem="dJl-21-CdM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7Lf-pZ-uvE" secondAttribute="trailing" symbolic="YES" id="BaI-FF-urd"/>
+                            <constraint firstItem="dSF-LJ-AMe" firstAttribute="top" secondItem="i1V-l8-ClW" secondAttribute="bottom" constant="40" id="DdA-HW-ha1"/>
+                            <constraint firstItem="n4o-1d-063" firstAttribute="leading" secondItem="dJl-21-CdM" secondAttribute="leading" constant="30" id="Gzh-vJ-r0B"/>
+                            <constraint firstItem="n4o-1d-063" firstAttribute="top" secondItem="7Lf-pZ-uvE" secondAttribute="bottom" constant="10" id="J4E-Cp-Ej2"/>
+                            <constraint firstItem="i1V-l8-ClW" firstAttribute="leading" secondItem="dJl-21-CdM" secondAttribute="leading" constant="30" id="SyF-va-GQM"/>
+                            <constraint firstItem="7Lf-pZ-uvE" firstAttribute="leading" secondItem="dJl-21-CdM" secondAttribute="leading" constant="30" id="ToL-kx-KYf"/>
+                            <constraint firstItem="HQN-Bd-xXY" firstAttribute="centerX" secondItem="dJl-21-CdM" secondAttribute="centerX" id="W1b-Li-pRW"/>
+                            <constraint firstItem="i1V-l8-ClW" firstAttribute="leading" secondItem="dJl-21-CdM" secondAttribute="leading" constant="30" id="eKX-Jz-9T6"/>
+                            <constraint firstItem="dSF-LJ-AMe" firstAttribute="leading" secondItem="dJl-21-CdM" secondAttribute="leading" constant="30" id="ijo-fH-aWl"/>
+                            <constraint firstItem="dJl-21-CdM" firstAttribute="trailing" secondItem="i1V-l8-ClW" secondAttribute="trailing" constant="30" id="kl3-3e-qgx"/>
+                            <constraint firstItem="dJl-21-CdM" firstAttribute="trailing" secondItem="n4o-1d-063" secondAttribute="trailing" constant="30" id="n03-dq-eme"/>
+                            <constraint firstItem="i1V-l8-ClW" firstAttribute="top" secondItem="n4o-1d-063" secondAttribute="bottom" constant="20" id="uSR-Pq-amh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="融云场景化示例" id="E4l-bt-y3n"/>
+                    <connections>
+                        <outlet property="textField" destination="i1V-l8-ClW" id="FGD-y0-TeB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S7o-1h-FiT" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2277" y="80"/>
         </scene>
     </scenes>
     <resources>

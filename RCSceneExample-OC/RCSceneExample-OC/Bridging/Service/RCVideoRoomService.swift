@@ -32,11 +32,14 @@ public class RCVideoRoomService: NSObject {
         loginProvider.request(api) { result in
             switch result.map(RCSceneWrapper<User>.self) {
             case let .success(wrapper):
-                let user = wrapper.data!
-                UserDefaults.standard.set(user: user)
-                UserDefaults.standard.set(authorization: user.authorization)
-                UserDefaults.standard.set(rongCloudToken: user.imToken)
-                success(user.model)
+                if let user = wrapper.data {
+                    UserDefaults.standard.set(user: user)
+                    UserDefaults.standard.set(authorization: user.authorization)
+                    UserDefaults.standard.set(rongCloudToken: user.imToken)
+                    success(user.model)
+                } else {
+                    failure(wrapper.msg ?? "数据错误")
+                }
             case let .failure(error):
                 failure(error.localizedDescription)
             }

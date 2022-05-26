@@ -36,6 +36,8 @@ class AppConfigs {
     
     static func configBusinessToken() {
         /// 请申请您的 BusinessToken：https://rcrtc-api.rongcloud.net/code
-        Environment.businessToken = "gKDlVu1kTqMv91hqntCI3Y"
+        let path = Bundle.main.path(forResource: "ENV", ofType: "plist")!
+        let config = NSDictionary(contentsOfFile: path)
+        Environment.businessToken = config?["businessToken"] as? String ?? ""
     }
 }

@@ -8,6 +8,7 @@
 #import "LoginViewController.h"
 
 #import "RCSceneBridge.h"
+#import <SVProgressHUD/SVProgressHUD.h>>
 
 @interface LoginViewController ()
 
@@ -32,8 +33,7 @@
     
     NSString *phone = self.textField.text;
     if (phone.length == 0) {
-        return;
-        //        return SVProgressHUD.showError(withStatus: "请输入正确手机号")
+        return [SVProgressHUD showErrorWithStatus:@"请输入正确手机号"];
     }
     
     __weak typeof(self) weakSelf = self;
@@ -41,6 +41,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString * error) {
         NSLog(@"login error %@", error);
+        [SVProgressHUD showErrorWithStatus:error];
     }];
 }
 

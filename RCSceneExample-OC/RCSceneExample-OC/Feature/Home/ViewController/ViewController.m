@@ -53,8 +53,10 @@
     [self.viewModel fetchData:^(NSArray<RoomModel *> * rooms) {
         weakSelf.rooms = rooms;
         [weakSelf.tableView reloadData];
+        [weakSelf.tableView.refreshControl endRefreshing];
     } failure:^(NSString * error) {
         NSLog(@"fetch data failed %@", error);
+        [weakSelf.tableView.refreshControl endRefreshing];
     }];
 }
 
