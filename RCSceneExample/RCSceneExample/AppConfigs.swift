@@ -35,6 +35,7 @@ class AppConfigs {
     }
     
     static func configBusinessToken() {
-        Environment.businessToken = "vStHYPdrQoImm-7Ur0ks1g"
+        /// 请申请您的 BusinessToken：https://rcrtc-api.rongcloud.net/code
+        Environment.businessToken = "gKDlVu1kTqMv91hqntCI3Y"
     }
 }

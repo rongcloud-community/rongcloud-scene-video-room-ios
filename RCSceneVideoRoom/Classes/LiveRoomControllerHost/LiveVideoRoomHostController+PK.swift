@@ -21,8 +21,8 @@ enum PKAction {
 
 extension RCLiveVideoEngine {
     var canPK: Bool {
-        switch RCLiveVideoEngine.shared().currentMixType {
-        case .default, .oneToOne: return currentSeats[1].userId.count == 0
+        switch RCLiveVideoEngine.shared().currentMixType() {
+        case .default, .oneToOne: return currentSeats()[1].userId.count == 0
         default: return false
         }
     }
@@ -32,7 +32,7 @@ extension LiveVideoRoomHostController {
     @_dynamicReplacement(for: m_viewDidLoad)
     private func PK_viewDidLoad() {
         m_viewDidLoad()
-        RCLiveVideoEngine.shared().pkDelegate = self
+        RCLiveVideoEngine.shared().setPkDelegate(self)
         pkButton.pkState = .request
         pkButton.addTarget(self, action: #selector(handlePKButtonDidClick), for: .touchUpInside)
     }
@@ -151,7 +151,7 @@ extension LiveVideoRoomHostController {
     }
     
     private func quitPKConnectAndNotifyServer() {
-        guard let PK = RCLiveVideoEngine.shared().pkInfo else { return }
+        guard let PK = RCLiveVideoEngine.shared().currentPK() else { return }
         RCLiveVideoEngine.shared().quitPK { code in
             if code == .success {
                 self.hidePKView()
@@ -212,7 +212,7 @@ extension LiveVideoRoomHostController {
         
         /// 同步 PK 状态
         guard
-            let PK = RCLiveVideoEngine.shared().pkInfo,
+            let PK = RCLiveVideoEngine.shared().currentPK(),
             let PKStatusMessage = message.content as? RCPKStatusMessage,
             let content = PKStatusMessage.content
         else { return }
@@ -279,7 +279,7 @@ extension LiveVideoRoomHostController: LiveVideoOthersDelegate {
 
 extension LiveVideoRoomHostController: RCLiveVideoPKDelegate {
     func didReceivePKInvitation(fromRoom inviterRoomId: String, byUser inviterUserId: String) {
-        let mixType = RCLiveVideoEngine.shared().currentMixType
+        let mixType = RCLiveVideoEngine.shared().currentMixType()
         let isBusy: Bool = {
             if micButton.micState == .waiting {
                 return true
@@ -287,7 +287,7 @@ extension LiveVideoRoomHostController: RCLiveVideoPKDelegate {
             guard mixType == .default || mixType == .oneToOne else {
                 return true
             }
-            return RCLiveVideoEngine.shared().currentSeats[1].userId.count > 0
+            return RCLiveVideoEngine.shared().currentSeats()[1].userId.count > 0
         }()
         if isBusy {
             RCLiveVideoEngine.shared()
@@ -328,7 +328,7 @@ extension LiveVideoRoomHostController: RCLiveVideoPKDelegate {
     func didBeginPK(_ code: RCLiveVideoCode) {
         guard
             code == .success,
-            let pkInfo = RCLiveVideoEngine.shared().pkInfo
+            let pkInfo = RCLiveVideoEngine.shared().currentPK()
         else { return SVProgressHUD.showError(withStatus: "PK 开启失败") }
         
         /// 当前按钮状态

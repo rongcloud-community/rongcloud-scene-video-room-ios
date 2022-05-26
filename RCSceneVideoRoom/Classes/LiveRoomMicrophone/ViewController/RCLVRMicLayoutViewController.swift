@@ -67,7 +67,7 @@ class RCLVRMicLayoutViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        if let index = items.firstIndex(of: RCLiveVideoEngine.shared().currentMixType) {
+        if let index = items.firstIndex(of: RCLiveVideoEngine.shared().currentMixType()) {
             let indexPath = IndexPath(item: index, section: 0)
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
         }

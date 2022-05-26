@@ -28,7 +28,7 @@ extension LiveVideoRoomViewController {
     var seatInfo: RCLiveVideoSeat? {
         RCLiveVideoEngine
             .shared()
-            .currentSeats
+            .currentSeats()
             .first(where: { $0.userId == Environment.currentUserId })
     }
     
@@ -42,7 +42,7 @@ extension LiveVideoRoomViewController {
     }
     
     func requestSeat(_ index: Int = -1) {
-        if RCLiveVideoEngine.shared().pkInfo != nil {
+        if RCLiveVideoEngine.shared().currentPK() != nil {
             return SVProgressHUD.showError(withStatus: "当前 PK 中，无法进行操作")
         }
         guard micButton.micState == .request else { return }
@@ -61,7 +61,7 @@ extension LiveVideoRoomViewController {
     }
     
     func enterSeat(_ index: Int) {
-        if RCLiveVideoEngine.shared().pkInfo != nil {
+        if RCLiveVideoEngine.shared().currentPK() != nil {
             SVProgressHUD.showError(withStatus: "当前 PK 中，无法进行操作")
         }
         SVProgressHUD.show()

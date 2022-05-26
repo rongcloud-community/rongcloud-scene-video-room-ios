@@ -405,11 +405,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2022052601;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RCSceneExample/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "视频直播";
+				INFOPLIST_KEY_CFBundleDisplayName = SceneLive;
 				INFOPLIST_KEY_NSCameraUsageDescription = "RTC请求使用您的相机，用于视频通讯";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RTC请求使用您的麦克风以用来实时语音通讯，是否允许？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -422,7 +422,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.scene.video.room;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -438,11 +438,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2022052601;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RCSceneExample/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "视频直播";
+				INFOPLIST_KEY_CFBundleDisplayName = SceneLive;
 				INFOPLIST_KEY_NSCameraUsageDescription = "RTC请求使用您的相机，用于视频通讯";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RTC请求使用您的麦克风以用来实时语音通讯，是否允许？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -455,7 +455,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.scene.video.room;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

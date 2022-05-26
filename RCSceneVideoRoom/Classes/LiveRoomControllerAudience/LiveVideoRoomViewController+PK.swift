@@ -11,7 +11,7 @@ extension LiveVideoRoomViewController {
     @_dynamicReplacement(for: m_viewDidLoad)
     private func PK_viewDidLoad() {
         m_viewDidLoad()
-        RCLiveVideoEngine.shared().pkDelegate = self
+        RCLiveVideoEngine.shared().setPkDelegate(self)
     }
     
     private func showCloseReasonHud(reason: ClosePKReason) {
@@ -63,7 +63,7 @@ extension LiveVideoRoomViewController {
 
 extension LiveVideoRoomViewController: RCLiveVideoPKDelegate {
     func didBeginPK(_ code: RCLiveVideoCode) {
-        guard let PK = RCLiveVideoEngine.shared().pkInfo else { return }
+        guard let PK = RCLiveVideoEngine.shared().currentPK() else { return }
         loadPKStatus(PK)
     }
     

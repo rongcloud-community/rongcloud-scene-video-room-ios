@@ -31,9 +31,7 @@ extension LiveVideoRoomHostController {
     
     @objc func handleMessageButtonClick() {
         RCSensorAction.textClick(room).trigger()
-        let vc = ChatListViewController(.ConversationType_PRIVATE)
-        vc.canCallComing = false
-        present(vc, animated: true)
+        ChatListViewController.presenting(self)
     }
 }
 

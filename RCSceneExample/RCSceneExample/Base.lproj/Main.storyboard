@@ -75,6 +75,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="融云-场景化-视频直播" id="4ul-vS-bcI">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="wka-oL-dRc">
+                            <connections>
+                                <action selector="operation" destination="BYZ-38-t0r" id="d6N-5a-THc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cjT-2z-S4Y">
                             <connections>
                                 <action selector="create" destination="BYZ-38-t0r" id="q9y-pi-JJx"/>
@@ -83,52 +88,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Bgl-dH-YjF" id="1an-6p-QzZ"/>
-                        <segue destination="j1M-il-7pR" kind="show" identifier="Login" id="GKx-U9-v3l"/>
+                        <segue destination="mvK-3R-XIh" kind="show" identifier="Login" id="q49-PR-qyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002.8985507246377" y="79.6875"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="rbZ-nL-sKo">
-            <objects>
-                <viewController id="j1M-il-7pR" customClass="LoginViewController" customModule="RCSceneExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qRL-DN-mRD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="15k-1E-WKP">
-                                <rect key="frame" x="20" y="123" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="done"/>
-                                <connections>
-                                    <action selector="login" destination="j1M-il-7pR" eventType="editingDidEndOnExit" id="epI-Km-bPH"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Dz2-hc-bp9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Dz2-hc-bp9" firstAttribute="trailing" secondItem="15k-1E-WKP" secondAttribute="trailing" constant="20" id="DH2-qk-hOQ"/>
-                            <constraint firstItem="15k-1E-WKP" firstAttribute="leading" secondItem="Dz2-hc-bp9" secondAttribute="leading" constant="20" id="JUy-3Y-fIW"/>
-                            <constraint firstItem="15k-1E-WKP" firstAttribute="top" secondItem="Dz2-hc-bp9" secondAttribute="top" constant="35" id="gkp-z3-3WJ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="liU-dJ-jJH">
-                        <barButtonItem key="rightBarButtonItem" title="登录" id="zjn-Hm-yxA">
-                            <connections>
-                                <action selector="login" destination="j1M-il-7pR" id="izG-3p-1hI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="phoneTF" destination="15k-1E-WKP" id="Ltf-Q9-uaT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uN0-Vc-oeV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2074" y="80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IzI-Dd-yUu">
@@ -148,8 +113,92 @@
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="79.6875"/>
         </scene>
+        <!--融云 RTC 示例-->
+        <scene sceneID="pHz-o3-j5Z">
+            <objects>
+                <viewController title="融云 RTC 示例" id="mvK-3R-XIh" customClass="LoginViewController" customModule="RCSceneExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ywp-yD-oJa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="视频直播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-vo-rTz">
+                                <rect key="frame" x="158" y="128" width="98" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的手机号码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7v3-NF-vYd">
+                                <rect key="frame" x="30" y="217" width="164" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qro-17-n9y">
+                                <rect key="frame" x="30" y="310" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="k8f-6W-XCY"/>
+                                    <constraint firstAttribute="height" constant="40" id="lPi-oT-hM8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJq-Qi-tP5">
+                                <rect key="frame" x="30" y="390" width="354" height="45"/>
+                                <color key="backgroundColor" red="0.11290193279999999" green="0.71933102159999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="sT5-CM-EAx"/>
+                                </constraints>
+                                <state key="normal" title="登  录">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="login" destination="mvK-3R-XIh" eventType="touchUpInside" id="9pB-ek-U5G"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="应用内唯一标识，重复的用户 Id 将被当作为同一用户，支持大小写英文字母、数字、部分特殊符号 + = - _ 的组合方式，最大长度 64 字节。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYh-mB-W1C">
+                                <rect key="frame" x="30" y="247" width="354" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x51-xR-UNu"/>
+                        <color key="backgroundColor" red="0.95458504899999996" green="0.97441616620000004" blue="0.97617238760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sYh-mB-W1C" firstAttribute="top" secondItem="7v3-NF-vYd" secondAttribute="bottom" constant="10" id="31s-F6-Xz4"/>
+                            <constraint firstItem="sYh-mB-W1C" firstAttribute="leading" secondItem="x51-xR-UNu" secondAttribute="leading" constant="30" id="6A7-PK-db5"/>
+                            <constraint firstItem="x51-xR-UNu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7v3-NF-vYd" secondAttribute="trailing" symbolic="YES" id="CgI-Gw-zXG"/>
+                            <constraint firstItem="qro-17-n9y" firstAttribute="leading" secondItem="x51-xR-UNu" secondAttribute="leading" constant="30" id="NT2-38-YfO"/>
+                            <constraint firstItem="SJq-Qi-tP5" firstAttribute="top" secondItem="qro-17-n9y" secondAttribute="bottom" constant="40" id="OTc-e5-r5U"/>
+                            <constraint firstItem="qro-17-n9y" firstAttribute="leading" secondItem="x51-xR-UNu" secondAttribute="leading" constant="30" id="Oho-y3-ofz"/>
+                            <constraint firstItem="7v3-NF-vYd" firstAttribute="leading" secondItem="x51-xR-UNu" secondAttribute="leading" constant="30" id="Wty-lc-Ph2"/>
+                            <constraint firstItem="qro-17-n9y" firstAttribute="top" secondItem="sYh-mB-W1C" secondAttribute="bottom" constant="20" id="Xsi-A6-yiU"/>
+                            <constraint firstItem="7v3-NF-vYd" firstAttribute="top" secondItem="X2F-vo-rTz" secondAttribute="bottom" constant="60" id="ekE-5q-EiZ"/>
+                            <constraint firstItem="x51-xR-UNu" firstAttribute="trailing" secondItem="qro-17-n9y" secondAttribute="trailing" constant="30" id="gVT-I4-HN4"/>
+                            <constraint firstItem="SJq-Qi-tP5" firstAttribute="leading" secondItem="x51-xR-UNu" secondAttribute="leading" constant="30" id="iEX-lW-eMK"/>
+                            <constraint firstItem="x51-xR-UNu" firstAttribute="trailing" secondItem="sYh-mB-W1C" secondAttribute="trailing" constant="30" id="k5c-C0-4Eq"/>
+                            <constraint firstItem="X2F-vo-rTz" firstAttribute="centerX" secondItem="x51-xR-UNu" secondAttribute="centerX" id="pMs-nX-yru"/>
+                            <constraint firstItem="x51-xR-UNu" firstAttribute="trailing" secondItem="qro-17-n9y" secondAttribute="trailing" constant="30" id="vwk-Jt-w6T"/>
+                            <constraint firstItem="x51-xR-UNu" firstAttribute="trailing" secondItem="SJq-Qi-tP5" secondAttribute="trailing" constant="30" id="wco-v6-cE7"/>
+                            <constraint firstItem="X2F-vo-rTz" firstAttribute="top" secondItem="x51-xR-UNu" secondAttribute="top" constant="40" id="yEA-pr-jbo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="融云场景化示例" id="525-NC-zhC"/>
+                    <connections>
+                        <outlet property="phoneTF" destination="qro-17-n9y" id="cjh-26-bPp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="43D-JN-2m5" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2277" y="80"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

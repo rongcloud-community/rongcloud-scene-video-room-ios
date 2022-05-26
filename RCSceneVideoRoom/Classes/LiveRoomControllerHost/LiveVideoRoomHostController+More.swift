@@ -10,7 +10,7 @@ import UIKit
 extension LiveVideoRoomHostController {
     
     func closeRoomDidClick() {
-        if RCLiveVideoEngine.shared().pkInfo != nil {
+        if RCLiveVideoEngine.shared().currentPK() != nil {
             return SVProgressHUD.showError(withStatus: "当前 PK 中，无法进行此操作")
         }
         let controller = UIAlertController(title: "提示", message: "确定结束本次直播么？", preferredStyle: .alert)
@@ -44,7 +44,7 @@ extension LiveVideoRoomHostController {
     }
     
     var enableMic: Bool {
-        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats().first(where: { seat in
             seat.userId == Environment.currentUserId
         })
         guard let seat = tmpSeat else { return false }
@@ -52,7 +52,7 @@ extension LiveVideoRoomHostController {
     }
     
     var enableCamera: Bool {
-        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats().first(where: { seat in
             seat.userId == Environment.currentUserId
         })
         guard let seat = tmpSeat else { return false }

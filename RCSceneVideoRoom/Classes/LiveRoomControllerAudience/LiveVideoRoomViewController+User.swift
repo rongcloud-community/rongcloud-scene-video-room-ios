@@ -73,9 +73,7 @@ extension LiveVideoRoomViewController: RCSceneRoomUserOperationProtocol {
             }
             return
         }
-        let vc = ChatViewController(.ConversationType_PRIVATE, userId: userId)
-        vc.canCallComing = false
-        present(vc, animated: true)
+        ChatViewController.presenting(self, userId: userId)
     }
     
     func didClickedSendGift(userId: String) {

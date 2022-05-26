@@ -38,7 +38,7 @@ extension LiveVideoRoomHostController: RCLiveVideoCancelDelegate {
             }
             micButton.micState = .user
         case .connection:
-            let seat = RCLiveVideoEngine.shared().currentSeats.last { $0.userId.count > 0 }
+            let seat = RCLiveVideoEngine.shared().currentSeats().last { $0.userId.count > 0 }
             guard
                 let userId = seat?.userId,
                 userId != Environment.currentUserId
@@ -54,7 +54,7 @@ extension LiveVideoRoomHostController: RCLiveVideoCancelDelegate {
 
 extension LiveVideoRoomHostController: RCLVMicViewControllerDelegate {
     func didAcceptSeatRequest(_ user: RCSceneRoomUser) {
-        switch RCLiveVideoEngine.shared().currentMixType {
+        switch RCLiveVideoEngine.shared().currentMixType() {
         case .oneToOne:
             micButton.micState = .connecting
         default:
@@ -72,7 +72,7 @@ extension LiveVideoRoomHostController: RCLVMicViewControllerDelegate {
     }
     
     func didSendInvitation(_ user: RCSceneRoomUser) {
-        switch RCLiveVideoEngine.shared().currentMixType {
+        switch RCLiveVideoEngine.shared().currentMixType(){
         case .oneToOne:
             micButton.micState = .waiting
         default:
@@ -158,9 +158,7 @@ extension LiveVideoRoomHostController: RCSceneRoomUserOperationProtocol {
             }
             return
         }
-        let vc = ChatViewController(.ConversationType_PRIVATE, userId: userId)
-        vc.canCallComing = false
-        present(vc, animated: true)
+        ChatViewController.presenting(self, userId: userId)
     }
     
     func didClickedSendGift(userId: String) {
@@ -206,7 +204,7 @@ extension LiveVideoRoomHostController: RCSceneRoomUserOperationProtocol {
         RCLiveVideoEngine.shared().inviteLiveVideo(userId, at: -1) { [weak self] code in
             switch code {
             case .success:
-                if RCLiveVideoEngine.shared().currentMixType == .oneToOne {
+                if RCLiveVideoEngine.shared().currentMixType() == .oneToOne {
                     self?.micButton.micState = .waiting
                 }
                 SVProgressHUD.showSuccess(withStatus: "已邀请上麦")

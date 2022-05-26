@@ -378,7 +378,7 @@ extension RCLVRSeatAlertUserViewController {
     
     @objc private func handleLockSeat() {
         dismiss(animated: false)
-        if RCLiveVideoEngine.shared().currentMixType == .oneToOne {
+        if RCLiveVideoEngine.shared().currentMixType() == .oneToOne {
             return SVProgressHUD.showInfo(withStatus: "默认模式不支持锁座")
         }
         guard let seat = userId.seat else { return }
@@ -475,7 +475,7 @@ extension RCLVRSeatAlertUserViewController {
 
 fileprivate extension String {
     var seating: Bool {
-        RCLiveVideoEngine.shared().currentSeats.contains(where: { $0.userId == self })
+        RCLiveVideoEngine.shared().currentSeats().contains(where: { $0.userId == self })
     }
     
     var isHost: Bool {
@@ -487,6 +487,6 @@ fileprivate extension String {
     }
     
     var seat: RCLiveVideoSeat? {
-        RCLiveVideoEngine.shared().currentSeats.first(where: {$0.userId == self})
+        RCLiveVideoEngine.shared().currentSeats().first(where: {$0.userId == self})
     }
 }

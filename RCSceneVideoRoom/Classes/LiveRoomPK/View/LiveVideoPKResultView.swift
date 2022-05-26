@@ -40,7 +40,7 @@ class LiveVideoPKResultView: UIView {
             make.right.equalToSuperview().offset(-15)
             make.centerY.equalToSuperview().offset(20)
         }
-        if let PK = RCLiveVideoEngine.shared().pkInfo {
+        if let PK = RCLiveVideoEngine.shared().currentPK() {
             updateUserAvatar([PK.roomUserId(), PK.otherRoomUserId()])
         }
         SVProgressHUD.showInfo(withStatus: "我方 PK 胜利")
@@ -57,7 +57,7 @@ class LiveVideoPKResultView: UIView {
             make.left.equalToSuperview().offset(15)
             make.centerY.equalToSuperview().offset(20)
         }
-        if let PK = RCLiveVideoEngine.shared().pkInfo {
+        if let PK = RCLiveVideoEngine.shared().currentPK() {
             updateUserAvatar([PK.otherRoomUserId(), PK.roomUserId()])
         }
         SVProgressHUD.showInfo(withStatus: "我方 PK 失败")

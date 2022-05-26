@@ -21,7 +21,7 @@ extension LiveVideoRoomViewController {
             case .success:
                 debugPrint("join room success")
                 SceneRoomManager.shared.currentRoom = self?.room
-                self?.role = RCLiveVideoEngine.shared().currentRole
+                self?.role = RCLiveVideoEngine.shared().currentRole()
                 SVProgressHUD.dismiss(withDelay: 0.3)
             case let .failure(error):
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
@@ -42,7 +42,7 @@ extension LiveVideoRoomViewController {
     }
     
     var enableMic: Bool {
-        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats().first(where: { seat in
             seat.userId == Environment.currentUserId
         })
         guard let seat = tmpSeat else { return false }
@@ -50,7 +50,7 @@ extension LiveVideoRoomViewController {
     }
     
     var enableCamera: Bool {
-        let tmpSeat = RCLiveVideoEngine.shared().currentSeats.first(where: { seat in
+        let tmpSeat = RCLiveVideoEngine.shared().currentSeats().first(where: { seat in
             seat.userId == Environment.currentUserId
         })
         guard let seat = tmpSeat else { return false }

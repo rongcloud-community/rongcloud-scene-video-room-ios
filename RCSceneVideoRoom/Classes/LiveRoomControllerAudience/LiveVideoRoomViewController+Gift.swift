@@ -20,7 +20,7 @@ extension LiveVideoRoomViewController {
         RCSensorAction.giftClick(room).trigger()
         SceneRoomManager.updateLiveSeatList()
         let users: [String] = {
-            if RCLiveVideoEngine.shared().pkInfo != nil {
+            if RCLiveVideoEngine.shared().currentPK() != nil {
                 return [room.userId]
             }
             var users: [String] = SceneRoomManager.shared.seats
@@ -68,7 +68,7 @@ extension LiveVideoRoomViewController: RCSceneGiftViewControllerDelegate {
             let value = message.price * message.number
             var items = [String: Int]()
             RCLiveVideoEngine.shared()
-                .currentSeats
+                .currentSeats()
                 .map { $0.userId }
                 .filter { $0.count > 0 }
                 .forEach { userId in

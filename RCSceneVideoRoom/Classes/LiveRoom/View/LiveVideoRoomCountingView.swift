@@ -81,10 +81,6 @@ class LiveVideoRoomCountingView: UIView {
         guard let room = SceneRoomManager.shared.currentRoom else { return }
         guard let delegate = controller as? RCSceneRoomUserOperationProtocol else { return }
         let vc = RCSceneRoomUsersViewController(room: room, delegate: delegate)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
-        nav.modalTransitionStyle = .coverVertical
-        nav.modalPresentationStyle = .overFullScreen
-        controller?.present(nav, animated: true)
+        controller?.present(vc, animated: true)
     }
 }

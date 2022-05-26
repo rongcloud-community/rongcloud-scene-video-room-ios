@@ -38,7 +38,7 @@ extension LiveVideoRoomHostController {
                     self?.closeRoom()
                     self?.stopPK()
                 } else {
-                    if let pk = RCLiveVideoEngine.shared().pkInfo {
+                    if let pk = RCLiveVideoEngine.shared().currentPK() {
                         self?.fetchServerPKInfo(pk)
                     }
                 }
@@ -50,7 +50,7 @@ extension LiveVideoRoomHostController {
     
     private func stopPK() {
         guard
-            let pk = RCLiveVideoEngine.shared().pkInfo,
+            let pk = RCLiveVideoEngine.shared().currentPK(),
             pk.roomId() == room.roomId
         else { return }
         videoRoomService.setPKStatus(roomId: pk.roomId(),

@@ -6,6 +6,7 @@
 //
 
 import SVProgressHUD
+import RCSceneRoom
 
 
 protocol LiveVideoOthersDelegate: AnyObject {
@@ -148,11 +149,10 @@ extension LiveVideoOthersViewController: UITableViewDelegate {
     
     private func sendPKInvitation(_ room: RCSceneRoom) {
         videoRoomService.isPK(roomId: room.roomId) { result in
-            switch result {
-            case .success(let response):
-                guard let status = try? JSONDecoder().decode(RCSceneWrapper<Bool>.self, from: response.data), status.data == true else {
-                    SVProgressHUD.showError(withStatus: "对方正在忙碌")
-                    return
+            switch result.map(RCSceneWrapper<Bool>.self) {
+            case .success(let wrapper):
+                guard wrapper.data == false else {
+                    return SVProgressHUD.showError(withStatus: "对方正在忙碌")
                 }
                 RCLiveVideoEngine.shared().sendPKInvitation(room.roomId, invitee: room.userId) { code in
                     if code == .success {

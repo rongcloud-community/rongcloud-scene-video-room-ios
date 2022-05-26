@@ -108,7 +108,7 @@ class LiveVideoPKProgressView: UIView {
     }
     
     func updateScore(_ model: PKGiftModel) {
-        guard let PK = RCLiveVideoEngine.shared().pkInfo else { return }
+        guard let PK = RCLiveVideoEngine.shared().currentPK() else { return }
         var left = 0, right = 0
         for room in model.roomScores {
             if room.roomId == PK.roomId() {

@@ -12,8 +12,8 @@ extension LiveVideoRoomViewController {
     private func gift_viewDidLoad() {
         m_viewDidLoad()
         RCLiveVideoEngine.shared().delegate = self
-        RCLiveVideoEngine.shared().mixDelegate = self
-        RCLiveVideoEngine.shared().mixDataSource = self
+        RCLiveVideoEngine.shared().setMixDelegate(self)
+        RCLiveVideoEngine.shared().setMixDataSource(self)
     }
 }
 
@@ -171,7 +171,7 @@ extension LiveVideoRoomViewController: RCLiveVideoDelegate {
     func roomMixTypeDidChange(_ mixType: RCLiveVideoMixType) {
         layoutLiveVideoView(mixType)
         if mixType == .gridTwo || mixType == .gridThree {
-            RCLiveVideoEngine.shared().currentSeats.forEach {
+            RCLiveVideoEngine.shared().currentSeats().forEach {
                 $0.enableTiny = false
             }
         }
@@ -199,10 +199,10 @@ extension LiveVideoRoomViewController: RCLiveVideoMixDataSource {
 
 extension LiveVideoRoomViewController: RCLiveVideoMixDelegate {
     func liveVideoDidLayout(_ seat: RCLiveVideoSeat, withFrame frame: CGRect) {
-        if RCLiveVideoEngine.shared().pkInfo != nil { return }
+        if RCLiveVideoEngine.shared().currentPK() != nil { return }
         let tag = seat.index + 10000
         seatView.viewWithTag(tag)?.removeFromSuperview()
-        if RCLiveVideoEngine.shared().currentMixType == .oneToOne {
+        if RCLiveVideoEngine.shared().currentMixType() == .oneToOne {
             if seat.userId.count == 0 { return }
         }
         let view = RCLiveVideoSeatItemView(room, seatInfo: seat)
@@ -212,6 +212,5 @@ extension LiveVideoRoomViewController: RCLiveVideoMixDelegate {
     }
     
     func roomMixConfigWillUpdate(_ config: RCRTCMixConfig) {
-        
     }
 }

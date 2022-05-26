@@ -81,7 +81,7 @@ class RCLiveVideoSeatItemView: UIView {
     
     private func setupUI() {
         layer.masksToBounds = true
-        if RCLiveVideoEngine.shared().currentMixType != .oneToOne {
+        if RCLiveVideoEngine.shared().currentMixType() != .oneToOne {
             layer.borderWidth = 1
         }
         layer.borderColor = UIColor(byteRed: 24, green: 25, blue: 26).cgColor
@@ -212,7 +212,7 @@ class RCLiveVideoSeatItemView: UIView {
 
 extension RCLiveVideoSeatItemView {
     private func setupAvatarImageView() {
-        switch RCLiveVideoEngine.shared().currentMixType {
+        switch RCLiveVideoEngine.shared().currentMixType() {
         case .oneToOne:
             avatarImageView.layer.cornerRadius = 23.resize
             avatarImageView.snp.remakeConstraints { make in
@@ -277,7 +277,7 @@ extension RCLiveVideoSeatItemView {
     private func setupHostView() {
         guard room.userId == seatInfo.userId else { return }
         giftView.removeFromSuperview()
-        switch RCLiveVideoEngine.shared().currentMixType {
+        switch RCLiveVideoEngine.shared().currentMixType() {
         case .oneToOne, .oneToSix:
             nameLabel.removeFromSuperview()
         default:
@@ -309,7 +309,7 @@ extension RCLiveVideoSeatItemView {
             let alertController = RCLVRSeatAlertEmptyViewController(seatInfo)
             controller.present(alertController, animated: false)
         } else if seatInfo.userId == Environment.currentUserId {
-            if RCLiveVideoEngine.shared().currentMixType != .oneToOne {
+            if RCLiveVideoEngine.shared().currentMixType() != .oneToOne {
                 let alertController = RCLVRSeatAlertHostViewController(seatInfo)
                 controller.present(alertController, animated: false)
             }
@@ -351,7 +351,7 @@ extension RCLiveVideoSeatItemView {
     
     private func needShowSeatUserAlert() -> Bool {
         guard room.userId == seatInfo.userId else { return true }
-        switch RCLiveVideoEngine.shared().currentMixType {
+        switch RCLiveVideoEngine.shared().currentMixType(){
         case .oneToOne, .oneToSix: return false
         default: return true
         }
@@ -378,6 +378,5 @@ extension RCLiveVideoSeatItemView: RCLiveVideoSeatDelegate {
     
     func seat(_ seat: RCLiveVideoSeat, didSpeak audioLevel: Int) {
         if audioLevel > 0 { radarView.start() }
-        debugPrint("didSpeak \(audioLevel) atIndex: \(seat.index)")
     }
 }

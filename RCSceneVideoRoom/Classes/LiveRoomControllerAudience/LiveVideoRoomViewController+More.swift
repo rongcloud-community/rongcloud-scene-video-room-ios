@@ -66,8 +66,7 @@ extension LiveVideoRoomViewController: LiveVideoRoomMoreDelegate {
     
     func scaleRoomDidClick() {
         guard let fm = self.floatingManager, let parent = parent else {
-            backTrigger(false)
-            return
+            return SVProgressHUD.showError(withStatus: "浮窗未实现")
         }
         fm.show(parent, superView: self.previewView, animated: true)
         needHandleFloatingBack = true
@@ -76,13 +75,12 @@ extension LiveVideoRoomViewController: LiveVideoRoomMoreDelegate {
 }
 
 extension UIViewController {
+    @objc
     func backTrigger(_ animated: Bool = true) {
-        if presentingViewController != nil {
-            return dismiss(animated: animated)
+        if let controller = navigationController {
+            controller.popViewController(animated: animated)
+        } else {
+            dismiss(animated: animated)
         }
-        guard let controller = navigationController else {
-            return
-        }
-        controller.popViewController(animated: animated)
     }
 }

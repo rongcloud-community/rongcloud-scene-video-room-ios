@@ -23,19 +23,18 @@ extension LiveVideoRoomViewController {
     }
     
     @_dynamicReplacement(for: m_viewWillAppear(_:))
-    private func broadcast_viewWillAppear(_ animated: Bool) {
+    private func message_viewWillAppear(_ animated: Bool) {
         m_viewWillAppear(animated)
         refreshUnreadMessageCount()
     }
     
     @_dynamicReplacement(for: m_viewDidLoad)
-    private func publicMsg_viewDidLoad() {
+    private func message_viewDidLoad() {
         m_viewDidLoad()
         messageView.setEventDelegate(self)
         addConstMessages()
         messageView.tableView.reloadData()
         messageButton.addTarget(self, action: #selector(handleMessageButtonClick), for: .touchUpInside)
-        refreshUnreadMessageCount()
     }
     
     @_dynamicReplacement(for: handleReceivedMessage(_:))
@@ -64,9 +63,7 @@ extension LiveVideoRoomViewController {
     
     @objc private func handleMessageButtonClick() {
         RCSensorAction.textClick(room).trigger()
-        let vc = ChatListViewController(.ConversationType_PRIVATE)
-        vc.canCallComing = false
-        present(vc, animated: true)
+        ChatListViewController.presenting(self)
     }
     
     func refreshUnreadMessageCount() {

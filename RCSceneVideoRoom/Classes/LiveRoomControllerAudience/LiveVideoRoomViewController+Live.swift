@@ -76,6 +76,6 @@ extension LiveVideoRoomViewController {
             make.edges.equalToSuperview()
         }
         
-        setupMessageLayout(RCLiveVideoEngine.shared().currentMixType)
+        setupMessageLayout(RCLiveVideoEngine.shared().currentMixType())
     }
 }

@@ -55,7 +55,7 @@ class RCLVRSeatAlertEmptyViewController: RCLVRAlertViewController {
     private let seatInfo: RCLiveVideoSeat
     
     private var canSwitch: Bool {
-        guard RCLiveVideoEngine.shared().currentMixType == .gridNine else { return false }
+        guard RCLiveVideoEngine.shared().currentMixType() == .gridNine else { return false }
         guard let room = SceneRoomManager.shared.currentRoom else { return false }
         return room.userId == Environment.currentUserId
     }

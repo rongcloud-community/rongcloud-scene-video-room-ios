@@ -28,6 +28,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         tableView.refreshControl = refreshControl
+        
+        kVideoRoomEnableCDN = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +48,20 @@ class ViewController: UIViewController {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
         }
+    }
+    
+    @IBAction func operation() {
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let logoutAction = UIAlertAction(title: "登出", style: .default) { _ in
+            UserDefaults.standard.clearLoginStatus()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.connection()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        controller.addAction(logoutAction)
+        controller.addAction(cancelAction)
+        present(controller, animated: true)
     }
     
     @IBAction func create() {
