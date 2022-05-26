@@ -13,7 +13,7 @@ PODS:
     - FCFileManager
     - SSZipArchive
     - YYModel
-  - RCLiveVideoLib (2.1.0.5):
+  - RCLiveVideoLib (2.1.0.6):
     - RongCloudIM/IMLib
     - RongCloudRTC/RongRTCLib
   - RCMusicControlKit (0.0.2.2):
@@ -140,6 +140,7 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
+  - RCLiveVideoLib (from `../../rclivevideolib-ios`)
   - RCSceneVideoRoom (from `../`)
   - RongCloudIM/IMLib (~> 5.2.0)
   - RongCloudRTC/RongRTCLib (~> 5.2.0)
@@ -155,7 +156,6 @@ SPEC REPOS:
     - Moya
     - Pulsator
     - RCCoreKit
-    - RCLiveVideoLib
     - RCMusicControlKit
     - RCSceneChatroomKit
     - RCSceneRoom
@@ -173,6 +173,8 @@ SPEC REPOS:
     - YYModel
 
 EXTERNAL SOURCES:
+  RCLiveVideoLib:
+    :path: "../../rclivevideolib-ios"
   RCSceneVideoRoom:
     :path: "../"
 
@@ -185,7 +187,7 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Pulsator: eb5a9f9be4bdcbd19903984c65deca6aabe50a17
   RCCoreKit: 3f143441ac62880b454cca9066f526a27c45d4ce
-  RCLiveVideoLib: a320695b4a5ce881e9d0d04093aca999ab5e9adf
+  RCLiveVideoLib: 1c245e88258041413169395c1273acace233f79e
   RCMusicControlKit: f6eb6d366be36e14ab8869de970d2acb03bc23f7
   RCSceneChatroomKit: 86d8c5ead5c2cb10efce95d3eea2e854e55b7942
   RCSceneRoom: 41fd529e2041f79376a83a21848e5ce69d024511
@@ -203,6 +205,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: e742cf906c66f51508a5578bd73447e2a73fbafd
+PODFILE CHECKSUM: 76907351a6e585503e4e6bd906892e247da94ee8
 
 COCOAPODS: 1.11.3

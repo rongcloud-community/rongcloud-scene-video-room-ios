@@ -195,11 +195,9 @@ extension LiveVideoRoomHostController: RCLiveVideoMixDelegate {
         seatView.addSubview(view)
         view.frame = frame
         view.tag = tag
-        debugPrint("frame: \(frame)")
     }
     
     func roomMixConfigWillUpdate(_ config: RCRTCMixConfig) {
-        
     }
 }
 
