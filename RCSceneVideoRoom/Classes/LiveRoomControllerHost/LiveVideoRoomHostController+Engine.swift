@@ -28,8 +28,8 @@ extension LiveVideoRoomHostController {
         
         RCLiveVideoEngine.shared().prepare()
         RCLiveVideoEngine.shared().delegate = self
-        RCLiveVideoEngine.shared().setMixDelegate(self)
-        RCLiveVideoEngine.shared().setMixDataSource(self)
+        RCLiveVideoEngine.shared().mixDelegate = self
+        RCLiveVideoEngine.shared().mixDataSource = self
     }
     
     private func fetchManagers() {
@@ -87,7 +87,7 @@ extension LiveVideoRoomHostController: RCLiveVideoDelegate {
     func liveVideoUserDidUpdate(_ userIds: [String]) {
         let liveUsers: [String] = userIds.filter { $0.count > 0 }
         
-        switch RCLiveVideoEngine.shared().currentMixType() {
+        switch RCLiveVideoEngine.shared().currentMixType {
         case .oneToOne:
             micButton.micState = liveUsers.count == 2 ? .connecting : .user
             setupMessageLayout(.oneToOne)
@@ -105,7 +105,7 @@ extension LiveVideoRoomHostController: RCLiveVideoDelegate {
     }
     
     func liveVideoInvitationDidAccept(_ userId: String) {
-        switch RCLiveVideoEngine.shared().currentMixType() {
+        switch RCLiveVideoEngine.shared().currentMixType {
         case .oneToOne:
             micButton.micState = .connecting
         default:
@@ -156,7 +156,7 @@ extension LiveVideoRoomHostController: RCLiveVideoDelegate {
     func roomMixTypeDidChange(_ mixType: RCLiveVideoMixType) {
         layoutLiveVideoView(mixType)
         if mixType == .gridTwo || mixType == .gridThree {
-            RCLiveVideoEngine.shared().currentSeats().forEach {
+            RCLiveVideoEngine.shared().currentSeats.forEach {
                 $0.enableTiny = false
             }
         }
@@ -184,11 +184,11 @@ extension LiveVideoRoomHostController: RCLiveVideoMixDataSource {
 
 extension LiveVideoRoomHostController: RCLiveVideoMixDelegate {
     func liveVideoDidLayout(_ seat: RCLiveVideoSeat, withFrame frame: CGRect) {
-        if RCLiveVideoEngine.shared().currentPK() != nil { return }
+        if RCLiveVideoEngine.shared().pkInfo != nil { return }
         guard let room = room else { return }
         let tag = seat.index + 10000
         seatView.viewWithTag(tag)?.removeFromSuperview()
-        if RCLiveVideoEngine.shared().currentMixType() == .oneToOne {
+        if RCLiveVideoEngine.shared().currentMixType == .oneToOne {
             if seat.userId.count == 0 { return }
         }
         let view = RCLiveVideoSeatItemView(room, seatInfo: seat)

@@ -11,7 +11,7 @@ extension SceneRoomManager {
     static func updateLiveSeatList() {
         shared.seats = RCLiveVideoEngine
             .shared()
-            .currentSeats()
+            .currentSeats
             .map { $0.userId }
     }
 }

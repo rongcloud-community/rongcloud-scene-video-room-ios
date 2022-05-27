@@ -120,8 +120,8 @@ class LiveVideoRoomPKView: UIView {
     
     func begin(_ time: Int) {
         guard
-            let otherUserId = RCLiveVideoEngine.shared().currentPK()?.otherRoomUserId(),
-            let seat = RCLiveVideoEngine.shared().currentSeats().first(where: { $0.userId == otherUserId })
+            let otherUserId = RCLiveVideoEngine.shared().pkInfo?.otherRoomUserId(),
+            let seat = RCLiveVideoEngine.shared().currentSeats.first(where: { $0.userId == otherUserId })
         else { return }
         seat.delegate = self
         updateUserInfo()
@@ -153,7 +153,7 @@ class LiveVideoRoomPKView: UIView {
     }
     
     private func updateUserInfo() {
-        guard let PK = RCLiveVideoEngine.shared().currentPK() else { return }
+        guard let PK = RCLiveVideoEngine.shared().pkInfo else { return }
         RCSceneUserManager.shared.fetchUserInfo(userId: PK.otherRoomUserId()) { user in
             self.otherRoomButton.setTitle("\(user.userName)  ", for: .normal)
         }
@@ -191,7 +191,7 @@ class LiveVideoRoomPKView: UIView {
     }
     
     @objc private func handleOtherRoomDidClick() {
-        guard let PK = RCLiveVideoEngine.shared().currentPK() else { return }
+        guard let PK = RCLiveVideoEngine.shared().pkInfo else { return }
         if PK.roomUserId() == Environment.currentUserId { return }
         SVProgressHUD.show()
         videoRoomService.roomInfo(roomId: PK.otherRoomId()) { [weak self] result in

@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
         service.login(phone: text) { [weak self] result in
             switch result {
             case .success:
+                AppConfigs.config()
                 self?.navigationController?.popViewController(animated: true)
             case let .failure(error):
                 SVProgressHUD.showError(withStatus: error.localizedDescription)

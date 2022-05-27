@@ -19,8 +19,6 @@ target 'RCSceneExample' do
   # Lib
   pod 'RCSceneVideoRoom', :path => '../'
   
-  pod 'RCLiveVideoLib', :path => '../../rclivevideolib-ios'
-  
 end
 
 post_install do |installer|

@@ -55,7 +55,7 @@ class LiveVideoPKGiverView: UIView {
     }
     
     func updateGiverInfo(_ model: PKGiftModel) {
-        guard let PK = RCLiveVideoEngine.shared().currentPK() else { return }
+        guard let PK = RCLiveVideoEngine.shared().pkInfo else { return }
         for room in model.roomScores {
             if room.userInfoList.count == 0 { continue }
             let isLeft = room.roomId == PK.roomId()

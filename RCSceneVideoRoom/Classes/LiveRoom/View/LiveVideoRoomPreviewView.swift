@@ -46,7 +46,7 @@ class LiveVideoRoomPreviewView: UIView {
     }
     
     func contentInsets() -> UIEdgeInsets {
-        switch RCLiveVideoEngine.shared().currentMixType() {
+        switch RCLiveVideoEngine.shared().currentMixType {
         case .oneToOne: return .zero
         case .oneToSix: return UIEdgeInsets(top: safeAreaInsets.top + 98,
                                             left: 0,

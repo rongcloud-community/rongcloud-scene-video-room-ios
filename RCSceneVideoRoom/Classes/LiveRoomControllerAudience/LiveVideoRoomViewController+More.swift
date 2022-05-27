@@ -77,10 +77,12 @@ extension LiveVideoRoomViewController: LiveVideoRoomMoreDelegate {
 extension UIViewController {
     @objc
     func backTrigger(_ animated: Bool = true) {
-        if let controller = navigationController {
-            controller.popViewController(animated: animated)
-        } else {
-            dismiss(animated: animated)
+        guard let controller = navigationController else {
+            return dismiss(animated: animated)
         }
+        if controller.viewControllers.first == self {
+            return dismiss(animated: animated)
+        }
+        controller.popViewController(animated: animated)
     }
 }

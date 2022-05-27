@@ -16,7 +16,7 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
     var room: RCSceneRoom! {
         didSet {
             SceneRoomManager.shared.currentRoom = room
-            RCSceneMusic.join(room)
+            RCSceneMusic.join(room, bubbleView: musicInfoBubbleView!)
         }
     }
     
