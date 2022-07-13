@@ -18,7 +18,7 @@ class RCLVRMicRequestViewController: UIViewController {
         return instance
     }()
     
-    private lazy var emptyView = RCSceneRoomUsersEmptyView()
+    private lazy var emptyView = RCSRUsersEmptyView()
     
     private var userlist = [RCSceneRoomUser]() {
         didSet {

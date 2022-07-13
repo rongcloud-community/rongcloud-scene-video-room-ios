@@ -76,7 +76,7 @@ class LiveVideoRoomUserView: UIView {
     @objc func handleViewClick() {
         guard let room = room else { return }
         let alertController = RCLVRSeatAlertUserViewController(room.userId)
-        alertController.userDelegate = controller as? RCSceneRoomUserOperationProtocol
+        alertController.userDelegate = controller as? RCSRUserOperationProtocol
         controller?.present(alertController, animated: false)
     }
     
@@ -186,7 +186,7 @@ extension LiveVideoRoomUserView {
     
     private func didFollow(_ isFollow: Bool) {
         guard let userId = room?.userId else { return }
-        guard let delegate = controller as? RCSceneRoomUserOperationProtocol else { return }
+        guard let delegate = controller as? RCSRUserOperationProtocol else { return }
         delegate.didFollow(userId: userId, isFollow: isFollow)
     }
     

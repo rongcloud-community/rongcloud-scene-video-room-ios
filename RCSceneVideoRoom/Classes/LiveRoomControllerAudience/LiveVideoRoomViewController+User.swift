@@ -44,7 +44,7 @@ extension LiveVideoRoomViewController {
 }
 
 // MARK: - Owner Click User Seat Pop view Deleagte
-extension LiveVideoRoomViewController: RCSceneRoomUserOperationProtocol {
+extension LiveVideoRoomViewController: RCSRUserOperationProtocol {
     /// 踢出房间
     func kickoutRoom(userId: String) {
         RCLiveVideoEngine.shared().kickOutRoom(userId) { [weak self] _ in

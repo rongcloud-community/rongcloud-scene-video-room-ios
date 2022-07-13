@@ -6,7 +6,7 @@
 //
 
 class RCLVRSeatAlertUserViewController: RCLVRAlertViewController {
-    weak var userDelegate: RCSceneRoomUserOperationProtocol?
+    weak var userDelegate: RCSRUserOperationProtocol?
     
     private lazy var avatarImageView: UIImageView = {
         let instance = UIImageView(image: RCSCAsset.Images.defaultAvatar.image)

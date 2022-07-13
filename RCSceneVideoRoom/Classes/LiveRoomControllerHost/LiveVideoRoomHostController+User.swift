@@ -101,7 +101,7 @@ extension LiveVideoRoomHostController: RCLVMicViewControllerDelegate {
 }
 
 // MARK: - Owner Click User Seat Pop view Deleagte
-extension LiveVideoRoomHostController: RCSceneRoomUserOperationProtocol {
+extension LiveVideoRoomHostController: RCSRUserOperationProtocol {
     /// 踢出房间
     func kickOutRoom(userId: String) {
         presentedViewController?.dismiss(animated: true)

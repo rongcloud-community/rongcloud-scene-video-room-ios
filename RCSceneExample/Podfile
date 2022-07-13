@@ -1,22 +1,11 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
-
-inhibit_all_warnings!
+platform :ios, '11.0'
 
 target 'RCSceneExample' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
   # Pods for RCSceneExample
-  
-  # IM
-  pod 'RongCloudIM/IMLib', '~> 5.2.0'
-  
-  # RTC
-  pod 'RongCloudRTC/RongRTCLib', '~> 5.2.0'
-  pod 'RongCloudRTC/RongRTCPlayer', '~> 5.2.0'
-  
-  # Lib
   pod 'RCSceneVideoRoom', :path => '../'
   
 end

@@ -16,7 +16,7 @@ class RCVideoRoomCell: UITableViewCell {
     
     func updateUI(_ room: RCSceneRoom) -> RCVideoRoomCell {
         titleLabel.text = room.roomName
-        avatarView.kf.setImage(with: URL(string: room.themePictureUrl))
+        avatarView.kf.setImage(with: URL(string: room.themePictureUrl ?? ""))
         return self
     }
 }

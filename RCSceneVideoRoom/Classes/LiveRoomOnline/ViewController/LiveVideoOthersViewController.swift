@@ -40,7 +40,7 @@ class LiveVideoOthersViewController: UIViewController {
         instance.delegate = self
         return instance
     }()
-    private lazy var emptyView = RCSceneRoomUsersEmptyView()
+    private lazy var emptyView = RCSRUsersEmptyView()
     private lazy var nameLabel: UILabel = {
         let instance = UILabel()
         instance.font = .systemFont(ofSize: 17)
