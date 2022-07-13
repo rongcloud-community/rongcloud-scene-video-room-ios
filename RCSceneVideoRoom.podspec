@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   
   # 1 - Info
   s.name             = 'RCSceneVideoRoom'
-  s.version          = '0.0.3.4'
+  s.version          = '0.0.4'
   s.summary          = 'Scene Video Room'
   s.description      = "Scene Video Room module"
   s.homepage         = 'https://github.com/rongcloud'
