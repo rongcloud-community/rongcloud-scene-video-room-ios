@@ -273,7 +273,11 @@ class RCSRUserOperationViewController: UIViewController {
         let buttons: [UIButton] = {
             switch dependency.currentUserRole {
             case .audience: return []
-            default: return [kickOutButton]
+            case .creator:
+                if !dependency.isSeating { return [pickUpButton, kickOutButton] }
+                return [pickDownButton, lockSeatButton, muteButton, kickOutButton]
+            case .manager:
+                return [dependency.isSeating ? pickDownButton : pickUpButton, kickOutButton]
             }
         }()
         buttons.forEach { stackView.addArrangedSubview($0) }
