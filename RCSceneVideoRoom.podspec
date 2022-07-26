@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   
   # 1 - Info
   s.name             = 'RCSceneVideoRoom'
-  s.version          = '0.0.4'
+  s.version          = '0.0.4.1'
   s.summary          = 'Scene Video Room'
   s.description      = "Scene Video Room module"
   s.homepage         = 'https://github.com/rongcloud'
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.pod_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
-    'VALID_ARCHS' => 'arm64 x86_64',
+    'VALID_ARCHS' => 'arm64 armv7 x86_64',
     'SWIFT_COMPILATION_MODE' => 'Incremental',
     'OTHER_SWIFT_FLAGS' => '-Xfrontend -enable-dynamic-replacement-chaining',
   }

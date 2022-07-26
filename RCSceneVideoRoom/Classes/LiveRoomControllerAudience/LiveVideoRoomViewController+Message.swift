@@ -67,8 +67,8 @@ extension LiveVideoRoomViewController {
     }
     
     func refreshUnreadMessageCount() {
-        let unreadCount = RCIMClient.shared()
-            .getUnreadCount([RCConversationType.ConversationType_PRIVATE.rawValue])
+        let num = NSNumber(value: RCConversationType.ConversationType_PRIVATE.rawValue)
+        let unreadCount = RCIMClient.shared().getUnreadCount([num])
         messageButton.setBadgeCount(Int(unreadCount))
     }
 }

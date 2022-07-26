@@ -18,11 +18,13 @@ extension ChatListViewController {
         navigation.modalPresentationStyle = .overFullScreen
         vc.navigationItem.leftBarButtonItem = {
             let image = RCSCAsset.Images.backIndicatorImage.image
+                .withRenderingMode(.alwaysTemplate)
             let action = #selector(backTrigger)
             let instance = UIBarButtonItem(image: image,
                                            style: .plain,
                                            target: navigation,
                                            action: action)
+            instance.tintColor = .black
             return instance
         }()
         controller.present(navigation, animated: animated)
@@ -39,11 +41,13 @@ extension ChatViewController {
         navigation.modalPresentationStyle = .overFullScreen
         vc.navigationItem.leftBarButtonItem = {
             let image = RCSCAsset.Images.backIndicatorImage.image
+                .withRenderingMode(.alwaysTemplate)
             let action = #selector(backTrigger)
             let instance = UIBarButtonItem(image: image,
                                            style: .plain,
                                            target: navigation,
                                            action: action)
+            instance.tintColor = .black
             return instance
         }()
         let chatController = ChatViewController(.ConversationType_PRIVATE, userId: userId)
