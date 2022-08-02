@@ -46,11 +46,11 @@ extension LiveVideoRoomViewController: RCRTCBroadcastDelegate {
                 guard room.password == password else {
                     return SVProgressHUD.showError(withStatus: "密码错误")
                 }
-                self?.roomContainerAction?.switchRoom(room)
+                self?.roomContainerSwitchRoom(room)
             }
             present(controller, animated: true)
         } else {
-            roomContainerAction?.switchRoom(room)
+            roomContainerSwitchRoom(room)
         }
     }
 }

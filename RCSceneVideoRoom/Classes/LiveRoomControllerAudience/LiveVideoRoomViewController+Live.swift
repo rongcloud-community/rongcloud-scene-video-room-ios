@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import RCSceneKit
 
 extension LiveVideoRoomViewController {
     func layoutLiveVideoView(_ mixType: RCLiveVideoMixType) {
         previewView.setupPreviewLayout(mixType)
-        if floatingManager?.showing == true { return }
+        if RCSPageFloaterManager.shared().showing() {
+            return
+        }
         setupSeatLayout(mixType)
         setupMessageLayout(mixType)
     }

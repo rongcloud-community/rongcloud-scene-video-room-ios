@@ -6,6 +6,9 @@
 //
 
 import SVProgressHUD
+import RCSceneKit
+import Foundation
+import UIKit
 
 extension LiveVideoRoomViewController {
     @_dynamicReplacement(for: role)
@@ -13,15 +16,14 @@ extension LiveVideoRoomViewController {
         get { role }
         set {
             role = newValue
+            guard let containerVC = self.parent as? RCSPageContainerController else { return }
             switch role {
             case .broadcaster:
-                guard let containerAction = self.roomContainerAction else {return}
                 navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-                containerAction.disableSwitchRoom()
+                containerVC.setScrollable(false)
             case .audience:
-                guard let containerAction = self.roomContainerAction else {return}
                 navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-                containerAction.enableSwitchRoom()
+                containerVC.setScrollable(true)
             @unknown default: ()
             }
         }
@@ -65,12 +67,28 @@ extension LiveVideoRoomViewController: LiveVideoRoomMoreDelegate {
     }
     
     func scaleRoomDidClick() {
-        guard let fm = self.floatingManager, let parent = parent else {
-            return SVProgressHUD.showError(withStatus: "浮窗未实现")
-        }
-        fm.show(parent, superView: self.previewView, animated: true)
+        let vc: UIViewController = parent ?? self
+        RCSPageFloaterManager.shared().show(with: vc,
+                                            avatarImgUrl: room.themePictureUrl,
+                                            customContentView: self.makeCustomContentView(self.previewView),
+                                            animated: true)
         needHandleFloatingBack = true
         backTrigger(false)
+        guard let containerVC = vc as? RCSPageContainerController else { return }
+        guard let delegate = containerVC.delegate else { return }
+        RCSPageFloaterManager.shared().multiDelegates = NSArray(objects: delegate) as! [Any]
+    }
+    
+    func makeCustomContentView(_ superView: UIView) -> UIView {
+        superView.addSubview(self.closeButton)
+        return superView
+    }
+    
+    @objc func close() {
+        leaveRoom({ [weak self] result in
+            self?.closeButton.removeFromSuperview()
+            RCSPageFloaterManager.shared().hide()
+        })
     }
 }
 

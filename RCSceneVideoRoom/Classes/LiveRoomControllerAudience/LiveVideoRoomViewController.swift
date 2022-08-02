@@ -7,6 +7,7 @@
 
 import UIKit
 import RCSceneRoom
+import RCSceneKit
 
 class LiveVideoRoomViewController: RCLiveModuleViewController {
     
@@ -45,14 +46,17 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     
     lazy var PKView = LiveVideoRoomPKView()
     
+    lazy var closeButton: UIButton = {
+        let instance = UIButton(frame: CGRect(x: 78, y: 0, width: 30, height: 30))
+        instance.setImage(RCSCAsset.Images.floatingClose.image, for: .normal)
+        instance.addTarget(self, action: #selector(close), for: .touchUpInside)
+        return instance
+    }()
+    
     dynamic var role: RCRTCLiveRoleType = .audience
     
     var isSeatFreeEnter: Bool = false
-    
-    var floatingManager: RCSceneRoomFloatingProtocol?
-    
-    weak var roomContainerAction: RCRoomContainerAction?
-    
+        
     var needHandleFloatingBack = false
     
     var room: RCSceneRoom
@@ -207,6 +211,25 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
                 completion(.failure(RCSceneError("离开房间失败:\(code.rawValue)")))
             }
         }
+    }
+    
+    func roomContainerSwitchRoom(_ room: RCSceneRoom) {
+        guard let containerVC = self.parent as? RCSPageContainerController else { return }
+        
+        if SceneRoomManager.shared.currentRoom?.roomType == room.roomType {
+            if let index = containerVC.pageItems.firstIndex(where: { $0.pageId == room.roomId }) {
+                containerVC.currentIndex = index
+                return
+            }
+        }
+        let item = RCSPageModel()
+        item.switchable = room.switchable
+        item.pageId = room.roomId
+        item.backgroudUrl = room.backgroundUrl
+        containerVC.pageItems = [item]
+        containerVC.reloadData()
+        containerVC.currentIndex = 0
+        containerVC.setScrollable(false)
     }
     
     func videoDescendantViews() -> [UIView] {

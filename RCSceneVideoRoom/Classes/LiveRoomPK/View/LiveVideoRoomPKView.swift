@@ -200,10 +200,9 @@ class LiveVideoRoomPKView: UIView {
             case let .success(model):
                 guard
                     let room = model.data,
-                    let controller = self?.controller as? LiveVideoRoomViewController,
-                    let containerAction = controller.roomContainerAction
+                    let controller = self?.controller as? LiveVideoRoomViewController
                 else { return }
-                containerAction.switchRoom(room)
+                controller.roomContainerSwitchRoom(room)
             case let .failure(error):
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
             }

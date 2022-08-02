@@ -28,16 +28,9 @@ extension LiveVideoRoomHostController: RCRoomCycleProtocol {
 }
 
 extension LiveVideoRoomViewController: RCRoomCycleProtocol {
-    func setRoomContainerAction(action: RCRoomContainerAction) {
-        self.roomContainerAction = action
-    }
     
     func joinRoom(_ completion: @escaping (Result<Void, RCSceneError>) -> Void) {
         self.videoJoinRoom(completion)
-    }
-    
-    func setRoomFloatingAction(action: RCSceneRoomFloatingProtocol) {
-        self.floatingManager = action
     }
     
     func leaveRoom(_ completion: @escaping (Result<Void, RCSceneError>) -> Void) {

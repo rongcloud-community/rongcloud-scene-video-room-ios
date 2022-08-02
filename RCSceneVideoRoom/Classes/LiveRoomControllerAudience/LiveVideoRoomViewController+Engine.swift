@@ -6,6 +6,7 @@
 //
 
 import CoreGraphics
+import RCSceneKit
 
 extension LiveVideoRoomViewController {
     @_dynamicReplacement(for: m_viewDidLoad)
@@ -28,12 +29,13 @@ extension LiveVideoRoomViewController: RCLiveVideoDelegate {
         let message = "当前直播已结束"
         let controller = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
         let sureAction = UIAlertAction(title: "确定", style: .default) { [unowned self] _ in
-            guard let fm = self.floatingManager, fm.showing else {
+            RCSPageFloaterManager.shared().hide()
+            if RCSPageFloaterManager.shared().showing() {
                 RCSceneMusic.clear()
                 backTrigger()
-                return
+            } else {
+                RCSPageFloaterManager.shared().hide()
             }
-            fm.hide()
         }
         controller.addAction(sureAction)
         UIApplication.shared.keyWindow()?
