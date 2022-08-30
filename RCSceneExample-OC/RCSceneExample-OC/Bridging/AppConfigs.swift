@@ -14,7 +14,6 @@ public class AppConfigs: NSObject {
         configRCKey()
         configHiFive()
         configBaseURL()
-        configMHBeautyKey()
         configBusinessToken()
     }
     
@@ -26,14 +25,18 @@ public class AppConfigs: NSObject {
         Environment.url = URL(string: "https://rcrtc-api.rongcloud.net/")!
     }
     
-    static func configMHBeautyKey() {
-        Environment.MHBeautyKey = ""
-    }
-    
     static func configHiFive() {
-        Environment.hiFiveAppId = ""
-        Environment.hiFiveServerCode = ""
-        Environment.hiFiveServerVersion = ""
+        let path = Bundle.main.path(forResource: "ENV", ofType: "plist")!
+        guard
+            let env = NSDictionary(contentsOfFile: path),
+            let music = env["music"] as? [String: Any],
+            let HIFIVE = music["HIFIVE"] as? [String: String]
+        else { return }
+        let config = RCSceneMusicConfig(appId: HIFIVE["app_id"] ?? "",
+                                        code: HIFIVE["server_code"] ?? "",
+                                        version: HIFIVE["server_version"] ?? "",
+                                        clientId: Environment.currentUserId)
+        RCSceneMusic.active(config)
     }
     
     /// 请申请您的 BusinessToken：https://rcrtc-api.rongcloud.net/code
