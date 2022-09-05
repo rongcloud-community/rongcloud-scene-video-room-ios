@@ -5,8 +5,6 @@
 //  Created by shaoshuai on 2021/10/9.
 //
 
-import UIKit
-
 extension LiveVideoRoomHostController {
     @_dynamicReplacement(for: m_viewDidLoad)
     private func broadcast_viewDidLoad() {
@@ -40,4 +38,3 @@ extension LiveVideoRoomHostController: RCRTCBroadcastDelegate {
     func broadcastViewDidClick(_ room: RCSceneRoom) {
     }
 }
-

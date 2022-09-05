@@ -56,9 +56,10 @@ extension LiveVideoRoomHostController: LiveVideoRoomCreationDelegate {
         self.fetchManagers()
         
         let roomId = room.roomId
+        let url = thirdCDN?.pushURLString(roomId)
         /// 开启直播
         SVProgressHUD.show()
-        RCLiveVideoEngine.shared().begin(room.roomId) { code in
+        RCLiveVideoEngine.shared().begin(room.roomId, thirdCDN: url) { code in
             if code == .success {
                 SVProgressHUD.dismiss()
                 RCRTCEngine.sharedInstance().defaultVideoStream.startCapture()

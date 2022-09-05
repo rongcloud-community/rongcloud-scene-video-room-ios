@@ -16,6 +16,8 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     /// 主播美颜
     var beautyPlugin: RCBeautyPluginDelegate?
     
+    var thirdCDN: RCSThirdCDNProtocol?
+    
     private let musicInfoBubbleView = RCMusicEngine.musicInfoBubbleView
     
     private lazy var gradientLayer: CAGradientLayer = {
@@ -168,23 +170,9 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
                 switch wrapper.code {
                 case 10000:
                     if kVideoRoomEnableCDN {
-                        RCLiveVideoEngine.shared().joinCDNRoom(roomId) { code in
-                            if code == .success {
-                                videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
-                                completion(.success(()))
-                            } else {
-                                completion(.failure(RCSceneError("加入房间失败:\(code.rawValue)")))
-                            }
-                        }
+                        self?.joinCDNRoom(roomId, completion: completion)
                     } else {
-                        RCLiveVideoEngine.shared().joinRoom(roomId) { code in
-                            if code == .success {
-                                videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
-                                completion(.success(()))
-                            } else {
-                                completion(.failure(RCSceneError("加入房间失败:\(code.rawValue)")))
-                            }
-                        }
+                        self?.joinMCURoom(roomId, completion: completion)
                     }
                 case 30001:
                     completion(.success(()))
@@ -193,6 +181,28 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
                 }
             case let .failure(error):
                 completion(.failure(RCSceneError("加入房间失败:\(error.localizedDescription)")))
+            }
+        }
+    }
+    
+    private func joinCDNRoom(_ roomId: String, completion: @escaping (Result<Void, RCSceneError>) -> Void) {
+        RCLiveVideoEngine.shared().joinRoom(roomId, cdnInfo: self) { code in
+            if code == .success {
+                videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
+                completion(.success(()))
+            } else {
+                completion(.failure(RCSceneError("加入房间失败:\(code.rawValue)")))
+            }
+        }
+    }
+    
+    private func joinMCURoom(_ roomId: String, completion: @escaping (Result<Void, RCSceneError>) -> Void) {
+        RCLiveVideoEngine.shared().joinRoom(roomId) { code in
+            if code == .success {
+                videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
+                completion(.success(()))
+            } else {
+                completion(.failure(RCSceneError("加入房间失败:\(code.rawValue)")))
             }
         }
     }
@@ -217,5 +227,18 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
 extension LiveVideoRoomViewController: RCIMReceiveMessageDelegate {
     func onRCIMCustomAlertSound(_ message: RCMessage!) -> Bool {
         return true
+    }
+}
+
+extension LiveVideoRoomViewController: RCLiveVideoCDNDataSource {
+    func innerCDNEnable() -> Bool {
+        kVideoRoomEnableCDN
+    }
+    
+    func thirdCDNPlayer() -> UIView & RCLiveVideoPlayer {
+        guard let thirdCDN = thirdCDN else {
+            fatalError("Third CDN must impl Player")
+        }
+        return thirdCDN.pullPlayer(room.roomId)
     }
 }
