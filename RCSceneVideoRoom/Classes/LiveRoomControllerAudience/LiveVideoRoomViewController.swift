@@ -16,8 +16,6 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     /// 主播美颜
     var beautyPlugin: RCBeautyPluginDelegate?
     
-    var thirdCDN: RCSThirdCDNProtocol?
-    
     private let musicInfoBubbleView = RCMusicEngine.musicInfoBubbleView
     
     private lazy var gradientLayer: CAGradientLayer = {
@@ -105,7 +103,13 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
         view.addSubview(chatroomView.messageView)
         view.addSubview(chatroomView.toolBar)
         
-        roomUserView.updateNetworkDelay(kVideoRoomEnableCDN)
+        var enableCDN: Bool = {
+            if case .CDN_WS = kCDNType {
+                return true
+            }
+            return false
+        }()
+        roomUserView.updateNetworkDelay(enableCDN)
         roomUserView.snp.makeConstraints { make in
             make.height.equalTo(40)
             make.left.equalToSuperview().offset(12)
@@ -165,18 +169,21 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     func videoJoinRoom(_ completion: @escaping (Result<Void, RCSceneError>) -> Void) {
         let roomId = room.roomId
         videoRoomService.roomInfo(roomId: roomId) { [weak self] result in
+            guard let self = self else { return }
             switch result.map(RCSceneWrapper<RCSceneRoom>.self) {
             case let .success(wrapper):
                 switch wrapper.code {
                 case 10000:
-                    if kVideoRoomEnableCDN {
-                        self?.joinCDNRoom(roomId, completion: completion)
-                    } else {
-                        self?.joinMCURoom(roomId, completion: completion)
+                    RCLiveVideoEngine.shared().setCDNDataSource(self)
+                    switch kCDNType {
+                    case .MCU:
+                        self.joinMCURoom(roomId, completion: completion)
+                    default:
+                        self.joinCDNRoom(roomId, completion: completion)
                     }
                 case 30001:
                     completion(.success(()))
-                    self?.didCloseRoom() /// 房间已关闭
+                    self.didCloseRoom() /// 房间已关闭
                 default: completion(.failure(RCSceneError("加入房间失败")))
                 }
             case let .failure(error):
@@ -186,7 +193,7 @@ class LiveVideoRoomViewController: RCLiveModuleViewController {
     }
     
     private func joinCDNRoom(_ roomId: String, completion: @escaping (Result<Void, RCSceneError>) -> Void) {
-        RCLiveVideoEngine.shared().joinRoom(roomId, cdnInfo: self) { code in
+        RCLiveVideoEngine.shared().joinRoom(roomId) { code in
             if code == .success {
                 videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
                 completion(.success(()))
@@ -230,15 +237,20 @@ extension LiveVideoRoomViewController: RCIMReceiveMessageDelegate {
     }
 }
 
-extension LiveVideoRoomViewController: RCLiveVideoCDNDataSource {
-    func innerCDNEnable() -> Bool {
-        kVideoRoomEnableCDN
+extension LiveVideoRoomViewController: RCSCDNDataSource {
+    
+    func liveType() -> RCSLiveType {
+        switch kCDNType {
+        case .MCU: return .MCU
+        case .CDN_WS: return .innerCDN
+        case .CDN: return .thirdCDN
+        }
     }
     
-    func thirdCDNPlayer() -> UIView & RCLiveVideoPlayer {
-        guard let thirdCDN = thirdCDN else {
+    func thirdCDNPlayer() -> UIView & RCSLivePlayer {
+        guard case .CDN(let type) = kCDNType else {
             fatalError("Third CDN must impl Player")
         }
-        return thirdCDN.pullPlayer(room.roomId)
+        return type.pullPlayer(room.roomId)
     }
 }

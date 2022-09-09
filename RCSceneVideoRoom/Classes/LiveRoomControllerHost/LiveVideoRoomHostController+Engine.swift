@@ -56,12 +56,12 @@ extension LiveVideoRoomHostController: LiveVideoRoomCreationDelegate {
         self.fetchManagers()
         
         let roomId = room.roomId
-        let url = thirdCDN?.pushURLString(roomId)
         /// 开启直播
         SVProgressHUD.show()
-        RCLiveVideoEngine.shared().begin(room.roomId, thirdCDN: url) { code in
+        RCLiveVideoEngine.shared().begin(room.roomId) { code in
             if code == .success {
                 SVProgressHUD.dismiss()
+                self.setupThirdCDN(roomId)
                 RCRTCEngine.sharedInstance().defaultVideoStream.startCapture()
                 videoRoomService.userUpdateCurrentRoom(roomId: roomId) { _ in }
             } else {
@@ -69,6 +69,13 @@ extension LiveVideoRoomHostController: LiveVideoRoomCreationDelegate {
             }
         }
         RCSensorAction.joinRoom(room, enableMic: true, enableCamera: true).trigger()
+    }
+    
+    private func setupThirdCDN(_ roomId: String) {
+        guard case .CDN(let third) = kCDNType else { return }
+        RCLiveVideoEngine.shared().addThirdCDN(third.pushURLString(roomId)) { code in
+            debugPrint("add third CDN path \(code.rawValue)")
+        }
     }
 }
 

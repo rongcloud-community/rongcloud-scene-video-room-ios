@@ -13,8 +13,6 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
     
     var beautyPlugin: RCBeautyPluginDelegate?
     
-    var thirdCDN: RCSThirdCDNProtocol?
-    
     var room: RCSceneRoom! {
         didSet {
             SceneRoomManager.shared.currentRoom = room
