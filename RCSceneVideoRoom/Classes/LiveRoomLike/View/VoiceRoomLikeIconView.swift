@@ -6,18 +6,19 @@
 //
 
 import UIKit
+import RCSceneRoom
 
-fileprivate let iconNames: [String] = [
-    "like_gift_1",
-    "like_gift_2",
-    "like_gift_3",
-    "like_gift_4",
-    "like_gift_5",
-    "like_gift_6",
-    "like_gift_7",
-    "like_gift_8",
-    "like_gift_9",
-    "like_gift_10"
+fileprivate let iconImgs: [UIImage] = [
+    RCSCAsset.Images.likeGift1.image ?? UIImage(),
+    RCSCAsset.Images.likeGift2.image ?? UIImage(),
+    RCSCAsset.Images.likeGift3.image ?? UIImage(),
+    RCSCAsset.Images.likeGift4.image ?? UIImage(),
+    RCSCAsset.Images.likeGift5.image ?? UIImage(),
+    RCSCAsset.Images.likeGift6.image ?? UIImage(),
+    RCSCAsset.Images.likeGift7.image ?? UIImage(),
+    RCSCAsset.Images.likeGift8.image ?? UIImage(),
+    RCSCAsset.Images.likeGift9.image ?? UIImage(),
+    RCSCAsset.Images.likeGift10.image ?? UIImage()
 ]
 
 final class VoiceRoomLikeIconLayer: CALayer {
@@ -90,9 +91,7 @@ final class VoiceRoomLikeIconLayer: CALayer {
     
     func setIcon() {
         let index = (0...9).randomElement() ?? 0
-        guard let image = UIImage(named: iconNames[index]) else {
-            return
-        }
+        let image = iconImgs[index]
         contents = image.cgImage
     }
     
