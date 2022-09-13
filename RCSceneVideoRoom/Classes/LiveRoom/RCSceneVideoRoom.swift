@@ -7,23 +7,20 @@
 
 import RCSceneRoom
 
-public var kVideoRoomEnableCDN: Bool = true
+public var kCDNType: RCSCDNType = .CDN_WS
 
 public func RCVideoRoomController(room: RCSceneRoom? = nil,
-                                  thirdCDN: RCSThirdCDNProtocol? = nil,
                                   beautyPlugin: RCBeautyPluginDelegate? = nil) -> RCRoomCycleProtocol {
     RCSceneIMMessageRegistration()
     
     if let room = room, room.userId != Environment.currentUserId {
         let controller = LiveVideoRoomViewController(room)
         controller.beautyPlugin = beautyPlugin
-        controller.thirdCDN = thirdCDN
         return controller
     }
     
     let controller = LiveVideoRoomHostController(room)
     controller.beautyPlugin = beautyPlugin
-    controller.thirdCDN = thirdCDN
     return controller
 }
 

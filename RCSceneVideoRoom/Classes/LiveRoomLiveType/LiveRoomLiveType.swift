@@ -7,10 +7,16 @@
 
 import RCLiveVideoLib
 
-public typealias RCSLivePlayer = UIView & RCLiveVideoPlayer
+public typealias RCSLivePlayerView = UIView & RCSLivePlayer
 
 public protocol RCSThirdCDNProtocol {
     func pushURLString(_ roomId: String) -> String
     func pullURLString(_ roomId: String) -> String
-    func pullPlayer(_ roomId: String) -> RCSLivePlayer
+    func pullPlayer(_ roomId: String) -> RCSLivePlayerView
+}
+
+public enum RCSCDNType {
+    case MCU
+    case CDN_WS
+    case CDN(RCSThirdCDNProtocol)
 }
