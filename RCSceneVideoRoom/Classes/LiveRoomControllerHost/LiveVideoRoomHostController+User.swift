@@ -85,7 +85,7 @@ extension LiveVideoRoomHostController: RCLVMicViewControllerDelegate {
             switch code {
             case .success:
                 debugPrint("switch success")
-                let message = RCTextMessage(content: "麦位布局已修改，请重新上麦")!
+                let message = RCTextMessage(content: "麦位布局已修改，请重新上麦")
                 message.extra = "mixTypeChange"
                 RCLiveVideoEngine.shared().sendMessage(message) { code in
                     self?.chatroomView.messageView.addMessage(message)

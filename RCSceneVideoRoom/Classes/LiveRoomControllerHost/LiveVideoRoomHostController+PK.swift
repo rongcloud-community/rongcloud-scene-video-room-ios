@@ -126,7 +126,7 @@ extension LiveVideoRoomHostController {
     }
     
     private func sendTextMessage(text: String) {
-        let textMessage = RCTextMessage(content: text)!
+        let textMessage = RCTextMessage(content: text)
         RCLiveVideoEngine.shared().sendMessage(textMessage) { [weak self] code in
             self?.messageView.addMessage(textMessage)
         }

@@ -17,8 +17,7 @@ extension LiveVideoRoomViewController {
     @_dynamicReplacement(for: handleReceivedMessage(_:))
     private func broadcast_handleReceivedMessage(_ message :RCMessage) {
         handleReceivedMessage(message)
-        guard message.content.isKind(of: RCGiftBroadcastMessage.self) else { return }
-        let content = message.content as! RCGiftBroadcastMessage
+        guard let content = message.content as? RCGiftBroadcastMessage else { return }
         RCBroadcastManager.shared.add(content)
     }
 }

@@ -203,7 +203,7 @@ extension LiveVideoRoomHostController {
                 RCLiveVideoEngine.shared().setRoomInfo(["notice": notice]) { _ in }
                 
                 /// 本地公屏消息
-                let message = RCTextMessage(content: "房间公告已更新")!
+                let message = RCTextMessage(content: "房间公告已更新")
                 ChatroomSendMessage(message) { result in
                     switch result {
                     case .success:
