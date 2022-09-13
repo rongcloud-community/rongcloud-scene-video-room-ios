@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.dependency 'Pulsator'
   s.dependency 'MJRefresh'
   s.dependency 'SDWebImage'
-  s.dependency 'RCLiveVideoLib', '>= 2.2.1'
+  s.dependency 'RCLiveVideoLib', '>= 2.1.1'
   s.dependency 'RCSceneRoom/RCSceneRoom', '>= 0.0.4.5'
   s.dependency 'RCSceneRoom/RCSceneAnalytics'
   
