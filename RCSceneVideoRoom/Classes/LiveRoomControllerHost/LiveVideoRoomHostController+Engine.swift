@@ -172,7 +172,8 @@ extension LiveVideoRoomHostController: RCLiveVideoDelegate {
     }
     
     func roomDidClosed() {
-        backTrigger()
+        /// fix: 请求业务服务器完成后，关闭页面
+//        backTrigger()
     }
 }
 

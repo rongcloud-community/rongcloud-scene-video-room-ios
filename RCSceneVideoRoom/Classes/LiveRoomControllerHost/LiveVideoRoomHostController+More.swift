@@ -32,6 +32,10 @@ extension LiveVideoRoomHostController {
                 if response.validate() {
                     SVProgressHUD.showSuccess(withStatus: "直播结束，房间已关闭")
                     RCSceneMusic.clear()
+                    /// 同步服务器房间状态
+                    videoRoomService.userUpdateCurrentRoom(roomId: "") { _ in }
+                    /// fix: 请求业务服务器完成后，关闭页面。防止主播接收不到房间已关闭的消息。
+                    self.backTrigger()
                 } else {
                     SVProgressHUD.showSuccess(withStatus: "关闭房间失败")
                 }
@@ -39,7 +43,6 @@ extension LiveVideoRoomHostController {
                 SVProgressHUD.showSuccess(withStatus: "关闭房间失败")
             }
         }
-        videoRoomService.userUpdateCurrentRoom(roomId: "") { _ in }
         RCSensorAction.closeRoom(room, enableMic: enableMic, enableCamera: enableCamera).trigger()
     }
     
