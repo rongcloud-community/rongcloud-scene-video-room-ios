@@ -35,10 +35,7 @@ extension LiveVideoRoomHostController {
                 .roomNotice(notice),
                 .forbidden(words),
                 .cameraSwitch,
-                .beautySticker,
                 .beautyRetouch,
-                .beautyMakeup,
-                .beautyEffect,
                 .seatFree(!isSeatFreeEnter),
                 .music,
                 .cameraSetting

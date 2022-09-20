@@ -11,10 +11,7 @@ extension RCMHBeautyAction {
     var image: UIImage? {
         switch self {
         case .switchCamera: return RCSCAsset.Images.rcBeautySwitchCamera.image
-        case .sticker: return RCSCAsset.Images.rcBeautySticker.image
         case .retouch: return RCSCAsset.Images.rcBeautyRetouch.image
-        case .makeup: return RCSCAsset.Images.rcBeautyMakeup.image
-        case .effect: return RCSCAsset.Images.rcBeautyEffect.image
         }
     }
     
