@@ -27,6 +27,10 @@ extension LiveVideoRoomHostController {
         RCRTCEngine.sharedInstance().defaultVideoStream.videoConfig = config
         
         RCLiveVideoEngine.shared().prepare()
+        let postion = RCRTCEngine.sharedInstance().defaultVideoStream.cameraPosition
+        let needMirror = postion == .captureDeviceFront
+        RCRTCEngine.sharedInstance().defaultVideoStream.isEncoderMirror = needMirror
+        RCRTCEngine.sharedInstance().defaultVideoStream.isCaptureMirror = needMirror
         RCLiveVideoEngine.shared().delegate = self
         RCLiveVideoEngine.shared().mixDelegate = self
         RCLiveVideoEngine.shared().mixDataSource = self
