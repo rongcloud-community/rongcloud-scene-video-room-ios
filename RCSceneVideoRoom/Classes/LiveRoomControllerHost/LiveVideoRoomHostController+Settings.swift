@@ -112,10 +112,6 @@ extension LiveVideoRoomHostController {
     
     func switchCameraDidClick() {
         RCRTCEngine.sharedInstance().defaultVideoStream.switchCamera()
-        let postion = RCRTCEngine.sharedInstance().defaultVideoStream.cameraPosition
-        let needMirror = postion == .captureDeviceFront
-        RCRTCEngine.sharedInstance().defaultVideoStream.isEncoderMirror = needMirror
-        RCRTCEngine.sharedInstance().defaultVideoStream.isPreviewMirror = needMirror
     }
     
     func freeMicDidClick(isFree: Bool) {

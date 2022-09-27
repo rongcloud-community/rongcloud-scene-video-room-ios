@@ -26,10 +26,6 @@ extension LiveVideoRoomViewController {
         
         /// 开始直播
         RCRTCEngine.sharedInstance().defaultVideoStream.startCapture()
-        let postion = RCRTCEngine.sharedInstance().defaultVideoStream.cameraPosition
-        let needMirror = postion == .captureDeviceFront
-        RCRTCEngine.sharedInstance().defaultVideoStream.isEncoderMirror = needMirror
-        RCRTCEngine.sharedInstance().defaultVideoStream.isPreviewMirror = needMirror
     }
     
     func didOutputFrame(_ frame: RCRTCVideoFrame) -> RCRTCVideoFrame {

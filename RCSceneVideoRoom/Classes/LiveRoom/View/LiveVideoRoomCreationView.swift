@@ -145,10 +145,6 @@ extension LiveVideoRoomCreationView: RCMHBeautyViewDelegate {
         switch action {
         case .switchCamera:
             RCRTCEngine.sharedInstance().defaultVideoStream.switchCamera()
-            let postion = RCRTCEngine.sharedInstance().defaultVideoStream.cameraPosition
-            let needMirror = postion == .captureDeviceFront
-            RCRTCEngine.sharedInstance().defaultVideoStream.isEncoderMirror = needMirror
-            RCRTCEngine.sharedInstance().defaultVideoStream.isCaptureMirror = needMirror
         case .retouch: plugin?.didClick(.retouch)
         }
     }
