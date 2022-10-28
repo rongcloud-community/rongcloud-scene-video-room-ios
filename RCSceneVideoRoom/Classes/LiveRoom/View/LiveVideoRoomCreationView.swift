@@ -146,6 +146,7 @@ extension LiveVideoRoomCreationView: RCMHBeautyViewDelegate {
         case .switchCamera:
             RCRTCEngine.sharedInstance().defaultVideoStream.switchCamera()
         case .retouch: plugin?.didClick(.retouch)
+        case .sticker: plugin?.didClick(.sticker)
         }
     }
 }

@@ -123,7 +123,7 @@ final class LiveVideoRoomHostController: LiveVideoRoomModuleHostController {
         let preview = RCLiveVideoEngine.shared().previewView()
         containerView.addSubview(preview)
         preview.snp.makeConstraints { make in
-            make.top.bottom.right.equalToSuperview()
+            make.top.bottom.centerX.equalToSuperview()
             make.width.equalTo(preview.snp.height).multipliedBy(9.0 / 16)
         }
         

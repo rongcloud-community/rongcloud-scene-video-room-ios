@@ -14,7 +14,8 @@ class LiveVideoRoomPreviewView: UIView {
         let previewView = RCLiveVideoEngine.shared().previewView()
         addSubview(previewView)
         previewView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.centerX.equalToSuperview()
+            make.width.equalTo(previewView.snp.height).multipliedBy(9.0 / 16)
         }
     }
     
@@ -27,7 +28,7 @@ class LiveVideoRoomPreviewView: UIView {
         switch mixType {
         case .default, .oneToOne:
             preview.snp.remakeConstraints { make in
-                make.top.bottom.right.equalToSuperview()
+                make.top.bottom.centerX.equalToSuperview()
                 make.width.equalTo(preview.snp.height).multipliedBy(9.0 / 16)
             }
         case .oneToSix:

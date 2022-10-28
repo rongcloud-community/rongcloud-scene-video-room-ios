@@ -203,12 +203,37 @@ extension LiveVideoRoomViewController: RCLiveVideoMixDelegate {
         let tag = seat.index + 10000
         seatView.viewWithTag(tag)?.removeFromSuperview()
         if RCLiveVideoEngine.shared().currentMixType == .oneToOne {
-            if seat.userId.count == 0 { return }
+            /// 如果1v1连麦，则居右，否则居中。【为了贴纸能居中正常显示】
+            if seat.userId.count == 0 {
+                let preview = RCLiveVideoEngine.shared().previewView()
+                preview.snp.remakeConstraints { make in
+                    make.top.bottom.centerX.equalToSuperview()
+                    make.width.equalTo(preview.snp.height).multipliedBy(9.0 / 16)
+                }
+                seatView.snp.remakeConstraints { make in
+                    make.edges.equalTo(preview)
+                }
+                return
+            }
         }
         let view = RCLiveVideoSeatItemView(room, seatInfo: seat)
         seatView.addSubview(view)
         view.frame = frame
         view.tag = tag
+        
+        if RCLiveVideoEngine.shared().currentMixType == .oneToOne {
+            if (seatView.subviews.count > 1) {
+                let preview = RCLiveVideoEngine.shared().previewView()
+                preview.snp.remakeConstraints { make in
+                    make.top.bottom.right.equalToSuperview()
+                    make.width.equalTo(preview.snp.height).multipliedBy(9.0 / 16)
+                }
+                seatView.snp.remakeConstraints { make in
+                    make.edges.equalTo(preview)
+                }
+            }
+        }
+        
     }
     
     func roomMixConfigWillUpdate(_ config: RCRTCMixConfig) {

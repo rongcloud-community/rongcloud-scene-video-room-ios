@@ -8,8 +8,8 @@
 import AVFoundation
 
 public enum RCBeautyAction {
-    case sticker
     case retouch
+    case sticker
     case makeup
     case effect
 }

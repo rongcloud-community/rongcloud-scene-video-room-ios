@@ -10,6 +10,7 @@ import UIKit
 enum RCMHBeautyAction: String, CaseIterable {
     case switchCamera = "翻转"
     case retouch = "美颜"
+    case sticker = "贴纸"
 }
 
 protocol RCMHBeautyViewDelegate: AnyObject {

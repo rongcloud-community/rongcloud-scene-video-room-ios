@@ -12,6 +12,7 @@ extension RCMHBeautyAction {
         switch self {
         case .switchCamera: return RCSCAsset.Images.rcBeautySwitchCamera.image
         case .retouch: return RCSCAsset.Images.rcBeautyRetouch.image
+        case .sticker: return RCSCAsset.Images.rcBeautySticker.image
         }
     }
     
